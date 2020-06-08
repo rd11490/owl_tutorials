@@ -124,3 +124,7 @@ We also have his hero pool for the 2020 season. From here we can see that he has
 He has also played Doomfist and Soldier for what was likely an overtime contest, Widowmaker for what was likely an attempt at a pick out of spawn, Symmetra for a TP out of spawn, and Genji for less than a second.  <br>
 ![Hero Pool](screen_shots/hero_pool_2020.png)
 
+From this we can see that Erster has almost exclusively played Mei this season for the Reign.
+
+### 2. Has Erster Played the Majority of the Reign's Minutes on Mei?
+
