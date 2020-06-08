@@ -44,8 +44,8 @@ Now that we have found the 4 zip files, we can look to find a pattern so that we
 3. https://assets.blz-contentstack.com/v3/assets/blt321317473c90505c/blt7e0ffce2b617f0d2/5ecd3a75a84f2107d1775f56/phs_2020.zip
 4. https://assets.blz-contentstack.com/v3/assets/blt321317473c90505c/blt67ebb7496ecd1ac4/5ecd3a5d80e1cd5cdc708bb6/match_map_stats.zip
 
-Just from looking at the links, they seem to be some sort of fingerprinted assets, so we can not expect the links to be consistent,
-requiring us to extract them from the page every time we want to download. The most simple pattern to extract these links is to
+Just from looking at the links, they seem to be some sort of fingerprinted assets so we can not expect the links to be consistent.
+Because we can not expect the links to remain consistent, we need to extract them from the page every time we want to download. The simplest pattern to extract these links is to
 pull everything between `https://assets` and `.zip`. The regex for this would be `r'(https://assets.*?.zip)'`
 
 
