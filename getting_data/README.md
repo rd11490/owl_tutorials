@@ -131,3 +131,4 @@ for z in os.listdir(zip_dir_name):
 Once this section of the code has been run all of the csv files will be extracted and saved in the data folder.
 ![CSVs](screen_shots/csvs.png)
 
+The entire script can be found [Here](download_data.py)
