@@ -18,7 +18,7 @@ This matches anecdotal evidence that we have heard from various Atlanta Reign pl
 
 
 Below is Erster's hero pool for his entire OWL Career. The majority of this data is from GOATs and
-before role lock so it throws a wrench in some of the numbers. We will likely never see Erster play Brig, D.Va, Zarya, Ana, or any other Tank or Support agian in OWL.
+before role lock so it throws a wrench in some of the numbers. We will likely never see Erster play Brig, D.Va, Zarya, Ana, or any other Tank or Support again in OWL.
 ![Hero Pool](screen_shots/hero_pool.png)
 
 We also have his hero pool for the 2020 season. From here we can see that he has almost exclusively played Mei with a little bit of Tracer, Junkrat, Reaper and Sombra thrown in.
