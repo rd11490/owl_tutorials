@@ -25,13 +25,13 @@ extract the zip files, and save the csv files contained within.
 
 #### 1.1 Find the links to the zip files
 The first think we want to do is go look at the source for the page.
-You can view any page source in Chrome by right-clicking the page and selecting "View Source"
+You can view any page source in Chrome by right-clicking the page and selecting "View Source"  
 ![View Source](screen_shots/view_source.png)
 
-That will open a new tab with the source of the page:
+That will open a new tab with the source of the page:  
 ![Source](screen_shots/source.png)
 
-We can now search the source for the links to the zip files by searching the page for ".zip"
+We can now search the source for the links to the zip files by searching the page for ".zip"  
 ![Find Zip](screen_shots/find_zip.png)
 
 Now that we have found the 4 zip files, we can look to find a pattern so that we can use regex to extract the links.
