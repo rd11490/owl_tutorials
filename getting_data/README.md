@@ -131,4 +131,6 @@ for z in os.listdir(zip_dir_name):
 Once this section of the code has been run all of the csv files will be extracted and saved in the data folder.
 ![CSVs](screen_shots/csvs.png)
 
+### 2 Conclusions
+We have now created a simple script that can be run at any time to download all of the files on the statslab page and extract the contents to a data directory.
 The entire script can be found [Here](download_data.py)
