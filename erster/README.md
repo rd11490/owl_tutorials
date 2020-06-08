@@ -128,3 +128,118 @@ From this we can see that Erster has almost exclusively played Mei this season f
 
 ### 2. Has Erster Played the Majority of the Reign's Minutes on Mei?
 
+#### 2.1 Breakdown of Atlanta Reign Play Time
+
+The next thing we want to investage is how much Erster is actually playing and how that compares to his teammates.
+Let's create a dataframe of playtime for Atlanta Reign only.
+
+```python
+# Filter the dataframe so that we only have Time Played Rows for Atlanta Reign with specific heroes
+atlanta_frame = player_frame[(player_frame['stat_name'] == 'Time Played') & (player_frame['team'] == 'Atlanta Reign') & (player_frame['hero'] != 'All Heroes') & (player_frame['season'] == '2020')]
+
+```
+
+We should also write some code for breaking town play time for each player in the dataframe. we will turn this code into a function so that we can reuse it later.
+```python
+def play_time_breakdown(frame):
+    # Total Team Play Time
+    total_min = frame['stat_amount'].sum()
+
+    # Take only the player and the time played (stat_amount), group by the player and sum up the total play time.
+    ptime = frame[['player', 'stat_amount']].groupby(by='player').sum().reset_index()
+
+    # Take only the player and the time played (stat_amount), group by the player and sum up the total play time.
+    ptime['play_percent'] = ptime['stat_amount'] / total_min
+
+    # Rename the columns
+    ptime.columns = ['player', 'time_played', 'play_percent']
+    # Sort in Descending Order
+    ptime = ptime.sort_values(by='play_percent', ascending=False)
+    return ptime
+```
+
+We will repeat  the process for maps played and matches played.
+
+```python
+def match_breakdown(frame):
+    # Count the total number of matches played
+    total_matchs = len(frame['match_id'].unique())
+    # Take only the player and the match id, group by the player and count number of matches played.
+    match_cnt = frame[['player', 'match_id']].drop_duplicates().groupby(by=['player']).count().reset_index()
+    # Rename the columns
+    match_cnt.columns = ['player', 'match_count']
+    # Calculate the percentage of matches played
+    match_cnt['play_percent'] = match_cnt['match_count'] / total_matchs
+    # Sort in Descending Order
+    match_cnt = match_cnt.sort_values(by='play_percent', ascending=False)
+    return match_cnt
+
+
+def map_breakdown(frame):
+    # Count the total number of maps played
+    total_maps = frame[['match_id', 'map_name']].drop_duplicates().shape[0]
+    # Take only the player, the match id and the map name, group by player and count the number of maps each player played
+    map_cnt = frame[['player', 'match_id', 'map_name']].drop_duplicates().groupby(
+        by=['player']).count().reset_index()
+    # Select only the player and the map count
+    map_cnt = map_cnt[['player', 'map_name']]
+    # Rename teh columns
+    map_cnt.columns = ['player', 'map_count']
+    # Calculate the percentage of maps played
+    map_cnt['play_percent'] = map_cnt['map_count'] / total_maps
+    # Sort in Descending Order
+    map_cnt = map_cnt.sort_values(by='play_percent', ascending=False)
+    return map_cnt
+```
+
+Applying these three functions to the dataframe of Atlanta Reign playtime results in the following tables: <br>
+![Atlanta Reign Playtime](screen_shots/atlanta_playtime.png)
+
+From these results we can see that Erster has played in 38% of Atlanta's possible minutes, 6 of the 12 matches, and 17 of the 42 maps
+Atlanta has clearly preferred babybay and Edison over him this season, but what about on Mei the one character in his hero pool that has been meta this season? To break down Atlanta's Mei play time this season,
+we will apply the same functions from above on just the mei play time for the Reign this season.
+
+#### 2.2 Breakdown of Atlanta Reign Play Time on Mei
+
+```python
+# Filter the dataframe so that we only have Time Played Rows for Atlanta Reign with specific heroes
+atlanta_mei_frame = player_frame[(player_frame['stat_name'] == 'Time Played') & (player_frame['team'] == 'Atlanta Reign') & (player_frame['hero'] == 'Mei') & (player_frame['hero'] != 'All Heroes') & (player_frame['season'] == '2020')]
+ptime = play_time_breakdown(atlanta_mei_frame)
+print('Percentage of Atlanta Reign Play Time by Player On Mei')
+print(ptime)
+print('\n\n')
+
+match_cnt = match_breakdown(atlanta_mei_frame)
+print('Percentage of Atlanta Reign Matches Played On Mei')
+print(match_cnt)
+print('\n\n')
+
+map_cnt = map_breakdown(atlanta_mei_frame)
+print('Percentage of Atlanta Reign Maps Played On Mei')
+print(map_cnt)
+print('\n\n')
+```
+![Atlanta Reign Mei Playtime](screen_shots/atlanta_mei_playtime.png)
+
+These results show that Erster has played 85% of Atlanta's Mei Minutes, 75% of matches and  77% of maps where Atlanta played Mei.
+This tells us that Atlanta is playing Erster in almost all cases where Atlanta is playing Mei, but what about those few maps where someone else played Mei?
+Unfortunately we are limited in the data we have access to, so we will have to go to the VODs to see exactly what happened in the 5 maps Atlanta Played someone other than Erster on Mei.
+
+1. Week 10 vs Philly:
+    Edison played the first 2 maps as Mei and then was subbed out for Erster for the last 3 maps of the match.
+2. Week 14 vs Houston - Oasis:
+    Edison started this map playing tracer but was countered by Torb.
+3. Week 14 vs Houston - King's Row:
+    Edison started this map on Genji, built blade, then swapped for point 2 attack. He also played Mei on D
+4. Week 16 vs Toronto - King's Row:
+    babybay swapped Mei to help counter Toronto's comp.
+
+In only 1 of these matches and 2 of these maps did Atlanta plan to play anyone other that Erster on Mei giving credence to the idea that Erster is Atlanta's main Mei player.
+
+## 3. Is Atlanta not playing Mei when Meta?
+The final thing we want to dig into is if Atlanta is benching Erster and not playing Mei when they should be?
+This is an idea that has been posed by various casters and analysts and parroted by fans online. In order to determine
+if Atlanta is not playing Mei when she is meta we first need to find out what weeks Mei was meta. A quick and easy way to determine if Mei is determined Meta
+is to check her play time across the entire league. We will set the slightly arbitrary cutoff for Mei being meta as Mei being playing for at least 1/12th of the total play time during a match week.
+This would average out to at least one team playing Mei at all times during the match week.
+

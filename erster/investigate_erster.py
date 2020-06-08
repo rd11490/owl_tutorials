@@ -76,47 +76,77 @@ print('\n\n')
 print('2. Has Erster Played the majority of the Reign\'s Minutes on Mei?')
 
 
-def minute_breakdown(frame):
+def play_time_breakdown(frame):
     # Total Team Play Time
     total_min = frame['stat_amount'].sum()
 
+    # Take only the player and the time played (stat_amount), group by the player and sum up the total play time.
     ptime = frame[['player', 'stat_amount']].groupby(by='player').sum().reset_index()
+
+    # Take only the player and the time played (stat_amount), group by the player and sum up the total play time.
     ptime['play_percent'] = ptime['stat_amount'] / total_min
 
-    print('Percentage of Atlanta Reign Play Time by Player')
+    # Rename the columns
     ptime.columns = ['player', 'time_played', 'play_percent']
+    # Sort in Descending Order
     ptime = ptime.sort_values(by='play_percent', ascending=False)
-    print(ptime)
-    print('\n\n')
+    return ptime
 
+
+def match_breakdown(frame):
+    # Count the total number of matches played
     total_matchs = len(frame['match_id'].unique())
+    # Take only the player and the match id, group by the player and count number of matches played.
     match_cnt = frame[['player', 'match_id']].drop_duplicates().groupby(by=['player']).count().reset_index()
+    # Rename the columns
     match_cnt.columns = ['player', 'match_count']
+    # Calculate the percentage of matches played
     match_cnt['play_percent'] = match_cnt['match_count'] / total_matchs
+    # Sort in Descending Order
     match_cnt = match_cnt.sort_values(by='play_percent', ascending=False)
+    return match_cnt
 
-    print('Percentage of Atlanta Reign Matches')
-    print(match_cnt)
-    print('\n\n')
 
+def map_breakdown(frame):
+    # Count the total number of maps played
     total_maps = frame[['match_id', 'map_name']].drop_duplicates().shape[0]
+    # Take only the player, the match id and the map name, group by player and count the number of maps each player played
     map_cnt = frame[['player', 'match_id', 'map_name']].drop_duplicates().groupby(
         by=['player']).count().reset_index()
+    # Select only the player and the map count
     map_cnt = map_cnt[['player', 'map_name']]
+    # Rename teh columns
     map_cnt.columns = ['player', 'map_count']
+    # Calculate the percentage of maps played
     map_cnt['play_percent'] = map_cnt['map_count'] / total_maps
+    # Sort in Descending Order
     map_cnt = map_cnt.sort_values(by='play_percent', ascending=False)
+    return map_cnt
 
-    print('Percentage of Atlanta Reign Maps Played')
-    print(map_cnt)
-    print('\n\n')
+
+
 
 # 2.1 What Percentage of Atlanta Reign's Minutes, Matches and Maps has Erster Played in?
 print('2.1 What Percentage of Atlanta Reign\'s Minutes, Matches and Maps has Erster Played in?')
 
 # Filter the dataframe so that we only have Time Played Rows for Atlanta Reign with specific heroes
 atlanta_frame = player_frame[(player_frame['stat_name'] == 'Time Played') & (player_frame['team'] == 'Atlanta Reign') & (player_frame['hero'] != 'All Heroes') & (player_frame['season'] == '2020')]
-minute_breakdown(atlanta_frame)
+
+ptime = play_time_breakdown(atlanta_frame)
+print('Percentage of Atlanta Reign Play Time by Player')
+print(ptime)
+print('\n\n')
+
+match_cnt = match_breakdown(atlanta_frame)
+print('Percentage of Atlanta Reign Matches')
+print(match_cnt)
+print('\n\n')
+
+map_cnt = map_breakdown(atlanta_frame)
+print('Percentage of Atlanta Reign Maps Played')
+print(map_cnt)
+print('\n\n')
+
 
 # 2.2 What Percentage of Atlanta Reign's Mei Minutes, Matches and Maps has Erster Played?
 print('2.2 What Percentage of Atlanta Reign\'s Mei Minutes, Matches and Maps has Erster Played?')
@@ -124,7 +154,70 @@ print('2.2 What Percentage of Atlanta Reign\'s Mei Minutes, Matches and Maps has
 
 # Filter the dataframe so that we only have Time Played Rows for Atlanta Reign with specific heroes
 atlanta_mei_frame = player_frame[(player_frame['stat_name'] == 'Time Played') & (player_frame['team'] == 'Atlanta Reign') & (player_frame['hero'] == 'Mei') & (player_frame['hero'] != 'All Heroes') & (player_frame['season'] == '2020')]
-minute_breakdown(atlanta_mei_frame)
+ptime = play_time_breakdown(atlanta_mei_frame)
+print('Percentage of Atlanta Reign Play Time by Player On Mei')
+print(ptime)
+print('\n\n')
+
+match_cnt = match_breakdown(atlanta_mei_frame)
+print('Percentage of Atlanta Reign Matches Played On Mei')
+print(match_cnt)
+print('\n\n')
+
+map_cnt = map_breakdown(atlanta_mei_frame)
+print('Percentage of Atlanta Reign Maps Played On Mei')
+print(map_cnt)
+print('\n\n')
+
+
+## Build a map of Game Date to Game Week:
+game_date_map = {
+'2020/02/08':1,
+'2020/02/09':1,
+'2020/02/15':2,
+'2020/02/16':2,
+'2020/02/22':3,
+'2020/02/23':3,
+'2020/02/29':4,
+'2020/03/01':4,
+'2020/03/07':5,
+'2020/03/08':5,
+'2020/03/28':8,
+'2020/03/29':8,
+'2020/04/04':9,
+'2020/04/05':9,
+'2020/04/06':9,
+'2020/04/11':10,
+'2020/04/12':10,
+'2020/04/16':11,
+'2020/04/17':11,
+'2020/04/18':11,
+'2020/04/19':11,
+'2020/04/25':12,
+'2020/04/26':12,
+'2020/05/02':13,
+'2020/05/03':13,
+'2020/05/09':14,
+'2020/05/10':14,
+'2020/05/16':15,
+'2020/05/17':15,
+'2020/05/22':16,
+'2020/05/23':16,
+'2020/05/24':16
+}
+
+def play_time_per_match(group):
+    total_time = group['stat_amount'].sum()
+    group['pct'] = group['stat_amount'] / total_time
+    return group
+
+week_pct = time_played.groupby(by='game_week').apply(play_time_per_match).reset_index()
+week_pct = week_pct[['hero_name', 'game_week', 'pct']].groupby(by=['game_week', 'hero_name']).sum().reset_index()
+
+mei_week = week_pct[week_pct['hero_name'] == 'Mei']
+mei_week['meta'] = mei_week['pct'] >= 1/12
+mei_week = mei_week[mei_week['meta']]
+mei_week = mei_week[['game_week']]
 
 
 
