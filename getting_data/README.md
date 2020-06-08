@@ -7,9 +7,9 @@ don't hesitate to open a PR, submit an issue, or reach out to me directly
 
 ### 0.1 Requirements
 This tutorial uses the latest version of Google Chrome for finding the endpoint information.
-The code in this tutorial was written in python 3.7 and uses the following libraries:
-Pandas
-Requests
+The code in this tutorial was written in python 3.7 and uses the following libraries:  
+Pandas  
+Requests  
 
 The environment.yml page for the entire project contains everything you need to run this script.
 
