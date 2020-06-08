@@ -116,6 +116,8 @@ play_time_2020 = erster_2020_frame[['hero', 'stat_amount']].groupby(by='hero').s
 play_time_2020['play_percent'] = play_time_2020['stat_amount'] / total_time_2020
 # Sort the results in descending order
 play_time_2020 = play_time_2020.sort_values(by='play_percent', ascending = False)
+print('Erster Play Time By Hero in 2020')
+print(play_time_2020)
 ```
 
 We also have his hero pool for the 2020 season. From here we can see that he has almost exclusively played Mei with a little bit of Tracer, Junkrat, Reaper and Sombra thrown in.
