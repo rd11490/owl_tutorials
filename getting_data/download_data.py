@@ -16,11 +16,6 @@ data_dir_name = 'data'
 if not os.path.isdir(zip_dir_name):
     os.mkdir(zip_dir_name)
 
-# Create a data directory if it doesn't exist
-if not os.path.isdir(data_dir_name):
-    os.mkdir(data_dir_name)
-
-
 for l in links:
     # Pull the zip name from the href
     zip_name = l.split('/')[-1]
@@ -33,9 +28,11 @@ for l in links:
         for chunk in r.iter_content(chunk_size=512):
             fd.write(chunk)
 
-zips = os.listdir(zip_dir_name)
+# Create a data directory if it doesn't exist
+if not os.path.isdir(data_dir_name):
+    os.mkdir(data_dir_name)
 
-for z in zips:
+for z in os.listdir(zip_dir_name):
     with zipfile.ZipFile('{}/{}'.format(zip_dir_name, z), 'r') as zip_ref:
         zip_ref.extractall(data_dir_name)
 

@@ -110,3 +110,24 @@ for l in links:
 
 Once we have run this section of the script we will have a folder called `zips` with the four zip files saved in it.
 ![Zip files](screen_shots/saved_zips.png)
+
+#### 1.3 Extracting CSV from Zip files.
+
+Like with the zip files, we should create a directory to save the csv files in. To do this we will check to see if the csv directory exists
+and if not create it. We then use the zipfile library to open the zip files and extract them into the csv directory.
+
+```python
+data_dir_name = 'data'
+
+# Create a data directory if it doesn't exist
+if not os.path.isdir(data_dir_name):
+    os.mkdir(data_dir_name)
+
+for z in os.listdir(zip_dir_name):
+    with zipfile.ZipFile('{}/{}'.format(zip_dir_name, z), 'r') as zip_ref:
+        zip_ref.extractall(data_dir_name)
+```
+
+Once this section of the code has been run all of the csv files will be extracted and saved in the data folder.
+![CSVs](screen_shots/csvs.png)
+
