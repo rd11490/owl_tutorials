@@ -20,10 +20,7 @@ All data can be manually downloaded from https://overwatchleague.com/en-us/stats
 
 ![StatsLab Page](screen_shots/statslab_page.png)
 
-There are four zip files here containing team stats per map played and player stats for each season.
-These can easily be manually downloaded,
-but I'm lazy and want to automate this so I only have to click a button
-and have my data update on its own. To do this we will write a script to find the links to download the zip files on the page,
+There are four zip files here containing team stats per map played and player stats for each season. These files can easily be manually downloaded and extracted,but I'm lazy and don't want to have to go through that processes after every week of play. Instead we will write a script to find the links to download the zip files on the page,
 extract the zip files, and save the csv files contained within.
 
 #### 1.1 Find the links to the zip files
