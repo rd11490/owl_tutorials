@@ -63,11 +63,50 @@ links = re.findall( r'(https://assets.*?.zip)', resp_text)
 for l in links:
     print(l)
 ```
-This will print out:
+This will print out the links we found above:
 ```
 https://assets.blz-contentstack.com/v3/assets/blt321317473c90505c/bltc1b83b55692b42f4/5e4c1368de213a0dff736e29/phs_2018.zip
 https://assets.blz-contentstack.com/v3/assets/blt321317473c90505c/blt034e0b484f2dae47/5e4c1369b6a7c40dd9c69e9f/phs_2019.zip
 https://assets.blz-contentstack.com/v3/assets/blt321317473c90505c/blt7e0ffce2b617f0d2/5ecd3a75a84f2107d1775f56/phs_2020.zip
 https://assets.blz-contentstack.com/v3/assets/blt321317473c90505c/blt67ebb7496ecd1ac4/5ecd3a5d80e1cd5cdc708bb6/match_map_stats.zip
 ```
-which matches the links we found above.
+
+#### 1.2 Downloading the zip files
+Since we will be downloading the zip files, extracting from them, and saving the csv files to directories, we should
+import the os and zipfile libraries.
+```python
+import os
+import zipfile
+```
+
+We should also create a directory to save the zip files in. To do this we will check to see if the zip directory exists
+and if not create it.
+
+```python
+# Save the zip folder name to a variable so that we can easily use it later.
+zip_dir_name = 'zips'
+
+# Create a zips directory if it doesn't exist
+if not os.path.isdir(zip_dir_name):
+    os.mkdir(zip_dir_name)
+```
+
+Now that we have a place to save the zip files, let's download each zip file and save it to that directory.
+Each link has a file name at the end that we will extract and use to the name the file. We make a request, stream read it, and save the file to our intended directory.
+
+```python
+for l in links:
+    # Pull the zip name from the href
+    zip_name = l.split('/')[-1]
+
+    # Make a request to get the zip file
+    r = requests.get(l, stream=True)
+
+    # save the zip file into the zips folder
+    with open('{}/{}'.format(zip_dir_name, zip_name), 'wb') as fd:
+        for chunk in r.iter_content(chunk_size=512):
+            fd.write(chunk)
+```
+
+Once we have run this section of the script we will have a folder called `zips` with the four zip files saved in it.
+![Zip files](screen_shots/saved_zips.png)
