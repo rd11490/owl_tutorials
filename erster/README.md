@@ -324,7 +324,7 @@ mei_week['meta'] = mei_week['percent_of_time_played'] >= 1
 print('Mei Play Time per Week')
 print(mei_week)
 ```
-Running the above code will generate the table below. From the results we can see that Mei was meta by our standards in weeks 1, 2, 3, 4,, 10, and 12.
+Running the above code will generate the table below. From the results we can see that Mei was meta by our standards in weeks 1, 2, 3, 4, 10, and 12.
 In weeks 8, 11, and 14 she was close to being meta, but just missed our cutoffs.
 <br>
 ![Mei Play Time](screen_shots/mei_play_timy_by_week.png)
