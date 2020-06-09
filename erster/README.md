@@ -243,3 +243,157 @@ if Atlanta is not playing Mei when she is meta we first need to find out what we
 is to check her play time across the entire league. We will set the slightly arbitrary cutoff for Mei being meta as Mei being playing for at least 1/12th of the total play time during a match week.
 This would average out to at least one team playing Mei at all times during the match week.
 
+Because the source data does not provide the match week we need to generate that outselves.
+To do this we can build a map of dates to match weeks and then apply it to our dataframe using match start time.
+```python
+## Build a map of Game Date to Game Week:
+game_date_map = {
+    '2020/02/08':1,
+    '2020/02/09':1,
+    '2020/02/10':1,
+    '2020/02/15':2,
+    '2020/02/16':2,
+    '2020/02/22':3,
+    '2020/02/23':3,
+    '2020/02/24':3,
+    '2020/02/29':4,
+    '2020/03/01':4,
+    '2020/03/02':4,
+    '2020/03/07':5,
+    '2020/03/08':5,
+    '2020/03/28':8,
+    '2020/03/29':8,
+    '2020/03/30':8,
+    '2020/04/04':9,
+    '2020/04/05':9,
+    '2020/04/06':9,
+    '2020/04/11':10,
+    '2020/04/12':10,
+    '2020/04/13':10,
+    '2020/04/16':11,
+    '2020/04/17':11,
+    '2020/04/18':11,
+    '2020/04/19':11,
+    '2020/04/25':12,
+    '2020/04/26':12,
+    '2020/05/02':13,
+    '2020/05/03':13,
+    '2020/05/09':14,
+    '2020/05/10':14,
+    '2020/05/11':14,
+    '2020/05/16':15,
+    '2020/05/17':15,
+    '2020/05/22':16,
+    '2020/05/23':16,
+    '2020/05/24':16,
+    '2020/05/25':16
+}
+
+def match_date_to_league_week(dt):
+    parsed = datetime.datetime.strptime(dt, '%m/%d/%Y %H:%M')
+    return game_date_map[parsed.date().strftime('%Y/%m/%d')]
+
+player_frame_2020 = player_frame[player_frame['season'] == '2020']
+player_frame_2020['game_week'] = player_frame_2020['start_time'].apply(match_date_to_league_week)
+```
+
+Now that we have all of the match weeks set we can group by match week and determine which heroes were played in each week.
+Selecting only Mei and multiplying the percentage of total time played by 12 because of the 12 players in the game at a given time will
+get us a value equivalent to average amount of Mei on the field at any given time. As we discussed earlier we will say that Mei is
+meta any week that value is over 1.0, or any week that each team in a match played Mei at least half of the match.
+```python
+def play_time_per_match(group):
+    # Calculate play percentage in each group
+    total_time = group['stat_amount'].sum()
+    group['percent_played'] = group['stat_amount'] / total_time
+    return group
+
+# Determine weeks that OWL as a whole thought that Mei was meta
+# Calculate play percentage of each hero in each week
+week_pct = player_frame_2020.groupby(by='match_week').apply(play_time_per_match).reset_index()
+# Group by match week and hero and sum out total play time and percentage so we have a breakdown per hero by week.
+week_pct = week_pct[['hero', 'match_week', 'percent_played']].groupby(by=['match_week', 'hero']).sum().reset_index()
+
+# Select only Mei
+mei_week = week_pct[week_pct['hero'] == 'Mei']
+# Multiply by 12 to get the Percent of time played per match week. We multiply by 12 because there are 12 players (6 players on 2 teams)
+# in the game at any given time. If Mei had a percent_of_time_played of 2.0 it means that Mei was played at all times during the week
+mei_week['percent_of_time_played'] = mei_week['percent_played'] * 12
+# Weeks where Mei was played at least half the time by each team are weeks that we determine Mei to be meta
+mei_week['meta'] = mei_week['percent_of_time_played'] >= 1
+print('Mei Play Time per Week')
+print(mei_week)
+```
+Running the above code will generate the table below. From the results we can see that Mei was meta by our standards in weeks 1, 2, 3, 4,, 10, and 12.
+In weeks 8, 11, and 14 she was close to being meta, but just missed our cutoffs.
+<br>
+![Mei Play Time](screen_shots/mei_play_timy_by_week.png)
+
+Now that we have the weeks that the league thoguth that Mei was meta, we should look to see which of those weeks
+Atlanta Reign played, Erster Played, and Atlanta Reign considered Mei meta by playing her at least half the time. This can be done easily
+by selecting only weeks where Erster shows up in our original player dataframe, selecting weeks Atlanta Reign show up in our original player frame,
+and performing the above analysis on only rows involving the Atlanta Reign.
+
+```python
+# Determine weeks that Atlanta reign thought Mei was Meta
+# Select only player rows for Atlanta Reign players
+atlanta_player_frame_2020 = player_frame_2020[player_frame_2020['team'] == 'Atlanta Reign']
+# Group by match week and calculate the play time for each player hero combination.
+atlanta_week_pct = atlanta_player_frame_2020.groupby(by='match_week').apply(play_time_per_match).reset_index()
+# Group by match week and hero and sum up total hero play time for each combination.
+atlanta_week_pct = atlanta_week_pct[['hero', 'match_week', 'percent_played']].groupby(by=['match_week', 'hero']).sum().reset_index()
+# Select only Mei Rows
+atlanta_mei_week = atlanta_week_pct[atlanta_week_pct['hero'] == 'Mei']
+# Multiply by 6 to get the percentage of time Mei was in the game for the Reign
+atlanta_mei_week['percent_of_time_played'] = atlanta_mei_week['percent_played'] * 6
+# Determine which weeks Atlanta played Mei for at least half the match
+atlanta_mei_week['meta'] = atlanta_mei_week['percent_of_time_played'] >= 0.5
+print('Atlanta Mei Play Time per Week')
+print(atlanta_mei_week)
+# Only select weeks where the Reign determined that Mei was meta
+atlanta_mei_week_meta_only = atlanta_mei_week[atlanta_mei_week['meta']]
+atlanta_mei_weeks_list = atlanta_mei_week_meta_only['match_week']
+
+print('\n\n')
+print('Weeks that OWL as a whole thought that Mei was meta')
+print(list(mei_weeks_list))
+
+print('Weeks that Atlanta reign Played')
+print(list(atlanta_player_frame_2020['match_week'].unique()))
+
+# Select weeks that Erster Played
+erster_player_frame_2020 = player_frame_2020[player_frame_2020['player'] == 'Erster']
+print('Weeks that Erster Played')
+print(list(erster_player_frame_2020['match_week'].unique()))
+
+print('Weeks that Atlanta thought that Mei was meta')
+print(list(atlanta_mei_weeks_list))
+
+```
+<br>
+![Was Atlanta playing Meta](screen_shots/weeks_mei_meta.png)
+
+
+#### What happened Week 10?
+Week 10 is the only week that Atlanta played, the league as a whole considered Mei meta, but atlanta did not play Mei enough
+to cross our meta threshold. Digging into the data for week 10 we find that Erster played a little over 50% of his possible play time that
+week and in 3 of the 5 maps. This lines up with what we said in a previous section. Atlanta played Edison for the first 2 maps of week 10 vs philly
+then subbed him out for Erster for the last 3 maps. Atlanta clearly thought that they had a better comp for that week and after dropping the first
+two maps then decided to adjust to a better comp that included Erster.
+
+```python
+# We see from the lists above that the only week Atlanta did not play Mei enough to meet our meta requirements when the
+# league as a whole considered her meta was week 10 vs Philly. We can dig in and see what happened in week 10
+print('Did Erster Play all of week 10?')
+week_10_atl = atlanta_player_frame_2020[atlanta_player_frame_2020['match_week'] == 10]
+week_10_play_time = play_time_breakdown(week_10_atl)
+print('Play Time Breakdown for Atlanta Reign Week 10')
+print(week_10_play_time)
+
+print('\n\n')
+week_10_map = map_breakdown(week_10_atl)
+print('Map Breakdown for Atlanta Reign Week 10')
+print(week_10_map)
+```
+<br>
+![Week 10](screen_shots/week_10.png)
