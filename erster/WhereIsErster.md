@@ -17,3 +17,15 @@ before role lock so it throws a wrench in some of the numbers. We will likely ne
 If we narrow our scope down to this season only  we can see that he has almost exclusively played Mei with a little bit of Tracer, Junkrat, Reaper and Sombra thrown in.
 He has also played Doomfist and Soldier for what was likely an overtime contest, Widowmaker for what looks to be an attempt at a pick out of spawn, Symmetra for a TP out of spawn, and Genji for less than a second.  <br>
 ![Hero Pool](screen_shots/hero_pool_2020.png)
+
+Of the Heroes that Erster has routinely played in OWL, only Mei and Tracer have been meta this season.
+Other Reign players have said that Edison is the teams first choice for tracer, so that leaves Erster with Mei.
+Knowing this we should look at how much play time Erster has actually had this season, and how much of Atlanta's Mei play time has been given to Erster.
+<br>
+![Atlanta Reign Playtime](screen_shots/atlanta_playtime.png)
+
+Breaking down Atlanta's total play time, it can be seen that Erster has played 38% of his possible minutes for Reign this season,
+50% of the Reigns matches, and 40% of the Reigns maps. This does seem pretty low for someone who many have called Atlanta's star DPS player.
+However as we've been told and as we saw above, Mei is really the only hero that has been meta that he plays. Because of this we should look at who is taking up the play time at Mei for the Reign this season.
+<br>
+![Atlanta Reign Mei Playtime](screen_shots/atlanta_mei_playtime.png)

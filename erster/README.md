@@ -399,3 +399,5 @@ print(week_10_map)
 <br>
 
 ![Week 10](screen_shots/week_10.png)
+
+The final script for generating all of this data can be found [here](investigate_erster.py).
