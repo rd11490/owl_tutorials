@@ -69,7 +69,7 @@ all of the rows that do not contain Erster's play time information. To do that w
 # Filter the dataframe so that we only have Time Played Rows for Erster with specific heroes
 erster_frame = player_frame[(player_frame['stat_name'] == 'Time Played') & (player_frame['player'] == 'Erster') & (player_frame['hero'] != 'All Heroes')]```
 
-We also will want to seperate out the 2020 season from the rest of the data since this is the season where Erster has supposedly gone missing. To do that we will write a method to calculate the season from the match start time and store it as a column on the frame.
+We will want to separate out the 2020 season from the rest of the data since this is the season where Erster has supposedly gone missing. To do that we will write a method to calculate the season from the match start time and store it as a column on the frame.
 
 ```python
 # Calculate the season from datetime
@@ -103,7 +103,7 @@ Below is Erster's hero pool for his entire OWL Career. The majority of this data
 before role lock so it throws a wrench in some of the numbers. We will likely never see Erster play Brig, D.Va, Zarya, Ana, or any other Tank or Support again in OWL.  <br>
 ![Hero Pool](screen_shots/hero_pool.png)
 
-We also want to look at his total time played for this season only.
+We want to look at his total time played for this season only.
 
 ```python
 # Take only rows from the 2020 season
@@ -120,8 +120,8 @@ print('Erster Play Time By Hero in 2020')
 print(play_time_2020)
 ```
 
-We also have his hero pool for the 2020 season. From here we can see that he has almost exclusively played Mei with a little bit of Tracer, Junkrat, Reaper and Sombra thrown in.
-He has also played Doomfist and Soldier for what was likely an overtime contest, Widowmaker for what was likely an attempt at a pick out of spawn, Symmetra for a TP out of spawn, and Genji for less than a second.  <br>
+We can also look at his hero pool for the 2020 season. From this we can see that he has almost exclusively played Mei with a little bit of Tracer, Junkrat, Reaper and Sombra thrown in.
+He has also played Doomfist and Soldier for what was likely an overtime contest, Widowmaker for what looks to be an attempt at a pick out of spawn, Symmetra for a TP out of spawn, and Genji for less than a second.  <br>
 ![Hero Pool](screen_shots/hero_pool_2020.png)
 
 From this we can see that Erster has almost exclusively played Mei this season for the Reign.
@@ -371,6 +371,7 @@ print(list(atlanta_mei_weeks_list))
 
 ```
 <br>
+
 ![Was Atlanta playing Meta](screen_shots/weeks_mei_meta.png)
 
 
@@ -396,4 +397,5 @@ print('Map Breakdown for Atlanta Reign Week 10')
 print(week_10_map)
 ```
 <br>
+
 ![Week 10](screen_shots/week_10.png)
