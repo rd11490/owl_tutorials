@@ -56,6 +56,7 @@ It seems like a reasonable cutoff for determining if a hero is in that week's me
 If they have not been playing Mei when she was meta then it would line up with this idea that they have unnecessarily bench Erster for inferior comps.
 <br>
 ![Mei Play Time](screen_shots/mei_play_timy_by_week.png)
+*Note: In the above chart percent_of_time_played for the entire league ranges from 0 to 2 as there can be up to two Mei in the game at a given time. When limiting to just the Atlanta Reign, the value ranges from 0 to 1 as there can only be one Mei in the game for the Reign at a given time.
 <br>
 ![Was Atlanta playing Meta](screen_shots/weeks_mei_meta.png)
 
