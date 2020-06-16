@@ -886,7 +886,7 @@ print('Ana Sleep Dart Accuracy (min 100 attempts)')
 print(sleep_stats)
 ```
 
-```python
+```
 Ana Sleep Dart Accuracy (min 100 attempts)
       player  sleep_darts_shot  sleep_darts_hit  sleep_accuracy
 0  ryujehong             798.0            306.0        0.383459
