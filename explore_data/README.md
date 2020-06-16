@@ -306,6 +306,9 @@ Chance to be full held on each Hybrid Map
 
 #### 1.4 Assault Maps
 
+The final map data we will explore is the spread of rounds played on each Assault map. To do this we will select the match_id, map_name, and map_round,
+select the maximum round number for each map, count the number of matches that ended on each round number and calculate the percentage of matches ended on each round number per map
+
 ```python
 # 2 CP
 assault_map_data = map_data[map_data['map_type'] == MapType.Assault]
@@ -362,3 +365,5 @@ How many rounds do the average 2CP Map Go?
 24   Volskaya Industries          5            4       0.023669
 25   Volskaya Industries          6           15       0.088757
 ```
+
+The complete script can be found [here](explore_map_data.py)
