@@ -11,7 +11,7 @@ Pandas
 
 The environment.yml page for the entire project contains everything you need to run this script.
 
-### 1. Map Data
+### 1.0 Map Data
 
 The first thing we are going to look at is the map data. Let's do a brief exploration of the data and find some very basic statistics on the different game modes.
 
@@ -367,3 +367,5 @@ How many rounds do the average 2CP Map Go?
 ```
 
 The complete script can be found [here](explore_map_data.py)
+
+### 2.0 Player Data
