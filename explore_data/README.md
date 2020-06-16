@@ -226,3 +226,139 @@ The result of this is that almost a quarter of control rounds end 100 to 99.
 ```
 Percentage of Contorl Maps that End 100 to 99: 521/2143 = 0.243117125524965
 ```
+
+#### 1.2 Escort Maps
+For Escort Maps we are going to look at the average amount of time banked when a team completes an Escort Map.
+We will select only Escort Maps and the relevant columns, Then we will select only rounds where the attacker completed the map, group by the map name and generate stats
+for the attacker_time_banked column.
+
+```python
+# Escort Maps:
+escort_map_data = map_data[map_data['map_type'] == MapType.Escort]
+print('\n\n')
+print('Escort Maps Only')
+print(escort_map_data.head(20))
+
+escort_map_data = escort_map_data[['stage', 'match_id', 'game_number', 'map_name', 'map_type', 'map_round', 'map_winner', 'attacker', 'defender', 'attacker_payload_distance', 'attacker_time_banked', 'attacker_round_end_score']]
+print('\n\n')
+print('Escort Maps Relevant Data Only')
+print(escort_map_data.head(20))
+print('\n\n')
+
+# What is the average time banked per map?
+escort_completion = escort_map_data[escort_map_data['attacker_round_end_score'] == 3]
+print(escort_completion[['map_name', 'attacker_time_banked']].groupby('map_name').describe().reset_index())
+
+```
+
+```
+                map_name attacker_time_banked
+                                        count       mean        std  min       25%        50%         75%         max
+0                 Dorado                112.0  72.044178  67.093867  0.0  0.000000  60.000000  121.753778  250.113129
+1                 Havana                 41.0  65.389452  64.716069  0.0  9.102005  46.192017  107.382004  191.113037
+2             Junkertown                130.0  82.840385  77.638999  0.0  0.000000  60.000000  149.697994  253.175995
+3                 Rialto                 83.0  90.726058  85.317946  0.0  7.291515  60.000000  154.867996  311.573975
+4               Route 66                104.0  60.519268  55.113313  0.0  0.000000  60.000000   89.243271  208.093368
+5  Watchpoint: Gibraltar                160.0  86.728193  77.024638  0.0  0.000000  68.421696  145.398533  259.073975
+```
+
+#### 1.3 Hybrid Maps
+
+For hybrid maps we are going to find the percentage of full holds on each map. To do this we will get select the map_name and at attacker_round_end_score,
+group by the map_name, and count the number of games on each map. We will then select only rounds where the attacker was not able to capture the first point and repeat the process.
+We will then merge the counts per map together and divide to calculate the percentage of games played on each hybrid map that result in a full hold.
+
+```python
+# Hybrid Maps:
+hybrid_map_data = map_data[map_data['map_type'] == MapType.Hybrid]
+print('\n\n')
+print('Hybrid Maps Only')
+print(hybrid_map_data.head(20))
+
+hybrid_map_data = hybrid_map_data[['stage', 'match_id', 'game_number', 'map_name', 'map_type', 'map_round', 'map_winner', 'attacker', 'defender', 'attacker_payload_distance', 'attacker_time_banked', 'attacker_round_end_score']]
+print('\n\n')
+print('Hybrid Maps Relevant Data Only')
+print(hybrid_map_data.head(20))
+print('\n\n')
+
+# Which Map are you most likely to get full held on?
+map_counts = hybrid_map_data[['map_name','attacker_round_end_score']].groupby('map_name').count().reset_index()
+map_counts.columns = ['map_name', 'times_played']
+hybrid_held = hybrid_map_data[hybrid_map_data['attacker_round_end_score'] == 0]
+full_held = hybrid_held[['map_name', 'attacker_time_banked']].groupby('map_name').count().reset_index()
+full_held.columns = ['map_name', 'times_full_held']
+full_held_pct = full_held.merge(map_counts, on='map_name')
+full_held_pct['full_hold_percent'] = full_held_pct['times_full_held']/full_held_pct['times_played']
+full_held_pct = full_held_pct.sort_values(by='full_hold_percent', ascending=False)
+print('Chance to be full held on each Hybrid Map')
+print(full_held_pct)
+```
+
+```
+Chance to be full held on each Hybrid Map
+         map_name  times_full_held  times_played  full_hold_percent
+0  Blizzard World               37           309           0.119741
+2       Hollywood               30           292           0.102740
+4         Numbani               27           328           0.082317
+1     Eichenwalde               20           286           0.069930
+3      King's Row               29           469           0.061834
+```
+
+#### 1.4 Assault Maps
+
+```python
+# 2 CP
+assault_map_data = map_data[map_data['map_type'] == MapType.Assault]
+print('\n\n')
+print('Hybrid Maps Only')
+print(assault_map_data.head(20))
+
+assault_map_data = assault_map_data[['stage', 'match_id', 'game_number', 'map_name', 'map_type', 'map_round', 'map_winner', 'attacker', 'defender', 'attacker_time_banked', 'attacker_round_end_score']]
+print('\n\n')
+print('Assault Maps Relevant Data Only')
+print(assault_map_data.head(20))
+print('\n\n')
+
+print("How many rounds do the average 2CP Map Go?")
+def match_percent(group):
+    sum = group['match_id'].sum()
+    group['match_percent'] = group['match_id'] / sum
+    return group
+
+max_score_group = assault_map_data[['match_id', 'map_name', 'map_round']].groupby(by=['match_id', 'map_name']).max().reset_index().groupby(by=['map_name', 'map_round']).count().reset_index().groupby(by=['map_name'])
+max_score = max_score_group.apply(match_percent)
+max_score.columns = ['map_name', 'map_round', 'match_count', 'match_percent']
+print(max_score)
+```
+
+```
+
+How many rounds do the average 2CP Map Go?
+                map_name  map_round  match_count  match_percent
+0               Hanamura          2           99       0.642857
+1               Hanamura          3           10       0.064935
+2               Hanamura          4           41       0.266234
+3               Hanamura          5            1       0.006494
+4               Hanamura          6            2       0.012987
+5               Hanamura          7            1       0.006494
+6   Horizon Lunar Colony          2           72       0.562500
+7   Horizon Lunar Colony          3            6       0.046875
+8   Horizon Lunar Colony          4           38       0.296875
+9   Horizon Lunar Colony          5            3       0.023438
+10  Horizon Lunar Colony          6            9       0.070312
+11                 Paris          2           30       0.461538
+12                 Paris          3            5       0.076923
+13                 Paris          4           22       0.338462
+14                 Paris          5            4       0.061538
+15                 Paris          6            4       0.061538
+16      Temple of Anubis          2          108       0.624277
+17      Temple of Anubis          3           14       0.080925
+18      Temple of Anubis          4           43       0.248555
+19      Temple of Anubis          5            1       0.005780
+20      Temple of Anubis          6            7       0.040462
+21   Volskaya Industries          2           78       0.461538
+22   Volskaya Industries          3           10       0.059172
+23   Volskaya Industries          4           62       0.366864
+24   Volskaya Industries          5            4       0.023669
+25   Volskaya Industries          6           15       0.088757
+```
