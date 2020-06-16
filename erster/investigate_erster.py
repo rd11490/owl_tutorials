@@ -298,3 +298,9 @@ print('\n\n')
 week_10_map = map_breakdown(week_10_atl)
 print('Map Breakdown for Atlanta Reign Week 10')
 print(week_10_map)
+
+
+# Aditional Research
+# Hanzo?
+hanzo_play = atlanta_player_frame_2020[(atlanta_player_frame_2020['match_week'].isin([4, 5, 8,  10])) & (atlanta_player_frame_2020['player'].isin(['babybay', 'Edison', 'Erster']))]
+hanzo_play.groupby(by='match_week').apply(print)
