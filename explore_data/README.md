@@ -96,7 +96,9 @@ attacker_round_end_score
 defender_round_end_score
 ```
 
-The next thing we want to do is look at all of the maps. Because Control has separate maps per round, we want to make sure to include the control map name
+The next thing we want to do is look at all of the maps.
+Because Control has separate maps per round, we want to make sure to include the control map name.
+We do this by selecting just the map name and control round name columns, dropping duplicate rows, and iterating through the unique combinations.
 ```python
 print('Maps')
 # Grab all of the map names
@@ -190,4 +192,37 @@ map_data['map_type'] = map_data['map_name'].apply(calc_map_type)
 print('\n\n')
 print('Map Data with map type included')
 print(map_data.head(20))
+```
+
+#### 1.1 Control Maps
+Now that we can sort games by game mode, we can go look at stats for each game mode.
+The first thing we will look into is the percentage of control rounds that end 100% to 99%
+
+To do this we will select only the rows that represent control rounds. Then we will only take the columns relevant to control.
+Finally we will generate and apply our condition for games that end 100% - 99%.
+```python
+control_map_data = map_data[map_data['map_type'] == MapType.Control]
+print('\n\n')
+print('Control Maps Only')
+print(control_map_data.head(20))
+
+# Remove columns that don't matter for control
+control_map_data = control_map_data[['stage', 'match_id', 'game_number', 'map_name', 'control_round_name', 'map_type', 'map_round', 'map_winner', 'attacker', 'defender', 'attacker_control_perecent', 'defender_control_perecent']]
+print('\n\n')
+print('Control Maps Relevant Data Only')
+print(control_map_data.head(20))
+
+# What percentage of control maps go to 100% - 99%?
+
+close_games = control_map_data[((control_map_data['attacker_control_perecent'] == 99.0) & (control_map_data['defender_control_perecent'] == 100.0)) | ((control_map_data['attacker_control_perecent'] == 100.0) & (control_map_data['defender_control_perecent'] == 99.0))]
+
+num_close_game = close_games.shape[0]
+num_games =  control_map_data.shape[0]
+print('\n\n')
+print('Percentage of Contorl Maps that End 100 to 99: {}/{} = {}'.format(num_close_game,num_games,num_close_game/num_games))
+```
+
+The result of this is that almost a quarter of control rounds end 100 to 99.
+```
+Percentage of Contorl Maps that End 100 to 99: 521/2143 = 0.243117125524965
 ```

@@ -73,28 +73,30 @@ map_data['map_type'] = map_data['map_name'].apply(calc_map_type)
 print('\n\n')
 print('Map Data with map type included')
 print(map_data.head(20))
-#
-# # Control maps only
-#
-# control_map_data = map_data[map_data['map_type'] == MapType.Control]
-# print('\n\n')
-# print('Control Maps Only')
-# print(control_map_data.head(20))
-#
-# # Remove columns that don't matter for control
-# control_map_data = control_map_data[['stage', 'match_id', 'game_number', 'map_name', 'control_round_name', 'map_type', 'map_round', 'map_winner', 'attacker', 'defender', 'attacker_control_perecent', 'defender_control_perecent']]
-# print('\n\n')
-# print('Control Maps Relevant Data Only')
-# print(control_map_data.head(20))
-#
-# # What percentage of control maps go to 100% - 99%?
-#
-# close_games = control_map_data[((control_map_data['attacker_control_perecent'] == 99.0) & (control_map_data['defender_control_perecent'] == 100.0)) | ((control_map_data['attacker_control_perecent'] == 100.0) & (control_map_data['defender_control_perecent'] == 99.0))]
-#
-# num_close_game = close_games.shape[0]
-# num_games =  control_map_data.shape[0]
-# print('\n\n')
-# print('Percentage of Contorl Maps that End 100 to 99: {}/{} = {}'.format(num_close_game,num_games,num_close_game/num_games))
+
+# Control maps only
+
+#Select only the rows for control
+control_map_data = map_data[map_data['map_type'] == MapType.Control]
+print('\n\n')
+print('Control Maps Only')
+print(control_map_data.head(20))
+
+# Remove columns that don't matter for control
+control_map_data = control_map_data[['stage', 'match_id', 'game_number', 'map_name', 'control_round_name', 'map_type', 'map_round', 'map_winner', 'attacker', 'defender', 'attacker_control_perecent', 'defender_control_perecent']]
+print('\n\n')
+print('Control Maps Relevant Data Only')
+print(control_map_data.head(20))
+
+# What percentage of control maps go to 100% - 99%?
+close_games = control_map_data[((control_map_data['attacker_control_perecent'] == 99.0) & (control_map_data['defender_control_perecent'] == 100.0)) | ((control_map_data['attacker_control_perecent'] == 100.0) & (control_map_data['defender_control_perecent'] == 99.0))]
+
+# get the number of rows that meet the "close round" condition of 100 to 99
+num_close_game = close_games.shape[0]
+# get the number of control rounds
+num_games =  control_map_data.shape[0]
+print('\n\n')
+print('Percentage of Control Maps that End 100 to 99: {}/{} = {}'.format(num_close_game,num_games,num_close_game/num_games))
 #
 #
 # # Escort Maps:
