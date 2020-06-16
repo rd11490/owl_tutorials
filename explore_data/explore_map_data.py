@@ -18,61 +18,61 @@ print('Dataframe Columns')
 for c in map_data.columns:
     print(c)
 
-# print('\n\n')
-# print('Maps')
-# # Grab all of the map names
-# for i, row in map_data[['map_name', 'control_round_name']].drop_duplicates().sort_values(by='map_name').iterrows():
-#     map = row['map_name']
-#     control = row['control_round_name']
-#
-#     if pd.isna(control):
-#         print(map)
-#     else:
-#         print('{} - {}'.format(map, control))
-#
-#
-# # Classify maps into game types
-# class MapType:
-#     Assault = 'Assault'
-#     Control = 'Control'
-#     Escort = 'Escort'
-#     Hybrid = 'Hybrid'
-#
-#     map_types = {
-#         'Hanamura': Assault,
-#         'Horizon Lunar Colony': Assault,
-#         'Paris': Assault,
-#         'Temple of Anubis': Assault,
-#         'Volskaya Industries': Assault,
-#
-#         'Busan': Control,
-#         'Ilios': Control,
-#         'Lijiang Tower': Control,
-#         'Nepal': Control,
-#         'Oasis': Control,
-#
-#         'Dorado': Escort,
-#         'Havana': Escort,
-#         'Junkertown': Escort,
-#         'Rialto': Escort,
-#         'Route 66': Escort,
-#         'Watchpoint: Gibraltar': Escort,
-#
-#         'Numbani': Hybrid,
-#         'Eichenwalde': Hybrid,
-#         "King's Row": Hybrid,
-#         'Hollywood': Hybrid,
-#         'Blizzard World': Hybrid,
-#     }
-#
-# # Determine the map type for each map
-# def calc_map_type(map_name):
-#     return MapType.map_types[map_name]
-#
-# map_data['map_type'] = map_data['map_name'].apply(calc_map_type)
-# print('\n\n')
-# print('Map Data with map type included')
-# print(map_data.head(20))
+print('\n\n')
+print('Maps')
+# Grab all of the map names
+for i, row in map_data[['map_name', 'control_round_name']].drop_duplicates().sort_values(by='map_name').iterrows():
+    map = row['map_name']
+    control = row['control_round_name']
+
+    if pd.isna(control):
+        print(map)
+    else:
+        print('{} - {}'.format(map, control))
+
+
+# Classify maps into game types
+class MapType:
+    Assault = 'Assault'
+    Control = 'Control'
+    Escort = 'Escort'
+    Hybrid = 'Hybrid'
+
+    map_types = {
+        'Hanamura': Assault,
+        'Horizon Lunar Colony': Assault,
+        'Paris': Assault,
+        'Temple of Anubis': Assault,
+        'Volskaya Industries': Assault,
+
+        'Busan': Control,
+        'Ilios': Control,
+        'Lijiang Tower': Control,
+        'Nepal': Control,
+        'Oasis': Control,
+
+        'Dorado': Escort,
+        'Havana': Escort,
+        'Junkertown': Escort,
+        'Rialto': Escort,
+        'Route 66': Escort,
+        'Watchpoint: Gibraltar': Escort,
+
+        'Numbani': Hybrid,
+        'Eichenwalde': Hybrid,
+        "King's Row": Hybrid,
+        'Hollywood': Hybrid,
+        'Blizzard World': Hybrid,
+    }
+
+# Determine the map type for each map
+def calc_map_type(map_name):
+    return MapType.map_types[map_name]
+
+map_data['map_type'] = map_data['map_name'].apply(calc_map_type)
+print('\n\n')
+print('Map Data with map type included')
+print(map_data.head(20))
 #
 # # Control maps only
 #

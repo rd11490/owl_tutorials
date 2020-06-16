@@ -16,7 +16,7 @@ The environment.yml page for the entire project contains everything you need to 
 The first thing we are going to look at is the map data. Let's do a brief exploration of the data and find some very basic statistics on the different game modes.
 
 The first thing we want to do is import pandas, disable warnings, and set the print options for pandas so that our data is more readable when printing to console.
-```
+```python
 import warnings
 warnings.simplefilter(action='ignore')
 
@@ -28,14 +28,20 @@ pd.set_option('display.width', 1000)
 
 Now we want to read in the data and see what we are working with
 
-```
+```python
 # Read in our map stats data
 map_data = pd.read_csv('data/match_map_stats.csv')
 
 print(map_data.head(20))
+
+# Print out our columns so we can see what we are looking at
+print('Dataframe Columns')
+for c in map_data.columns:
+    print(c)
+
 ```
 
-Running those lines of code we can see a sample of hte data provided.
+Running those lines of code we can see a sample of hte data provided. We will also print out the column names so that we have a reference for later
 ```
    round_start_time  round_end_time                       stage  match_id  game_number            match_winner              map_winner            map_loser          map_name  map_round  winning_team_final_map_score  losing_team_final_map_score control_round_name                attacker                defender           team_one_name           team_two_name  attacker_payload_distance  defender_payload_distance  attacker_time_banked  defender_time_banked  attacker_control_perecent  defender_control_perecent  attacker_round_end_score  defender_round_end_score
 0    1/11/2018 0:12  1/11/2018 0:20  Overwatch League - Stage 1     10223            1     Los Angeles Valiant     Los Angeles Valiant  San Francisco Shock            Dorado          1                             3                            2                NaN     San Francisco Shock     Los Angeles Valiant     Los Angeles Valiant     San Francisco Shock                  75.615051                   0.000000              0.000000            240.000000                        NaN                        NaN                         2                         0
@@ -60,13 +66,6 @@ Running those lines of code we can see a sample of hte data provided.
 19   1/11/2018 3:46  1/11/2018 3:53  Overwatch League - Stage 1     10225            1           Seoul Dynasty             Dallas Fuel        Seoul Dynasty        Junkertown          1                             3                            2                NaN             Dallas Fuel           Seoul Dynasty           Seoul Dynasty             Dallas Fuel                 102.004578                   0.000000             63.691517            240.000000                        NaN                        NaN                         3                         0
 ```
 
-```
-# Print out our columns so we can see what we are looking at
-print('Dataframe Columns')
-for c in map_data.columns:
-    print(c)
-
-```
 
 ```
 Dataframe Columns
@@ -95,4 +94,100 @@ attacker_control_perecent
 defender_control_perecent
 attacker_round_end_score
 defender_round_end_score
+```
+
+The next thing we want to do is look at all of the maps. Because Control has separate maps per round, we want to make sure to include the control map name
+```python
+print('Maps')
+# Grab all of the map names
+for i, row in map_data[['map_name', 'control_round_name']].drop_duplicates().sort_values(by='map_name').iterrows():
+    map = row['map_name']
+    control = row['control_round_name']
+
+    if pd.isna(control):
+        print(map)
+    else:
+        print('{} - {}'.format(map, control))
+```
+
+```
+Maps
+Blizzard World
+Busan - Sanctuary
+Busan - Downtown
+Busan - MEKA Base
+Dorado
+Eichenwalde
+Hanamura
+Havana
+Hollywood
+Horizon Lunar Colony
+Ilios - Ruins
+Ilios - Well
+Ilios - Lighthouse
+Junkertown
+King's Row
+Lijiang Tower - Control Center
+Lijiang Tower - Night Market
+Lijiang Tower - Garden
+Nepal - Village
+Nepal - Sanctum
+Nepal - Shrine
+Numbani
+Oasis - City Center
+Oasis - Gardens
+Oasis - University
+Paris
+Rialto
+Route 66
+Temple of Anubis
+Volskaya Industries
+Watchpoint: Gibraltar
+```
+
+From the map names we can sort the maps into their game modes, and apply the game mode to each row in the dataframe.
+```python
+# Classify maps into game types
+class MapType:
+    Assault = 'Assault'
+    Control = 'Control'
+    Escort = 'Escort'
+    Hybrid = 'Hybrid'
+
+    map_types = {
+        'Hanamura': Assault,
+        'Horizon Lunar Colony': Assault,
+        'Paris': Assault,
+        'Temple of Anubis': Assault,
+        'Volskaya Industries': Assault,
+
+        'Busan': Control,
+        'Ilios': Control,
+        'Lijiang Tower': Control,
+        'Nepal': Control,
+        'Oasis': Control,
+
+        'Dorado': Escort,
+        'Havana': Escort,
+        'Junkertown': Escort,
+        'Rialto': Escort,
+        'Route 66': Escort,
+        'Watchpoint: Gibraltar': Escort,
+
+        'Numbani': Hybrid,
+        'Eichenwalde': Hybrid,
+        "King's Row": Hybrid,
+        'Hollywood': Hybrid,
+        'Blizzard World': Hybrid,
+    }
+
+
+# Determine the map type for each map
+def calc_map_type(map_name):
+    return MapType.map_types[map_name]
+
+map_data['map_type'] = map_data['map_name'].apply(calc_map_type)
+print('\n\n')
+print('Map Data with map type included')
+print(map_data.head(20))
 ```
