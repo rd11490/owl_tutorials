@@ -30,7 +30,7 @@ Now we want to read in the data and see what we are working with
 
 ```python
 # Read in our map stats data
-map_data = pd.read_csv('data/match_map_stats.csv')
+map_data = pd.read_csv('map_data/match_map_stats.csv')
 
 print(map_data.head(20))
 
@@ -369,3 +369,536 @@ How many rounds do the average 2CP Map Go?
 The complete script can be found [here](explore_map_data.py)
 
 ### 2.0 Player Data
+
+The StatsLab page also provides us with player stats data for each match. We can dig into this to find very interesting information about ability use, damage, healing, and more for each player in the league.
+In this section we will find out all of the unique stats we have access to and then look into who owns the final blow record for each map and which player is the most accurate with their Sleep Dart when playing Ana
+
+We are going to start the same way we did in the last section by importing the libraries we will be using and setting a few options to make our life easier.
+```python
+import warnings
+warnings.simplefilter(action='ignore')
+
+import pandas as pd
+import os
+import numpy as np
+
+pd.set_option('display.max_columns', 500)
+pd.set_option('display.width', 1000)
+```
+
+There is way more data for players than there is for maps, so the data has been broken up into multiple files. In order to read them all into the same frame
+we will load all of the CSVs in the player_data directory, read them in one at a time, rename various columns that are not consistent across files and concatenate them all together.
+```python
+csvs = os.listdir('player_data') # Get all files in the data directory
+frames = []
+
+for file in csvs:
+    # Read the file in as a CSV
+    frame = pd.read_csv('{}/{}'.format('player_data', file))
+    # Update column names so that they are consistent across years
+    frame=frame.rename(columns={'esports_match_id': 'match_id', 'tournament_title': 'stage', 'player_name': 'player',
+                          'hero_name': 'hero', 'team_name': 'team', 'pelstart_time': 'start_time'})
+    # Add the dataframe to a list
+    frames.append(frame)
+
+
+# Concat all of the dataframes together
+player_frame = pd.concat(frames)
+print(player_frame)
+```
+
+```
+0        2/15/2019 0:11     21211           Overwatch League Stage 1  CONTROL                  Ilios    Bdosin   London Spitfire       All Damage Done  All Heroes  14845.193400
+1        2/15/2019 0:11     21211           Overwatch League Stage 1  CONTROL                  Ilios    Bdosin   London Spitfire               Assists  All Heroes     13.000000
+2        2/15/2019 0:11     21211           Overwatch League Stage 1  CONTROL                  Ilios    Bdosin   London Spitfire    Average Time Alive  All Heroes     87.623574
+3        2/15/2019 0:11     21211           Overwatch League Stage 1  CONTROL                  Ilios    Bdosin   London Spitfire   Barrier Damage Done  All Heroes   5674.344475
+4        2/15/2019 0:11     21211           Overwatch League Stage 1  CONTROL                  Ilios    Bdosin   London Spitfire  Damage - Quick Melee  All Heroes     78.000000
+```
+
+Now we can print all of the columns in the dataframe to see exactly what the dataframe looks like. We can also print out all of the unique stat_names so that we can see what sort of data we have access to.
+```python
+# Print all of the columns in the dataframe
+print('Dataframe Columns')
+for c in player_frame.columns:
+    print(c)
+
+print('\n\n')
+# Print out all of the possible stats
+for p in np.sort(player_frame['stat_name'].unique()):
+    print(p)
+
+```
+
+```
+Dataframe Columns
+start_time
+match_id
+stage
+map_type
+map_name
+player
+team
+stat_name
+hero
+stat_amount
+
+
+Unique Stat Names:
+Ability Damage Done
+Accretion Kills
+Accretion Stuns
+Adaptive Shield Uses
+Air Uptime
+Air Uptime Percentage
+All Damage Done
+Amped Heal Activations
+Amped Speed Activations
+Amplification Matrix Assists
+Amplification Matrix Casts
+Amplification Matrix Efficiency
+Armor - Rally
+Armor - Repair Pack
+Armor Packs Created
+Armor Provided
+Armor Uptime
+Assists
+Average Energy
+Average Players per Teleporter
+Average Time Alive
+Barrage Efficiency
+Barrage Kills
+Barrier Damage Done
+Biotic Field Healing Done
+Biotic Fields Deployed
+Biotic Grenade Kills
+Biotic Launcher Healing Explosions
+Biotic Launcher Healing Shots
+Biotic Orb Damage Efficiency
+Biotic Orb Healing Efficiency
+Biotic Orb Maximum Damage
+Biotic Orb Maximum Healing
+Blaster Kills
+Blizzard Efficiency
+Blizzard Kills
+Bob Gun Damage
+Bob Kills
+Charge Kills
+Coach Gun Kills
+Coalescence Healing
+Coalescence Kills
+Coalesence - Damage per Use
+Coalesence - Healing per Use
+Concussion Mine Kills
+Critical Hit Accuracy
+Critical Hit Kills
+Critical Hits
+Damage - Accretion
+Damage - Barrage
+Damage - Biotic Grenade
+Damage - Biotic Orb
+Damage - Blizzard
+Damage - Bob
+Damage - Bob Charge
+Damage - Boosters
+Damage - Call Mech
+Damage - Chain Hook
+Damage - Charge
+Damage - Coach Gun
+Damage - Coalescence
+Damage - Concussion Mine
+Damage - Deadeye
+Damage - Death Blossom
+Damage - Deflect
+Damage - Discord Orb
+Damage - Dragonblade
+Damage - Dragonblade Total
+Damage - Dragonstrike
+Damage - Duplicate
+Damage - Dynamite
+Damage - EMP
+Damage - Earthshatter
+Damage - Fire Strike
+Damage - Flashbang
+Damage - Focusing Beam
+Damage - Focusing Beam - Bonus Damage Only
+Damage - Grappling Claw
+Damage - Graviton Surge
+Damage - Helix Rockets
+Damage - Hyperspheres
+Damage - Jump Pack
+Damage - Meteor Strike
+Damage - Micro Missiles
+Damage - Minefield
+Damage - Molten Core
+Damage - Piledriver
+Damage - Pistol
+Damage - Primal Rage Leap
+Damage - Primal Rage Melee
+Damage - Primal Rage Total
+Damage - Pulse Bomb
+Damage - Quick Melee
+Damage - RIP-Tire
+Damage - Rising Uppercut
+Damage - Rocket Punch
+Damage - Scatter
+Damage - Seismic Slam
+Damage - Self Destruct
+Damage - Sentry Turret
+Damage - Shield Bash
+Damage - Sonic
+Damage - Steel Trap
+Damage - Sticky Bombs
+Damage - Storm Arrows
+Damage - Swift Strike
+Damage - Swift Strike Dragonblade
+Damage - Tactical Visor
+Damage - Total Mayhem
+Damage - Turret Rockets
+Damage - Venom Mine
+Damage - Weapon
+Damage - Weapon Charged
+Damage - Weapon Hammer
+Damage - Weapon Pistol
+Damage - Weapon Primary
+Damage - Weapon Recon
+Damage - Weapon Scoped
+Damage - Weapon Secondary
+Damage - Weapon Sentry
+Damage - Weapon Tank
+Damage - Whole Hog
+Damage Absorbed
+Damage Amplified
+Damage Blocked
+Damage Done
+Damage Prevented
+Damage Reflected
+Damage Taken
+Damage Taken - Adaptive Shield
+Damage Taken - Ball
+Damage Taken - Tank
+Deadeye Efficiency
+Deadeye Kills
+Death Blossom Efficiency
+Death Blossom Kills
+Death Blossoms
+Deaths
+Defensive Assists
+Deflection Kills
+Direct Hit Accuracy
+Discord Orb Time
+Dragonblade Efficiency
+Dragonblade Kills
+Dragonblades
+Dragonstrike Efficiency
+Dragonstrike Kills
+Duplicate Kills
+Dynamite Kills
+EMP Efficiency
+Earthshatter Efficiency
+Earthshatter Kills
+Earthshatter Stuns
+Eliminations
+Eliminations per Life
+Enemies EMP'd
+Enemies Frozen
+Enemies Hacked
+Enemies Hooked
+Enemies Slept
+Enemies Trapped
+Energy Maximum
+Environmental Deaths
+Environmental Kills
+Fan the Hammer Kills
+Final Blows
+Fire Strike Kills
+Focusing Beam Accuracy
+Focusing Beam Dealing Damage Seconds
+Focusing Beam Kills
+Focusing Beam Seconds
+Frag Launcher Direct Hits
+Freeze Spray Damage
+Grappling Claw Impacts
+Grappling Claw Kills
+Grappling Claw Uses
+Gravitic Flux Damage Done
+Gravitic Flux Kills
+Graviton Surge Efficiency
+Graviton Surge Kills
+Hammer Kills
+Harmony Orb Time
+Heal Song Time Elapsed
+Healing - Biotic Grenade
+Healing - Biotic Launcher
+Healing - Biotic Orb
+Healing - Coalescence
+Healing - Harmony Orb
+Healing - Healing Boost
+Healing - Healing Boost Amped
+Healing - Immortality Field
+Healing - Inspire
+Healing - Regenerative Burst
+Healing - Repair Pack
+Healing - Secondary Fire
+Healing - Transcendence
+Healing - Weapon
+Healing - Weapon Scoped
+Healing - Weapon Valkyrie
+Healing Accuracy
+Healing Amplified
+Healing Done
+Healing Received
+Health Recovered
+Helix Rocket Kills
+Hero Damage Done
+High Energy Kills
+Hook Accuracy
+Hooks Attempted
+Hyperspheres Direct Hits
+Icicle Damage
+Immortality Field Deaths Prevented
+Infra-Sight Efficiency
+Infra-sight Uptime
+Inspire Uptime
+Inspire Uptime Percentage
+Jump Pack Kills
+Knockback Kills
+Lifetime Energy Accumulation
+Match Blinks Used
+Mech Deaths
+Mechs Called
+Melee Final Blows
+Melee Kills
+Melee Percentage of Final Blows
+Meteor Strike Efficiency
+Meteor Strike Kills
+Minefield Kills
+Molten Core Efficiency
+Molten Core Kills
+Multikills
+Nano Boost Assists
+Nano Boost Efficiency
+Nano Boosts Applied
+Objective Kills
+Objective Time
+Offensive Assists
+Overload Kills
+Photon Projector Kills
+Piledriver Kills
+Piledriver Uses
+Players Halted
+Players Knocked Back
+Players Resurrected
+Players Saved
+Players Teleported
+Primal Rage Efficiency
+Primal Rage Kills
+Primal Rage Melee Accuracy
+Primal Rage Melee Efficiency
+Primal Rage Melee Hits
+Primal Rage Melee Hits - Multiple
+Primal Rage Melee Ticks
+Primary Fire Accuracy
+Primary Fire Average Level
+Primary Fire Hits
+Primary Fire Hits Hits - Level
+Primary Fire Ticks
+Projected Barrier Damage Blocked
+Projected Barriers Applied
+Pulse Bomb Attach Rate
+Pulse Bomb Efficiency
+Pulse Bomb Kills
+Pulse Bombs Attached
+Quick Melee Accuracy
+Quick Melee Hits
+Quick Melee Ticks
+RIP-Tire Efficiency
+RIP-Tire Kills
+Rally Armor Efficiency
+Recalls Used
+Recon Assists
+Recon Kills
+Rocket Barrages
+Rocket Direct Hits
+Rocket Hammer Melee Accuracy
+Rocket Hammer Melee Average Targets
+Rocket Hammer Melee Hits
+Rocket Hammer Melee Hits - Multiple
+Rocket Hammer Melee Ticks
+Roll Uptime
+Roll Uptime Percentage
+Roll Uses
+Scatter Arrow Kills
+Scoped Accuracy
+Scoped Critical Hit Accuracy
+Scoped Critical Hit Kills
+Scoped Critical Hits
+Scoped Hits
+Scoped Shots
+Secondary Direct Hits
+Secondary Fire Accuracy
+Secondary Fire Hits
+Secondary Fire Ticks
+Self Destruct Efficiency
+Self Healing
+Self Healing Percent of Damage Taken
+Self-Destruct Kills
+Self-Destructs
+Sentry Kills
+Sentry Turret Kills
+Shielding - Adaptive Shield
+Shields Created
+Shots Fired
+Shots Hit
+Shots Missed
+Sleep Dart Hits
+Sleep Dart Shots
+Sleep Dart Success Rate
+Solo Kills
+Sound Barrier Casts
+Sound Barrier Efficiency
+Sound Barriers Provided
+Soundwave Kills
+Speed Song Time Elapsed
+Sticky Bombs Direct Hit Accuracy
+Sticky Bombs Direct Hits
+Sticky Bombs Kills
+Sticky Bombs Useds
+Storm Arrow Kills
+Successful Freezes
+Supercharger Assists
+Supercharger Efficiency
+Tactical Visor Efficiency
+Tactical Visor Kills
+Tactical Visors
+Tank Efficiency
+Tank Kills
+Teleporter Pads Destroyed
+Teleporter Uptime
+Teleporters Placed
+Tesla Cannon Accuracy
+Tesla Cannon Efficiency
+Tesla Cannon Hits
+Tesla Cannon Hits - Multiple
+Tesla Cannon Ticks
+Time Alive
+Time Building Ultimate
+Time Discorded
+Time Elapsed per Ultimate Earned
+Time Hacked
+Time Holding Ultimate
+Time Played
+Torbjörn Kills
+Total Mayhem Kills
+Total Time Frozen
+Transcendence Efficiency
+Transcendence Healing
+Transcendence Percent of Healing
+Turret Damage
+Turret Kills
+Turrets Destroyed
+Ultimates Earned - Fractional
+Ultimates Negated
+Ultimates Used
+Unscoped Accuracy
+Unscoped Hits
+Unscoped Shots
+Valkyrie Healing Efficiency
+Venom Mine Kills
+Weapon Accuracy
+Weapon Kills
+Whole Hog Efficiency
+Whole Hog Kills
+of Rockets Fired
+```
+
+
+#### 2.1 Final Blow Records
+
+In order to calculate who has the most final blows on each map we need to select only rows where the stat_name is Final Blows and we need the columns for match id, player, map_name, and stat_amount. We need to drop duplicates because final blows are repeated for each hero the player played reguardless of which hero they got the final blow on.
+We will then group the data by map name and select the max player for each group.
+```python
+# Find out who has the most final blows in a single map for each map
+final_blows = player_frame[player_frame['stat_name'] == 'Final Blows'][['match_id', 'map_name', 'player', 'stat_amount']].drop_duplicates()
+
+def take_max(group):
+    max_kills = group['stat_amount'].max()
+    return group[group['stat_amount'] == max_kills]
+
+max_final_blows = final_blows.groupby(by=['map_name']).apply(take_max).reset_index(drop=True).sort_values(by='stat_amount')[['map_name', 'player', 'stat_amount']]
+max_final_blows.columns = ['map_name', 'player', 'final_blows']
+print('Final Blow Leaders per Map')
+print(max_final_blows)
+```
+
+```
+Final Blow Leaders per Map
+                 map_name       player  final_blows
+18                  Paris        JinMu         21.0
+22    Volskaya Industries    Architect         23.0
+8                   Ilios         MekO         23.0
+9                   Ilios  DreamKazper         23.0
+23    Volskaya Industries       Profit         23.0
+1                   Busan       Profit         24.0
+17                  Oasis      STRIKER         26.0
+14          Lijiang Tower        carpe         26.0
+19                 Rialto    SeoMinSoo         27.0
+15                  Nepal          eqo         27.0
+4                Hanamura       Libero         28.0
+0          Blizzard World    Architect         29.0
+13             King's Row       Libero         29.0
+12             King's Row         Fits         29.0
+5                  Havana        carpe         29.0
+11             King's Row        carpe         29.0
+7    Horizon Lunar Colony        Fleta         30.0
+24  Watchpoint: Gibraltar        GodsB         30.0
+2                  Dorado        Decay         31.0
+3             Eichenwalde        GodsB         32.0
+21       Temple of Anubis   SAEBYEOLBE         32.0
+6               Hollywood        Corey         34.0
+16                Numbani   SAEBYEOLBE         35.0
+20               Route 66     Birdring         37.0
+10             Junkertown   sayaplayer         42.0
+```
+
+#### 2.1 Ana Sleep Dart Accuracy
+
+To calculate career sleep dart accuracy we need to select only rows where the hero is Ana, and the stat name is either Sleep Dart Hits or Sleep Dart Shots, and we need to select the player, stat_name, and stat_amount columns.
+Then we will group by player and sum up the sleep dart hits, and sleep dart attempts and calculate the accuracy per player. We want to filter to a minimum of 100 sleep dart shots just to filter out any low attempt players who don't play ana regularly, and sort by accuracy.
+
+
+
+```python
+# Find out which player is the most successful at getting sleeps on Ana
+ana_sleep = player_frame[(player_frame['hero'] == 'Ana') & ((player_frame['stat_name'] == 'Sleep Dart Hits') | (player_frame['stat_name'] == 'Sleep Dart Shots'))][['player', 'stat_name','stat_amount']]
+
+def calculate_sleep_efficency(group):
+    sleeps_hit = group[group['stat_name'] == 'Sleep Dart Hits']['stat_amount'].sum()
+    sleeps_shot = group[group['stat_name'] == 'Sleep Dart Shots']['stat_amount'].sum()
+
+    return pd.Series({'sleep_darts_shot': sleeps_shot, 'sleep_darts_hit': sleeps_hit, 'sleep_accuracy': sleeps_hit/sleeps_shot})
+
+
+
+ana_sleep = ana_sleep.groupby(by='player').apply(calculate_sleep_efficency)
+ana_sleep = ana_sleep[ana_sleep['sleep_darts_shot'] >= 100]
+sleep_stats = ana_sleep.sort_values(by='sleep_accuracy', ascending=False).head(10).reset_index()
+print('Ana Sleep Dart Accuracy (min 100 attempts)')
+print(sleep_stats)
+```
+
+```python
+Ana Sleep Dart Accuracy (min 100 attempts)
+      player  sleep_darts_shot  sleep_darts_hit  sleep_accuracy
+0  ryujehong             798.0            306.0        0.383459
+1        shu            1417.0            533.0        0.376147
+2     Highly             383.0            139.0        0.362924
+3  HarryHook             288.0            103.0        0.357639
+4      uNKOE             445.0            159.0        0.357303
+5    IZaYaKI             775.0            270.0        0.348387
+6      Luffy            1332.0            461.0        0.346096
+7      Rapel             372.0            128.0        0.344086
+8     AimGod             872.0            300.0        0.344037
+9   Twilight            1408.0            482.0        0.342330
+```
+
+The complete script can be found [here](explore_player_data.py)

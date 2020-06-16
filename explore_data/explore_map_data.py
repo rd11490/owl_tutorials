@@ -7,7 +7,7 @@ pd.set_option('display.max_columns', 500)
 pd.set_option('display.width', 1000)
 
 # Read in our map stats data
-map_data = pd.read_csv('data/match_map_stats.csv')
+map_data = pd.read_csv('map_data/match_map_stats.csv')
 
 print(map_data.head(20))
 print('\n\n')
