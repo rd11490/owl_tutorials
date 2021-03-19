@@ -6,4 +6,4 @@ Tutorials on acquiring and working with Overwatch League Data
 
 #### [Exploring The Data](explore_data/)
 
-#### [Investigating Why Erster Isn't Playing](erster/)s
+#### [Investigating Why Erster Isn't Playing](erster/)
