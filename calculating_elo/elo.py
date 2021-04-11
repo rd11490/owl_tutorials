@@ -28,14 +28,6 @@ def calc_season(dt):
     parsed = datetime.datetime.strptime(dt, "%Y-%m-%d %H:%M:%S")
     return parsed.date().strftime("%Y")
 
-# determine the winner of a control map
-def calculate_control_winner(row):
-    if row['attacker_control_perecent'] == 100.0:
-        return row['attacker']
-    else:
-        return row['defender']
-
-
 # add the map type, date, and season to the frame
 frame['map_type'] = frame['map_name'].apply(calc_map_type)
 frame['match_date'] = frame['round_end_time'].apply(calc_match_date)
@@ -48,23 +40,14 @@ control_maps = frame[frame['map_type'] == Maps.Control].copy()
 hybrid_maps = frame[frame['map_type'] == Maps.Hybrid].copy()
 
 # select the columns we care about
-escort_maps = escort_maps[
-    ['map_winner','team_one_name', 'team_two_name', 'season']].drop_duplicates()
+escort_maps = escort_maps[['map_winner','team_one_name', 'team_two_name', 'season']].drop_duplicates()
 
-assault_maps = assault_maps[
-    ['map_winner','team_one_name', 'team_two_name', 'season']].drop_duplicates()
+assault_maps = assault_maps[['map_winner','team_one_name', 'team_two_name', 'season']].drop_duplicates()
 
-hybrid_maps = hybrid_maps[
-    ['map_winner','team_one_name', 'team_two_name', 'season']].drop_duplicates()
+hybrid_maps = hybrid_maps[['map_winner','team_one_name', 'team_two_name', 'season']].drop_duplicates()
 
-# we need to calculate who wins each round of control
-control_maps = control_maps[
-    ['map_name', 'control_round_name', 'team_one_name', 'team_two_name', 'match_date', 'attacker', 'defender', 'attacker_control_perecent',
-     'defender_control_perecent', 'season']].drop_duplicates()
+control_maps = control_maps[['map_winner','team_one_name', 'team_two_name', 'season']].drop_duplicates()
 
-control_maps['map_winner'] = control_maps.apply(calculate_control_winner, axis=1)
-
-control_maps = control_maps[['map_winner','team_one_name', 'team_two_name', 'season']]
 
 
 # Update elo function

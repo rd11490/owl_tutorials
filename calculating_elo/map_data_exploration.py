@@ -23,5 +23,5 @@ for map in frame['map_name'].unique():
 
 # Look at all of the unique teams
 print('\nTeams')
-for team in frame['team_one_name'].unique():
+for team in frame['map_winner'].unique():
     print(team)
