@@ -86,7 +86,7 @@ OWL North America All-Stars
 ```
 Everything here looks normal, but we do have 2 stages for all star games that we want to filter out when we go to calculate elo.
 
-```
+```python
 # Look at all of the unique maps
 print('\nMaps')
 for map in frame['map_name'].unique():
@@ -118,7 +118,7 @@ Havana
 ```
 Nothing interesting in the list of maps, We will use this later for building a dictionary to relate map names to game modes.
 
-```
+```python
 # Look at all of the unique teams
 print('\nTeams')
 for team in frame['map_winner'].unique():
