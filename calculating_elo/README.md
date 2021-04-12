@@ -52,7 +52,8 @@ This results in the following being printed to console:
 Right away some columns stand out as useful for calculating Elo. `round_start_time`
 can be used to calculate the match date, and more importantly the league season in which the match took place,
 `map_name` can be used to determine the game mode, and `map_winner, team_one_name, and team_two_name`
-can all be used to determine who played in the map and who won.
+can all be used to determine who played in the map and who won. From this we also see that there is a row for each phase of each map.
+Meaning there can be multipe rows per map. We will need to account for that when calculating Elo.
 
 We will also want to look at unique values of some of the important columns to make sure we have a full understanding of what data we are working with.
 ```python
@@ -158,3 +159,146 @@ There are two interesting piece of information we gain by looking at the `map_wi
 The second, and more important piece if information is that when the map results in a draw, the string `draw` is put in the `map_winner` column.
 This is important as we will have to account for it later.
 
+
+#### Building a map to look up game mode from Map Type
+
+We can create a Maps class with constants for each map name, each game mode,
+and a dictionary mapping the map name to the game mode.
+This will come in handy when splitting maps between map types later on.
+
+```python
+class Maps:
+    Assault = 'Assault'
+    Control = 'Control'
+    Escort = 'Escort'
+    Hybrid = 'Hybrid'
+
+    Hanamura = 'Hanamura'
+    HorizonLunarColony = 'Horizon Lunar Colony'
+    Paris = 'Paris'
+    TempleOfAnubis = 'Temple of Anubis'
+    VolskayaIndustries = 'Volskaya Industries'
+    Busan = 'Busan'
+    Ilios = 'Ilios'
+    LijiangTower = 'Lijiang Tower'
+    Nepal = 'Nepal'
+    Oasis = 'Oasis'
+    Dorado = 'Dorado'
+    Havana = 'Havana'
+    Junkertown = 'Junkertown'
+    Rialto = 'Rialto'
+    Route66 = 'Route 66'
+    Gibraltar = 'Watchpoint: Gibraltar'
+    Numbani = 'Numbani'
+    Eichenwalde = 'Eichenwalde'
+    KingsRow = 'King\'s Row'
+    Hollywood = 'Hollywood'
+    BlizzardWorld = 'Blizzard World'
+
+    map_types = {
+        Hanamura: Assault,
+        HorizonLunarColony: Assault,
+        Paris: Assault,
+        TempleOfAnubis: Assault,
+        VolskayaIndustries: Assault,
+
+        Busan: Control,
+        Ilios: Control,
+        LijiangTower: Control,
+        Nepal: Control,
+        Oasis: Control,
+
+        Dorado: Escort,
+        Havana: Escort,
+        Junkertown: Escort,
+        Rialto: Escort,
+        Route66: Escort,
+        Gibraltar: Escort,
+
+        Numbani: Hybrid,
+        Eichenwalde: Hybrid,
+        KingsRow: Hybrid,
+        Hollywood: Hybrid,
+        BlizzardWorld: Hybrid,
+    }
+
+```
+
+
+### 2. Calculating Elo
+Now that we have explored our data we can go about actually calculating each team's Elo for each game mode.
+We will also want to provide a form of "decay" to each team's Elo between seasons.
+If we were trying to build a robust model, we would likely base this decay factor off of something like team continuity,
+regressing teams that changed dramatically back towards the initial value while allowing teams that remained mostly unchanged to remain where the finished the previous season.
+In this tutorial we will naively decay every team back towards the initial value by 50%.
+
+#### Basics behind the calculation
+
+Each team playing has a rating Ra and Rb.
+The expected score for each team can be calculated using the equation:
+```
+Ea = Qa / (Qa + Qb)
+Where:
+    Qa = 10 ^ (Ra/M)
+    Qb = 10 ^ (Rb/M)
+
+
+- Ea: Probability that Team A will win the map
+- Rn: Elo of the team
+- M: This is constant used to determine how many points of Elo represent a magnitude of 10 difference in win percentage.
+```
+Using the values generated for Ea and Eb we can then update the elo of each team after the map has been played useing the weight update rule:
+```
+Ra' = Ra + K(Sa - Ea)
+
+- Ra': New Elo after updating
+- Ra: Elo the team had before playing the match
+- K: K-factor - The maximum value a teams rating can update after a match
+- Sa: The result of the map (1 for a win, .5 for a draw, 0 for a loss)
+- Ea: Probability that Team A will win the match (calculated above)
+```
+
+#### The Code:
+Using the information we learned about our map results file and how to calculate Elo, we can now write a basic script to do this for us.
+We will start the same way we always do by importing pandas, datetime and the Maps class we wrote above. We will also set a couple of basic pandas settings to make
+printing dataframes more user friendly.
+```python
+import pandas as pd
+import datetime
+from calculating_elo.maps import Maps
+
+
+pd.set_option('display.max_columns', 500)
+pd.set_option('display.width', 1000)
+
+```
+
+We can start off by writing a couple of helper functions to determine the
+game mode and the season in which the map took place. The calc_map_type
+function takes in a map name and looks up the game mode from the maps dictionary.
+The calc_season function converts the timedate timestamp provided
+with each row and extracts the year from the data. Because the league
+season runs durring the year and does not cross between multiple years, it is safe for us to just use the season year ans the season of the maps.
+
+```
+# determine the game type from map
+def calc_map_type(map_name):
+    return Maps.map_types[map_name]
+
+
+# determine the season of the match
+def calc_season(dt):
+    parsed = datetime.datetime.strptime(dt, "%Y-%m-%d %H:%M:%S")
+    return parsed.date().strftime("%Y")
+```
+
+
+
+```
+# Read in the csv
+frame = pd.read_csv('map_data/match_map_stats.csv')
+
+
+# Remove all star matches
+frame = frame[frame['stage'].str.contains('All-Stars') == False]
+```

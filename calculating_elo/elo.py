@@ -6,31 +6,26 @@ from calculating_elo.maps import Maps
 pd.set_option('display.max_columns', 500)
 pd.set_option('display.width', 1000)
 
-frame = pd.read_csv('map_data/match_map_stats.csv')
-
-# Remove all star matches
-frame = frame[frame['stage'].str.contains('All-Stars') == False]
-
-# Get a list of maps form the match frame
-maps = frame['map_name'].unique()
 
 # determine the game type from map
 def calc_map_type(map_name):
     return Maps.map_types[map_name]
 
-# determine the date of the match
-def calc_match_date(dt):
-    parsed = datetime.datetime.strptime(dt, "%Y-%m-%d %H:%M:%S")
-    return parsed.date().strftime("%Y/%m/%d")
 
 # determine the season of the match
 def calc_season(dt):
     parsed = datetime.datetime.strptime(dt, "%Y-%m-%d %H:%M:%S")
     return parsed.date().strftime("%Y")
 
+# Read in the csv
+frame = pd.read_csv('map_data/match_map_stats.csv')
+
+
+# Remove all star matches
+frame = frame[frame['stage'].str.contains('All-Stars') == False]
+
 # add the map type, date, and season to the frame
 frame['map_type'] = frame['map_name'].apply(calc_map_type)
-frame['match_date'] = frame['round_end_time'].apply(calc_match_date)
 frame['season'] = frame['round_end_time'].apply(calc_season)
 
 # separate the frame into the different game modes
@@ -62,14 +57,19 @@ control_maps = control_maps[['map_winner','team_one_name', 'team_two_name', 'sea
 # Ea is calculated in the form of q1/(q1 + q2)
 # where:
 #   qn is calculated as 10 ^ (Rn/400)
+
+m = 500
+initial_elo = 2500
+k = 50
+decay = .5
 def update_elo(elo, winner, team1, team2):
     elo1 = elo[team1][-1]
     elo2 = elo[team2][-1]
 
 
 
-    q1 = 10 ** (elo1 / 400)
-    q2 = 10 ** (elo2 / 400)
+    q1 = 10 ** (elo1 / m)
+    q2 = 10 ** (elo2 / m)
     e1 = q1 / (q1 + q2)
     e2 = q2 / (q1 + q2)
 
@@ -83,8 +83,8 @@ def update_elo(elo, winner, team1, team2):
         s1 = 0.0
         s2 = 1.0
 
-    elo[team1].append(elo1 + 50 * (s1-e1))
-    elo[team2].append(elo2 + 50 * (s2-e2))
+    elo[team1].append(elo1 + k * (s1-e1))
+    elo[team2].append(elo2 + k * (s2-e2))
     return elo
 
 
@@ -93,8 +93,8 @@ def update_elo(elo, winner, team1, team2):
 def decay_elo(teams_elo):
     new_elo = {}
     for team, elo in teams_elo.items():
-        diff = teams_elo[team][-1] - 1500
-        regress = diff * 0.5
+        diff = teams_elo[team][-1] - initial_elo
+        regress = diff * decay
         elo.append(elo[-1] - regress)
         new_elo[team] = elo
     return new_elo
@@ -104,7 +104,7 @@ def calculate_elo(match_frame):
     # Initialize the elo dictionary, set each team to 1500
     elo = {}
     for team in frame['team_one_name'].unique():
-        elo[team] = [1500]
+        elo[team] = [initial_elo]
 
     # storing the current season will allow us to determine when the season changes
     curr_season = match_frame.loc[match_frame.index[0], :]['season']
