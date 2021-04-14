@@ -279,7 +279,7 @@ The calc_season function converts the timedate timestamp provided
 with each row and extracts the year from the data. Because the league
 season runs during the year and does not cross between multiple years, it is safe for us to just use the season year as the season of the match.
 
-```
+```python
 # determine the game mode from map
 def calc_game_mode(map_name):
     return Maps.game_modes[map_name]
@@ -544,3 +544,5 @@ HYBRID MAP ELO
 7          Houston Outlaws  2377.16
 10         Boston Uprising  2257.00
 ```
+
+The entirety of the code for calculating elo can be found [here](./elo.py)
