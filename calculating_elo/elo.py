@@ -7,9 +7,9 @@ pd.set_option('display.max_columns', 500)
 pd.set_option('display.width', 1000)
 
 
-# determine the game type from map
-def calc_map_type(map_name):
-    return Maps.map_types[map_name]
+# determine the game mode from map
+def calc_game_mode(map_name):
+    return Maps.game_mode[map_name]
 
 
 # determine the season of the match
@@ -24,15 +24,15 @@ frame = pd.read_csv('map_data/match_map_stats.csv')
 # Remove all star matches
 frame = frame[frame['stage'].str.contains('All-Stars') == False]
 
-# add the map type, date, and season to the frame
-frame['map_type'] = frame['map_name'].apply(calc_map_type)
+# add the game mode, date, and season to the frame
+frame['game_mode'] = frame['map_name'].apply(calc_game_mode)
 frame['season'] = frame['round_end_time'].apply(calc_season)
 
 # separate the frame into the different game modes
-escort_maps = frame[frame['map_type'] == Maps.Escort].copy()
-assault_maps = frame[frame['map_type'] == Maps.Assault].copy()
-control_maps = frame[frame['map_type'] == Maps.Control].copy()
-hybrid_maps = frame[frame['map_type'] == Maps.Hybrid].copy()
+escort_maps = frame[frame['game_mode'] == Maps.Escort].copy()
+assault_maps = frame[frame['game_mode'] == Maps.Assault].copy()
+control_maps = frame[frame['game_mode'] == Maps.Control].copy()
+hybrid_maps = frame[frame['game_mode'] == Maps.Hybrid].copy()
 
 # select the columns we care about
 escort_maps = escort_maps[['map_winner','team_one_name', 'team_two_name', 'season']].drop_duplicates()
@@ -62,6 +62,7 @@ m = 500
 initial_elo = 2500
 k = 50
 decay = .5
+
 def update_elo(elo, winner, team1, team2):
     elo1 = elo[team1][-1]
     elo2 = elo[team2][-1]
@@ -88,7 +89,7 @@ def update_elo(elo, winner, team1, team2):
     return elo
 
 
-# Take the difference between the current elo and 1500, reduce it by 50%, and adjust elo by that value.
+# Take the difference between the current elo and 2500, reduce it by 50%, and adjust elo by that value.
 # The idea is that between each season we want to regress each teams elo back towards neutral.
 def decay_elo(teams_elo):
     new_elo = {}

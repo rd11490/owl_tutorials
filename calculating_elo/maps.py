@@ -26,7 +26,7 @@ class Maps:
     Hollywood = 'Hollywood'
     BlizzardWorld = 'Blizzard World'
 
-    map_types = {
+    game_mode = {
         Hanamura: Assault,
         HorizonLunarColony: Assault,
         Paris: Assault,
