@@ -156,7 +156,7 @@ Team D.va
 ```
 There are two interesting piece of information we gain by looking at the `map_winner` column. The first is that we have a bunch of all star teams we need to filter out.
 The second, and more important piece if information is that when the map results in a draw, the string `draw` is put in the `map_winner` column.
-This is important as we will have to account for it later.
+This is a case we will have to account for when updating elo later in this exercise.
 
 
 #### Building a map to look up Game Mode from Map Name
@@ -344,7 +344,7 @@ We will then take the first season and store it so that we can check if the seas
 check to see if the season has changed. If the season changes we decay every team's elo. After that we update the elo for the two teams who played the map represented by the current row.
 ```python
 def calculate_elo(match_frame):
-    # Initialize the elo dictionary, set each team to 1500
+    # Initialize the elo dictionary, set each team to 2500
     elo = {}
     for team in frame['team_one_name'].unique():
         elo[team] = [initial_elo]
@@ -372,8 +372,6 @@ We look up the elo from the elo dictionary for the two teams playing in the matc
 def update_elo(elo, winner, team1, team2):
     elo1 = elo[team1][-1]
     elo2 = elo[team2][-1]
-
-
 
     q1 = 10 ** (elo1 / m)
     q2 = 10 ** (elo2 / m)

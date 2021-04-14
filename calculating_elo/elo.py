@@ -67,8 +67,6 @@ def update_elo(elo, winner, team1, team2):
     elo1 = elo[team1][-1]
     elo2 = elo[team2][-1]
 
-
-
     q1 = 10 ** (elo1 / m)
     q2 = 10 ** (elo2 / m)
     e1 = q1 / (q1 + q2)
@@ -102,7 +100,7 @@ def decay_elo(teams_elo):
 
 
 def calculate_elo(match_frame):
-    # Initialize the elo dictionary, set each team to 1500
+    # Initialize the elo dictionary, set each team to 2500
     elo = {}
     for team in frame['team_one_name'].unique():
         elo[team] = [initial_elo]
@@ -111,7 +109,7 @@ def calculate_elo(match_frame):
     curr_season = match_frame.loc[match_frame.index[0], :]['season']
     # iterate over every row in the index
     for i in match_frame.index:
-        # If the season changes we want to decay every team's elo back towards 1500 and reset the current season
+        # If the season changes we want to decay every team's elo back towards 2500 and reset the current season
         if match_frame.loc[i, :]['season'] != curr_season:
             elo = decay_elo(elo)
             curr_season = match_frame.loc[i, :]['season']
