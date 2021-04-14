@@ -6,7 +6,6 @@ If you see any issues or think there is a better way to do something,
 don't hesitate to open a PR, submit an issue, or reach out to me directly
 
 ### 0.1 Requirements
-This tutorial uses the latest version of Google Chrome for finding the endpoint information.
 The code in this tutorial was written in python 3.7 and uses the following libraries:
 Pandas
 
