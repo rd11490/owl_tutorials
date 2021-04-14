@@ -273,9 +273,9 @@ pd.set_option('display.width', 1000)
 ```
 
 We can start off by writing a couple of helper functions to determine the
-game mode and the season in which the map took place. The calc_game_mode
+game mode and the season in which the map took place. The `calc_game_mode`
 function takes in a map name and looks up the game mode from the maps dictionary.
-The calc_season function converts the timedate timestamp provided
+The `calc_season` function converts the datetime timestamp provided
 with each row and extracts the year from the data. Because the league
 season runs during the year and does not cross between multiple years, it is safe for us to just use the season year as the season of the match.
 
