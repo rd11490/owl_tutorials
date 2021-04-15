@@ -69,7 +69,7 @@ pd.set_option('display.width', 1000)
 ```
 
 
-Create a dictionary of the headers from the cUrl. I have already tested the headers to determine which are required for the endpoint to work. Only x-origin and referer are required.
+Then we can need to create a dictionary of the headers from the cUrl. I have already tested the headers to determine which are required for the endpoint to work. Only x-origin and referer are required.
 ```python
 # Required headers for the API
 headers = {
@@ -96,7 +96,10 @@ def download_week(week):
 
 ```
 
-
+We need a way to parse the response from the api into a league schedule that is useful to us.
+To do this we can create a function that takes in the week and the array of matches from the api, iterate over each event,
+and map it to an object containing the league week, date of the match, and the teams participating in the match. The function will
+return an array of the new object.
 ```python
 # A function to convert the response json to a dataframe of league matches
 def extract_matches(events, week):
@@ -120,6 +123,8 @@ def extract_matches(events, week):
     return matches
 ```
 
+Now that we have written helper functions to call the api and parse the results, we can iterate over
+a list of all of the league weeks, call the api, extract the data, build a dataframe, and save it to a CSV.
 ```python
 # Call the league schedule api and extract the data for the specified week
 def get_week_matches(week):
@@ -136,3 +141,20 @@ print(frame)
 frame.to_csv('2021_league_schedule.csv')
 
 ```
+
+```
+     week   startDate  startDateTime  team1Id               team1Name team1ShortName  team2Id            team2Name team2ShortName
+0       1  2021-04-16  1618599600000     4525         Houston Outlaws            HOU     4523          Dallas Fuel            DAL
+1       1  2021-04-16  1618605000000     4406  Los Angeles Gladiators            GLA     4404  San Francisco Shock            SFS
+2       1  2021-04-17  1618650000000     7699        Guangzhou Charge            GZC     4408     Shanghai Dragons            SHD
+3       1  2021-04-17  1618655400000     4405     Los Angeles Valiant            VAL     7692      Chengdu Hunters            CDH
+4       1  2021-04-17  1618660800000     4524     Philadelphia Fusion            PHI     4409        Seoul Dynasty            SEO
+..    ...         ...            ...      ...                     ...            ...      ...                  ...            ...
+155    18  2021-08-14  1628937000000     7692         Chengdu Hunters            CDH     4403   New York Excelsior            NYE
+156    18  2021-08-14  1628942400000     4408        Shanghai Dragons            SHD     7699     Guangzhou Charge            GZC
+157    18  2021-08-14  1628967600000     4410         London Spitfire            LDN     7696     Vancouver Titans            VAN
+158    18  2021-08-14  1628973000000     4406  Los Angeles Gladiators            GLA     4525      Houston Outlaws            HOU
+159    18  2021-08-14  1628978400000     4404     San Francisco Shock            SFS     7695      Toronto Defiant            TOR
+```
+
+The complete code can be found [here](league_schedule.py)
