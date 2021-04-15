@@ -13,3 +13,8 @@ Tutorials on acquiring and working with Overwatch League Data
 #### [Exploring The Data](explore_data/)
 
 #### [Investigating Why Erster Isn't Playing](erster/)
+
+#### [Downloading the League Schedule](league_schedule_elo/)
+
+#### [Calculating Historical Elo](calculating_elo/)
+
