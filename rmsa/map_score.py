@@ -1,5 +1,5 @@
 import pandas as pd
-from rmsa.utils.constants import Maps, total_escort_map_distance, total_map_time, calc_map_type
+from rmsa.utils.constants import Maps, total_escort_map_distance, total_map_time, calc_map_type, time_to_add
 from rmsa.utils.utils import calc_match_date, calc_season
 
 # Some readability options for pandas print statements
@@ -23,60 +23,74 @@ assault_maps = frame[frame['map_type'] == Maps.Assault]
 control_maps = frame[frame['map_type'] == Maps.Control]
 hybrid_maps = frame[frame['map_type'] == Maps.Hybrid]
 
-
-###############################
-# Calculate control map score #
-###############################
-# Controls maps are "easy" to score because each team is able to get a control percentage.
-# Convert the percentage to a decimal and use it as the map score
-control_maps['team_one_score'] = control_maps['attacker_control_perecent']/100
-control_maps['team_two_score'] = control_maps['defender_control_perecent']/100
-
-
-control_maps_score = control_maps[['match_id', 'game_number','map_name', 'map_type', 'map_winner', 'match_date',  'team_one_name', 'team_two_name', 'team_one_score', 'team_two_score', 'season']]
-
 ###############################
 # Calculate Assault map score #
 ###############################
-
-
+# The basic idea behind our calculation for map score is
+# "How many times could you complete the map in at the rate at which you initially completed the map".
+# Unfortunately OWL data does not give us partial capture percentage, so we only get an integer N
+# which represents how many control points a team captured.
 def calculate_assault_map_score(group):
-    # Pull the highest round number played and take the row for that round
-    highest = group['map_round'].max()
-    row = group[group['map_round'] == highest]
+    # I am limiting this analysis to the intial map parameters (2 rounds) and ignore any tie breaker/overtime scenarios.
+    row = group[group['map_round'] == 2]
+    # There is some old (bad) data in the dataset that needs to be cleaned. This line cleans that for us.
+    if row.empty:
+        row = group[group['map_round'] == group['map_round'].max()]
 
-    # Assign attackers as team 1 and defenders as team 2
+    # Break out attacker and defender into team 1 and team 2
     team_one = row['attacker'].values[0]
     team_two = row['defender'].values[0]
 
-    # In assault, <team>_round_end_score is the number of points each team captured
-    # It should be noted that if the first attacker is full held,
-    # the second attacker only needs to get 33% to receive full credit for taking a point
-    team_one_rounds = row['attacker_round_end_score'].values[0]
-    team_two_rounds = row['defender_round_end_score'].values[0]
+    # Pull out the number of points each team captured
+    team_one_points = row['attacker_round_end_score'].values[0]
+    team_two_points = row['defender_round_end_score'].values[0]
 
-    # We all so want to pull out how much time each team banked if they capped before overtime
+    # Pull out the amount of team each team banked if they completed the map
     team_one_time_banked = row['attacker_time_banked'].values[0]
     team_two_time_banked = row['defender_time_banked'].values[0]
 
+    # When determining how much time each team had available we need to pull out the number of points they captured.
+    # We can calculate that based on the rule set for the map type.
+    # For Assault: 4 Minutes to attack point 1, an additional 4 minutes to attack point 2
+    team_one_points_for_time = team_one_points
+    team_two_points_for_time = team_two_points
 
-    # We can use the number of rounds played to determine and how much time is banked to determine how much time was used
-    # to capture the number of points the team captured.
-    team_one_rounds_for_time = team_one_rounds
-    team_two_rounds_for_time = team_two_rounds
-    if row['map_winner'].values[0] == team_one and team_one_time_banked > 0.0:
-        team_one_rounds_for_time -= 1
+    # There is an important exception here. If the winning team does not full cap the map, the number of points
+    # they are given credit for is 1 more than they had actually capped.
+    # We need to subtract that additional point from their score to properly account for how much time the team used.
+    # Because we are always taking the second row (after both teams have attacked)
+    # we do not need to account for time banked if team 1 is the winner as they are the second attacker.
+    if row['map_winner'].values[0] == team_one:
+        team_one_points_for_time -= 1
     elif row['map_winner'].values[0] == team_two and team_two_time_banked > 0.0:
-        team_two_rounds_for_time -= 1
+        team_two_points_for_time -= 1
 
-    team_one_total_time = total_map_time(Maps.Assault, team_one_rounds_for_time)
-    team_two_total_time = total_map_time(Maps.Assault, team_two_rounds_for_time)
+    team_one_total_time = total_map_time(Maps.Assault, team_one_points_for_time)
+    team_two_total_time = total_map_time(Maps.Assault, team_two_points_for_time)
 
-    # Once we have the number of points captured, the time banked, and time used, we can generate a map score
-    team_one_score = 100 * team_one_rounds / (team_one_total_time - team_one_time_banked)
-    team_two_score = 100 * team_two_rounds / (team_two_total_time - team_two_time_banked)
+    # Now that we know how much time each team had to attack, how much time they banked,
+    # and how many points they captured, we can calculate their cap rate.
+    team_one_rate = team_one_points / (team_one_total_time - team_one_time_banked)
+    team_two_rate = team_two_points / (team_two_total_time - team_two_time_banked)
 
-    # Save the map score in a dataframe
+    # If the team banked time, we want to give them credit for it. We do this by applying their cap rate to their banked
+    # time to estimate how many points they could have capped if they kept their current rate.
+    if team_one_time_banked > 0.0:
+        team_one_score = (team_one_rate * team_one_time_banked) + team_one_points
+    else:
+        team_one_score = team_one_points
+
+    if team_two_time_banked > 0.0:
+        team_two_score = (team_two_rate * team_two_time_banked) + team_two_points
+    else:
+        team_two_score = team_two_points
+
+    # Finally we want to divide each team's score by the total number of possible points in order to get a
+    # % map completion estimate.
+    team_one_score = team_one_score/2
+    team_two_score = team_two_score/2
+
+
     return pd.Series({
         'map_name': row['map_name'].values[0],
         'map_type': row['map_type'].values[0],
@@ -89,23 +103,32 @@ def calculate_assault_map_score(group):
         'season': row['season'].values[0]
     })
 
-assault_scores = assault_maps.groupby(by=['match_id', 'game_number']).apply(calculate_assault_map_score).reset_index()
 
 ###############################
 # Calculate Escort map score #
 ###############################
-
+def calculate_how_far_to_go(map_name, rounds, rate, distance_traveled, time_banked):
+    distance_possible = distance_traveled + time_banked * rate
+    rounds_possible = rounds
+    while rounds_possible <= 3:
+        if distance_possible < total_escort_map_distance(map_name, rounds_possible):
+            break
+        time_possible = time_to_add(calc_map_type(map_name), rounds_possible)
+        distance_possible += rate * time_possible
+        rounds_possible += 1
+    return distance_possible
 
 def calculate_escort_map_score(group):
-    highest = group['map_round'].max()
-    row = group[group['map_round'] == highest]
+    row = group[group['map_round'] == 2]
+    if row.empty:
+        row = group[group['map_round'] == group['map_round'].max()]
 
-    map = row['map_name'].values[0]
+    map_name = row['map_name'].values[0]
 
     team_one = row['attacker'].values[0]
     team_two = row['defender'].values[0]
-    team_one_rounds = row['attacker_round_end_score'].values[0]
-    team_two_rounds = row['defender_round_end_score'].values[0]
+    team_one_points = row['attacker_round_end_score'].values[0]
+    team_two_points = row['defender_round_end_score'].values[0]
 
     team_one_time_banked = row['attacker_time_banked'].values[0]
     team_two_time_banked = row['defender_time_banked'].values[0]
@@ -113,33 +136,35 @@ def calculate_escort_map_score(group):
     team_one_distance = row['attacker_payload_distance'].values[0]
     team_two_distance = row['defender_payload_distance'].values[0]
 
-
     if row['map_winner'].values[0] == team_one and team_one_distance > 0.0:
-        team_one_rounds -= 1
+        team_one_points -= 1
     elif row['map_winner'].values[0] == team_two and team_two_distance > 0.0:
-        team_two_rounds -= 1
+        team_two_points -= 1
 
-    team_one_total_distance = total_escort_map_distance(map, team_one_rounds) + team_one_distance
-    team_two_total_distance = total_escort_map_distance(map, team_two_rounds) + team_two_distance
+    team_one_total_distance = total_escort_map_distance(map_name, team_one_points) + team_one_distance
+    team_two_total_distance = total_escort_map_distance(map_name, team_two_points) + team_two_distance
 
-    team_one_total_time = total_map_time(Maps.Escort, team_one_rounds)
-    team_two_total_time = total_map_time(Maps.Escort, team_two_rounds)
+    total_map_distance = total_escort_map_distance(map_name, 3)
+
+    team_one_total_time = total_map_time(Maps.Escort, team_one_points)
+    team_two_total_time = total_map_time(Maps.Escort, team_two_points)
+
+    team_one_rate = team_one_total_distance / (team_one_total_time - team_one_time_banked)
+    team_two_rate = team_two_total_distance / (team_two_total_time - team_two_time_banked)
 
 
+    if team_one_time_banked > 0.0:
+        team_one_score = calculate_how_far_to_go(map_name, team_one_points, team_one_rate, team_one_total_distance, team_one_time_banked)/total_map_distance
+    else:
+        team_one_score = team_one_total_distance/total_map_distance
 
-    team_one_score = team_one_total_distance / (team_one_total_time - team_one_time_banked)
-    team_two_score = team_two_total_distance / (team_two_total_time - team_two_time_banked)
-
-    # if team_one_score > team_two_score:
-    #     team_one_score_percent = team_one_score / team_one_score
-    #     team_two_score_percent = team_two_score / team_one_score
-    # else:
-    #     team_one_score_percent = team_one_score / team_two_score
-    #     team_two_score_percent = team_two_score / team_two_score
-
+    if team_two_time_banked > 0.0:
+        team_two_score = calculate_how_far_to_go(map_name, team_two_points, team_two_rate, team_two_total_distance, team_two_time_banked)/total_map_distance
+    else:
+        team_two_score = team_two_total_distance/total_map_distance
 
     return pd.Series({
-        'map_name': map,
+        'map_name': map_name,
         'map_type': row['map_type'].values[0],
         'map_winner': row['map_winner'].values[0],
         'match_date': row['match_date'].values[0],
@@ -149,9 +174,6 @@ def calculate_escort_map_score(group):
         'team_two_score': team_two_score,
         'season': row['season'].values[0]
     })
-
-escort_maps_score = escort_maps.groupby(by=['match_id', 'game_number']).apply(calculate_escort_map_score).reset_index()
-
 
 ###############################
 # Calculate Hybrid map score #
@@ -159,16 +181,15 @@ escort_maps_score = escort_maps.groupby(by=['match_id', 'game_number']).apply(ca
 
 
 def calculate_hybrid_map_score(group):
+    row = group[group['map_round'] == 2]
+    if row.empty:
+        row = group[group['map_round'] == group['map_round'].max()]
 
-    highest = group['map_round'].max()
-    row = group[group['map_round'] == highest]
-
-    map = row['map_name'].values[0]
-
+    map_name = row['map_name'].values[0]
     team_one = row['attacker'].values[0]
     team_two = row['defender'].values[0]
-    team_one_rounds = row['attacker_round_end_score'].values[0]
-    team_two_rounds = row['defender_round_end_score'].values[0]
+    team_one_points = row['attacker_round_end_score'].values[0]
+    team_two_points = row['defender_round_end_score'].values[0]
 
     team_one_time_banked = row['attacker_time_banked'].values[0]
     team_two_time_banked = row['defender_time_banked'].values[0]
@@ -178,31 +199,33 @@ def calculate_hybrid_map_score(group):
 
 
     if row['map_winner'].values[0] == team_one and team_one_distance > 0.0:
-        team_one_rounds -= 1
+        team_one_points -= 1
     elif row['map_winner'].values[0] == team_two and team_two_distance > 0.0:
-        team_two_rounds -= 1
+        team_two_points -= 1
 
-    team_one_total_distance = total_escort_map_distance(map, team_one_rounds) + team_one_distance
-    team_two_total_distance = total_escort_map_distance(map, team_two_rounds) + team_two_distance
+    team_one_total_distance = total_escort_map_distance(map_name, team_one_points) + team_one_distance
+    team_two_total_distance = total_escort_map_distance(map_name, team_two_points) + team_two_distance
 
-    team_one_total_time = total_map_time(Maps.Escort, team_one_rounds)
-    team_two_total_time = total_map_time(Maps.Escort, team_two_rounds)
+    total_map_distance = total_escort_map_distance(map_name, 3)
 
+    team_one_total_time = total_map_time(Maps.Escort, team_one_points)
+    team_two_total_time = total_map_time(Maps.Escort, team_two_points)
 
+    team_one_rate = team_one_total_distance / (team_one_total_time - team_one_time_banked)
+    team_two_rate = team_two_total_distance / (team_two_total_time - team_two_time_banked)
 
-    team_one_score = team_one_total_distance / (team_one_total_time - team_one_time_banked)
-    team_two_score = team_two_total_distance / (team_two_total_time - team_two_time_banked)
+    if team_one_time_banked > 0.0:
+        team_one_score = calculate_how_far_to_go(map_name, team_one_points, team_one_rate, team_one_total_distance, team_one_time_banked)/total_map_distance
+    else:
+        team_one_score = team_one_total_distance/total_map_distance
 
-    # if team_one_score > team_two_score:
-    #     team_one_score_percent = team_one_score / team_one_score
-    #     team_two_score_percent = team_two_score / team_one_score
-    # else:
-    #     team_one_score_percent = team_one_score / team_two_score
-    #     team_two_score_percent = team_two_score / team_two_score
-
+    if team_two_time_banked > 0.0:
+        team_two_score = calculate_how_far_to_go(map_name, team_two_points, team_two_rate, team_two_total_distance, team_two_time_banked)/total_map_distance
+    else:
+        team_two_score = team_two_total_distance/total_map_distance
 
     return pd.Series({
-        'map_name': map,
+        'map_name': map_name,
         'map_type': row['map_type'].values[0],
         'map_winner': row['map_winner'].values[0],
         'match_date': row['match_date'].values[0],
@@ -213,6 +236,18 @@ def calculate_hybrid_map_score(group):
         'season': row['season'].values[0]
     })
 
+###############################
+# Calculate control map score #
+###############################
+# Controls maps are "easy" to score because each team is able to get a control percentage.
+# Convert the percentage to a decimal and use it as the map score
+control_maps['team_one_score'] = control_maps['attacker_control_perecent']/100
+control_maps['team_two_score'] = control_maps['defender_control_perecent']/100
+
+
+control_maps_score = control_maps[['match_id', 'game_number','map_name', 'map_type', 'map_winner', 'match_date',  'team_one_name', 'team_two_name', 'team_one_score', 'team_two_score', 'season']]
+assault_scores = assault_maps.groupby(by=['match_id', 'game_number']).apply(calculate_assault_map_score).reset_index()
+escort_maps_score = escort_maps.groupby(by=['match_id', 'game_number']).apply(calculate_escort_map_score).reset_index()
 hybrid_maps_score = hybrid_maps.groupby(by=['match_id', 'game_number']).apply(calculate_hybrid_map_score).reset_index()
 
 scored_maps = pd.concat([control_maps_score, hybrid_maps_score, escort_maps_score, assault_scores])

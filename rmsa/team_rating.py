@@ -1,9 +1,9 @@
 import pandas as pd
 import numpy as np
 from sklearn.linear_model import RidgeCV
-from constants import Maps
 from sklearn import metrics
 
+from rmsa.utils.constants import Maps
 
 pd.set_option('display.max_columns', 500)
 pd.set_option('display.max_rows', 1000)
@@ -39,9 +39,7 @@ def map_teams(row_in, teams):
     return row_out
 
 
-
 def extract_X_Y(frame):
-
     stints_x_base = frame[['team_one_name', 'team_two_name']].values
 
     stint_X_rows = np.apply_along_axis(map_teams, 1, stints_x_base, teams)
@@ -59,6 +57,7 @@ def lambda_to_alpha(lambda_value, samples):
 def alpha_to_lambda(alpha_value, samples):
     return (alpha_value * 2.0) / samples
 
+
 def calculate_rmts(stint_X_rows, stint_Y_rows, map_type):
     lambdas = [.01, 0.025, .05, 0.075, .1, .125, .15, .175, .2, .225, .25]
 
@@ -73,7 +72,6 @@ def calculate_rmts(stint_X_rows, stint_Y_rows, map_type):
     coef_array_def = np.transpose(model.coef_[:, len(teams):])
 
     team_coef_arr = np.concatenate([team_arr, coef_array_attack, coef_array_def], axis=1)
-
 
     # build a dataframe from our matrix
     rmts = pd.DataFrame(team_coef_arr)
@@ -104,11 +102,11 @@ def calculate_rmts(stint_X_rows, stint_Y_rows, map_type):
 
 control = map_scores[map_scores['map_type'] == Maps.Control]
 control_X, control_Y = extract_X_Y(control)
-control_rmts = calculate_rmts(control_X, control_Y,Maps.Control)
+control_rmts = calculate_rmts(control_X, control_Y, Maps.Control)
 
 escort = map_scores[map_scores['map_type'] == Maps.Escort]
 escort_X, escort_Y = extract_X_Y(escort)
-escort_rmts = calculate_rmts(escort_X, escort_Y,Maps.Escort)
+escort_rmts = calculate_rmts(escort_X, escort_Y, Maps.Escort)
 
 hybrid = map_scores[map_scores['map_type'] == Maps.Hybrid]
 hybrid_X, hybrid_Y = extract_X_Y(hybrid)
@@ -121,7 +119,8 @@ assault_rmts = calculate_rmts(assault_X, assault_Y, Maps.Assault)
 
 merged = control_rmts.merge(escort_rmts, on='team').merge(hybrid_rmts, on='team').merge(assault_rmts, on='team')
 
-merged['Total Rating'] = (merged['Control rmsa'] * 2) + merged['Escort rmsa'] + merged['Hybrid rmsa'] + merged['Assault rmsa']
+merged['Total Rating'] = (merged['Control rmsa'] * 2) + merged['Escort rmsa'] + merged['Hybrid rmsa'] + merged[
+    'Assault rmsa']
 merged = merged.round(3)
 print(merged)
 
