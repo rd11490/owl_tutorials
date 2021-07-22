@@ -289,7 +289,7 @@ team 2 score 0.23475287849437013
 
 
 #### 1.3 Hybrid Map Score
-Hybrid uses the almost exact same scoring system as described by [Escort Map Score](1.2-escort-map-score). The only change
+Hybrid uses the almost exact same scoring system as described by [Escort Map Score](#1.2 Escort Map Score). The only change
 is that there is no partial progress recorded for the first capture point, and when a team captures the first capture point, they are
 rewarded a distance equal to the distance between the first and second capture point. For exmaple the distance between 
 the first and second points on Blizzard World is 127 meters, so if a team captures point A on Blizzard World 
