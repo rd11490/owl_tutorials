@@ -26,8 +26,8 @@ The environment.yml page for the entire project contains everything you need to 
 
 
 #### 1.1 Assault Map Score
-The basic idea behind our calculation for map score on Assault is 
-`How many times could you complete the map in at the rate at which you initially completed the map`. 
+The basic idea behind our calculation for map score on Assault is   
+`How many times could you complete the map in at the rate at which you initially completed the map`.    
 For example if the attacking team captures Point A then fails to capture Point B they will be given a map score of 
 1 point divided by 2 total points on the map, or more simply put, 0.5. However, if the team captured both points and only
 used half of their total time bank, then they will receive a map score of 2 points / 2 total points on the map plus an
@@ -178,9 +178,9 @@ team 2 score 2.448880073749893
 ```
 
 #### 1.2 Escort Map Score
-The basic idea behind our calculation for map score on Escort is very similar to what it is on Assault,
-`How many times could you complete the map in at the rate at which you initially completed the map`. The main difference
-is that we are provided payload distances, so we can determine how much of the map a team completed in finer detail than we can with Assault.
+The basic idea behind our calculation for map score on Escort is very similar to what it is on Assault,  
+`How many times could you complete the map in at the rate at which you initially completed the map`.    
+The main difference is that we are provided payload distances, so we can determine how much of the map a team completed in finer detail than we can with Assault.
 Like with Assault we will not be considering any payload progress in extra rounds and if the attacking team completes the map with time banked,
 the rate at which they pushed the payload will be multiplied by the time banked and added to the total distance traveled. 
 This method introduces all the same biases and errors as stated above but will keep our methodology consistent between game modes.
