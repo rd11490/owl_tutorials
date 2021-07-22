@@ -126,6 +126,7 @@ print(merged)
 
 ratings = merged[['team', 'Total Rating']]
 ratings = ratings.sort_values(by='Total Rating', ascending=False)
+ratings['rank'] = ratings['Total Rating'].rank(ascending=False)
 print(ratings)
 
 merged.to_csv('./results/rmsa.csv', index=False)
