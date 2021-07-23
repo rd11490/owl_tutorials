@@ -401,7 +401,7 @@ of the losing team having a significantly higher map score than the winner.
 If Team A wins stages 1 and 3 100-99 and loses stage 2 100-0 Team A would have a map score of 1.0 while Team B would
 have a map score of 1.49. This edge case is consistent with our scoring in previous sections.
 
-##### 1.1.1 Control Map Score Examples 
+##### 1.4.1 Control Map Score Examples 
 Below I will provide a handful of sample matches, a look at the input rows, and the resulting map score.
 ###### San Francisco Shock V Dallas Fuel On Ilios 2021-05-30
 ```
