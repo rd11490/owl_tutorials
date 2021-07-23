@@ -291,9 +291,133 @@ team 2 score 0.23475287849437013
 #### 1.3 Hybrid Map Score
 Hybrid uses the almost exact same scoring system as described by [Escort Map Score](#12-escort-map-score). The only change
 is that there is no partial progress recorded for the first capture point, and when a team captures the first capture point, they are
-rewarded a distance equal to the distance between the first and second capture point. For exmaple the distance between 
+rewarded a distance equal to the distance between the first and second capture point. For example the distance between 
 the first and second points on Blizzard World is 127 meters, so if a team captures point A on Blizzard World 
 they are given credit for 127 meters of cart progress,
 
+##### 1.1.1 Hybrid Map Score Examples 
+Below I will provide a handful of sample matches, a look at the input rows, and the resulting map score.
+###### San Francisco Shock V Toronto Defiant On Hollywood 2021-05-29
+```
+      round_start_time       round_end_time     stage  match_id  game_number         match_winner           map_winner        map_loser   map_name  map_round  winning_team_final_map_score  losing_team_final_map_score  control_round_name             attacker             defender    team_one_name        team_two_name  attacker_payload_distance  defender_payload_distance  attacker_time_banked  defender_time_banked  attacker_control_perecent  defender_control_perecent  attacker_round_end_score  defender_round_end_score map_type  match_date season
+6  2021-05-29 21:20:21  2021-05-29 21:26:28  OWL 2021     37269            4  San Francisco Shock  San Francisco Shock  Toronto Defiant  Hollywood          1                             3                            1                 NaN  San Francisco Shock      Toronto Defiant  Toronto Defiant  San Francisco Shock                  79.113937                   0.000000            112.649017              0.000000                        NaN                        NaN                         3                         0   Hybrid  2021/05/29   2021
+7  2021-05-29 21:27:59  2021-05-29 21:34:37  OWL 2021     37269            4  San Francisco Shock  San Francisco Shock  Toronto Defiant  Hollywood          2                             3                            1                 NaN      Toronto Defiant  San Francisco Shock  Toronto Defiant  San Francisco Shock                  66.239693                  79.113937              0.000000            112.649017                        NaN                        NaN                         1                         3   Hybrid  2021/05/29   2021
+```
+In this game San Francisco attacked first and completed the map with 112 seconds banked. Then on defense allowed Toronto 
+to capture the first point and push the payload 66 meters towards the second point.
 
+Using our map score calculations we generate the following results:
+```
+total map distance  366.6735000610351
+team 1:  Toronto Defiant
+team 1 time 390.0
+team 1 time banked 0.0
+team 1 points 1
+team 1 total distance traveled 193.7589340209961
+team 1 rate:  0.49681777954101564
+team 1 distance added:  0.0
+team 1 score 0.5284236084384165
+
+team 2:  San Francisco Shock
+team 2 time 480.0
+team 2 time banked 112.64901733398438
+team 2 points 3
+team 2 total distance traveled 334.1524200439453
+team 2 rate:  0.909627129942229
+team 2 distance added:  102.46860232832462
+team 2 score 1.190762414790247
+```
+###### Atlanta Reign V Los Angeles Gladiators On King's Row 2021-07-12
+```
+      round_start_time       round_end_time     stage  match_id  game_number         match_winner           map_winner        map_loser   map_name  map_round  winning_team_final_map_score  losing_team_final_map_score  control_round_name             attacker             defender    team_one_name        team_two_name  attacker_payload_distance  defender_payload_distance  attacker_time_banked  defender_time_banked  attacker_control_perecent  defender_control_perecent  attacker_round_end_score  defender_round_end_score map_type  match_date season
+0  2021-07-12 00:44:37  2021-07-12 00:48:52  OWL 2021     37411            3  Atlanta Reign  Atlanta Reign  Los Angeles Gladiators  King's Row          1                             1                            0                 NaN  Los Angeles Gladiators           Atlanta Reign  Atlanta Reign  Los Angeles Gladiators                        0.0                        0.0              0.000000                   0.0                        NaN                        NaN                         0                         0   Hybrid  2021/07/12   2021
+1  2021-07-12 00:50:23  2021-07-12 00:51:48  OWL 2021     37411            3  Atlanta Reign  Atlanta Reign  Los Angeles Gladiators  King's Row          2                             1                            0                 NaN           Atlanta Reign  Los Angeles Gladiators  Atlanta Reign  Los Angeles Gladiators                        0.0                        0.0            154.753006                   0.0                        NaN                        NaN                         1                         0   Hybrid  2021/07/12   2021
+```
+In this game Los Angeles attacked first and were not able to fully capture the first point. Atlanta then captured enough
+of the control point to reach their win condition with 154 seconds banked.
+
+Using our map score calculations we generate the following results:
+```
+total map distance  366.6735000610351
+team 1:  Atlanta Reign
+team 1 time 240
+team 1 time banked 154.7530059814453
+team 1 time used 85.24699401855469
+team 1 points 1
+team 1 total distance traveled 127.5192413330078
+team 1 rate:  1.4958796236879885
+team 1 distance added:  231.49186835210946
+team 1 score 0.9791029611503357
+
+team 2:  Los Angeles Gladiators
+team 2 time 240
+team 2 time banked 0.0
+team 2 time used 240.0
+team 2 points 0
+team 2 total distance traveled 0.0
+team 2 rate:  0.0
+team 2 distance added:  0.0
+team 2 score 0.0
+```
+
+###### Atlanta Reign V Los Angeles Gladiators On King's Row 2021-07-12
+```
+       round_start_time       round_end_time     stage  match_id  game_number            match_winner              map_winner        map_loser    map_name  map_round  winning_team_final_map_score  losing_team_final_map_score  control_round_name                attacker                defender    team_one_name           team_two_name  attacker_payload_distance  defender_payload_distance  attacker_time_banked  defender_time_banked  attacker_control_perecent  defender_control_perecent  attacker_round_end_score  defender_round_end_score map_type  match_date season
+2  2021-07-11 21:29:06  2021-07-11 21:33:49  OWL 2021     37413            3  Los Angeles Gladiators  Los Angeles Gladiators  Boston Uprising  King's Row          1                             4                            3                 NaN  Los Angeles Gladiators         Boston Uprising  Boston Uprising  Los Angeles Gladiators                   70.28952                    0.00000            197.097015              0.000000                        NaN                        NaN                         3                         0   Hybrid  2021/07/11   2021
+3  2021-07-11 21:35:20  2021-07-11 21:41:48  OWL 2021     37413            3  Los Angeles Gladiators  Los Angeles Gladiators  Boston Uprising  King's Row          2                             4                            3                 NaN         Boston Uprising  Los Angeles Gladiators  Boston Uprising  Los Angeles Gladiators                   70.28952                   70.28952             92.700035            197.097015                        NaN                        NaN                         3                         3   Hybrid  2021/07/11   2021
+4  2021-07-11 21:43:14  2021-07-11 21:45:16  OWL 2021     37413            3  Los Angeles Gladiators  Los Angeles Gladiators  Boston Uprising  King's Row          3                             4                            3                 NaN         Boston Uprising  Los Angeles Gladiators  Boston Uprising  Los Angeles Gladiators                    0.00000                   70.28952              0.000000            197.097015                        NaN                        NaN                         3                         3   Hybrid  2021/07/11   2021
+5  2021-07-11 21:46:42  2021-07-11 21:47:55  OWL 2021     37413            3  Los Angeles Gladiators  Los Angeles Gladiators  Boston Uprising  King's Row          4                             4                            3                 NaN  Los Angeles Gladiators         Boston Uprising  Boston Uprising  Los Angeles Gladiators                    0.00000                    0.00000            123.880020              0.000000                        NaN                        NaN                         4                         3   Hybrid  2021/07/11   2021
+```
+In this game Los Angeles attacked first and completed the map with 197 seconds banked. Boston then went on to attack and complete the map with 92 seconds banked.
+Boston then failed to capture the first point in extra rounds and Los Angeles met their win condition with 123 seconds banked.
+
+Using our map score calculations we generate the following results:
+```
+total map distance  366.6735000610351
+team 1:  Boston Uprising
+team 1 time 480.0
+team 1 time banked 92.70003509521484
+team 1 points 3
+team 1 total distance traveled 325.3280029296875
+team 1 rate:  0.8399897557689348
+team 1 distance added:  77.8670798394012
+team 1 score 1.099602460232262
+
+team 2:  Los Angeles Gladiators
+team 2 time 480.0
+team 2 time banked 197.09701538085935
+team 2 points 3
+team 2 total distance traveled 325.3280029296875
+team 2 rate:  1.1499631344210162
+team 2 distance added:  226.65430159240026
+team 2 score 1.50537823003355
+```
+
+#### 1.4 Control Map Score
+Control is a very different map type than the others in that teams play a first to two series across 3 separate stages.
+The map score for each control map is simply calculated as the sum of  each team's score across all stages divided by
+the total score required to win the map (200). The only downside to this method is that it can result in the possibility 
+of the losing team having a significantly higher map score than the winner. 
+If Team A wins stages 1 and 3 100-99 and loses stage 2 100-0 Team A would have a map score of 1.0 while Team B would
+have a map score of 1.49. This edge case is consistent with our scoring in previous sections.
+
+##### 1.1.1 Control Map Score Examples 
+Below I will provide a handful of sample matches, a look at the input rows, and the resulting map score.
+###### San Francisco Shock V Dallas Fuel On Ilios 2021-05-30
+```
+      round_start_time       round_end_time     stage  match_id  game_number         match_winner           map_winner    map_loser map_name  map_round  winning_team_final_map_score  losing_team_final_map_score control_round_name     attacker             defender team_one_name        team_two_name  attacker_payload_distance  defender_payload_distance  attacker_time_banked  defender_time_banked  attacker_control_perecent  defender_control_perecent  attacker_round_end_score  defender_round_end_score map_type  match_date season
+0  2021-05-30 23:13:05  2021-05-30 23:16:55  OWL 2021     37265            5  San Francisco Shock  San Francisco Shock  Dallas Fuel    Ilios          1                             2                            1               Well  Dallas Fuel  San Francisco Shock   Dallas Fuel  San Francisco Shock                        0.0                        0.0                   0.0                   0.0                          0                        100                         0                         1  Control  2021/05/30   2021
+1  2021-05-30 23:17:40  2021-05-30 23:23:26  OWL 2021     37265            5  San Francisco Shock  San Francisco Shock  Dallas Fuel    Ilios          2                             2                            1              Ruins  Dallas Fuel  San Francisco Shock   Dallas Fuel  San Francisco Shock                        0.0                        0.0                   0.0                   0.0                        100                         99                         1                         1  Control  2021/05/30   2021
+2  2021-05-30 23:24:12  2021-05-30 23:29:31  OWL 2021     37265            5  San Francisco Shock  San Francisco Shock  Dallas Fuel    Ilios          3                             2                            1         Lighthouse  Dallas Fuel  San Francisco Shock   Dallas Fuel  San Francisco Shock                        0.0                        0.0                   0.0                   0.0                         99                        100                         1                         2  Control  2021/05/30   2021
+
+```
+In this map Shock won the first and third stages (Well and Lighthouse) and Dallas won the second stage (Ruins)
+Using our map score calculations we generate the following results:
+```
+team 1:  Dallas Fuel
+team 1 score 0.995
+
+team 2:  San Francisco Shock
+team 2 score 1.495
+```
 

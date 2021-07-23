@@ -72,7 +72,7 @@ class Maps:
         (Havana, 2): 127.5192413330078,
         (Havana, 3): 111.63501739501952,
         (Hollywood, 0): 0.0,
-        (Hollywood, 1): 0.0,
+        (Hollywood, 1): 127.5192413330078,
         (Hollywood, 2): 127.5192413330078,
         (Hollywood, 3): 111.63501739501952,
         (Junkertown, 0): 0.0,
