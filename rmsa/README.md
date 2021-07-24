@@ -421,3 +421,17 @@ team 2:  San Francisco Shock
 team 2 score 1.495
 ```
 
+### 2. Calculating Map Score Added
+
+Now that we have created a method for scoring each map type we want to be able to build a model to predict how two teams
+playing against each other on that map type would perform. To do this we are going to attempt to use a method that is
+commonly used in traditional teams sports for assigning credit/blame to each player using only the players involved in
+an event, and the outcome of the event. 
+
+// TODO: 
+1. Finish writing out verbal explination of regularization
+2. Come up with simple 3 team example
+4. show results for each map type
+5. explain summing for overall team rating and show results.
+
+
