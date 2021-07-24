@@ -39,13 +39,13 @@ Range at which Ashe ASD can no longer kill Pharmacy with a crit rate of %50.0: 5
 There is no range at which Ashe ASD can not overcome mercy healing to kill Pharmacy with a crit rate of %100.0
 Due to the change Pharmacy TTK has increased from 1.733s to 2.889s at max falloff
 ```
-##### Ashe ASD DPS and TTK under the new falloff changes
-![Ashe ASD DPS](results/Ashe ASD.png)
-![Ashe ASD TTK](results/Ashe ASD_ttk.png)
+##### Ashe ASD DPS and TTK under the new falloff changes  
+![Ashe ASD DPS](./results/Ashe ASD.png)  
+![Ashe ASD TTK](./results/Ashe ASD_ttk.png)  
 
-##### Ashe ASD DPS and TTK under the new falloff changes compared to old falloff
-![Ashe ASD DPS](results/Ashe ASD_compare.png)
-![Ashe ASD TTK](results/Ashe ASD_compare_ttk.png)
+##### Ashe ASD DPS and TTK under the new falloff changes compared to old falloff  
+![Ashe ASD DPS](./results/Ashe ASD_compare.png)  
+![Ashe ASD TTK](./results/Ashe ASD_compare_ttk.png)  
 
 
 
