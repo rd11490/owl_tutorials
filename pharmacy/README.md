@@ -52,4 +52,23 @@ Due to the change Pharmacy TTK has increased from 1.733s to 2.889s at max fallof
 
 
 #### Hip Fire
-ashe_hip_falloff = (20, 40, 40, 4, 'Ashe Hip Fire')
+When firing from the hip Ashes effective range is within 20 meters, her falloff range is between 20-40 meters, and while in her
+effective range a shot does 40 damage. Her recovery time is .25 seconds, allowing her to shoot 4 shots per second 
+
+Under the new falloff changes:
+```
+Range at which Ashe Hip Fire can no longer kill Pharmacy with a crit rate of %0.0: 39 meters
+
+There is no range at which Ashe Hip Fire can not overcome mercy healing to kill Pharmacy with a crit rate of %50.0
+Due to the change Pharmacy TTK has increased from 1.667s to 2.778s at max falloff
+
+There is no range at which Ashe Hip Fire can not overcome mercy healing to kill Pharmacy with a crit rate of %100.0
+Due to the change Pharmacy TTK has increased from 1.25s to 2.083s at max falloff
+```
+##### Ashe ASD DPS and TTK under the new falloff changes  
+![Ashe ASD DPS](./results/Ashe_Hip_Fire.png)  
+![Ashe ASD TTK](./results/Ashe_Hip_Fire_ttk.png)  
+
+##### Ashe ASD DPS and TTK under the new falloff changes compared to old falloff  
+![Ashe ASD DPS](./results/Ashe_Hip_Fire_compare.png)  
+![Ashe ASD TTK](./results/Ashe_Hip_Fire_compare_ttk.png)  
