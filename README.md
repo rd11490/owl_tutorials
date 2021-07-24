@@ -18,3 +18,6 @@ Tutorials on acquiring and working with Overwatch League Data
 
 #### [Calculating Historical Elo](calculating_elo/)
 
+#### [Exploring how Hitscan Falloff Changes Impact Pharmacy](pharmacy/)
+
+
