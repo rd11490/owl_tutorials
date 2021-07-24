@@ -101,9 +101,9 @@ def plot_damage_fallof(hero_stats):
         plt.legend()
 
     plt.figure(1)
-    plt.savefig('results/{0}.png'.format(hero_stats[4]))
+    plt.savefig('results/{0}.png'.format('_'.join(hero_stats[4].split(' '))))
     plt.figure(2)
-    plt.savefig('results/{0}_ttk.png'.format(hero_stats[4]))
+    plt.savefig('results/{0}_ttk.png'.format('_'.join(hero_stats[4].split(' '))))
     plt.close(fig1)
     plt.close(fig2)
 
