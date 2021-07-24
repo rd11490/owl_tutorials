@@ -31,6 +31,19 @@ How this change impacts each here can be seen below.
 3. [Soldier](#30-soldier)
 4. [Baptiste](#30-baptiste)
 
+### 0.3 Workshop Code
+I have created a simple workshop code so that you can go to a map and see what these distances actually look like in game.
+`5QFXZ`
+
+1. Select one of the heroes described in this exploration
+2. Press `crouch` and a red sphere will appear centered at your location. It represents the maximum distance that hero could kill a mercy pocketed pharah with only body shots
+3. Press `Ultimate` and a blue sphere will appear centered at your location. It represents the maximum distance that hero could kill a mercy pocketed pharah with only head shots
+4. Press `Reload` to remove all spheres.
+
+![Ashe distance](./screen_shots/ashe_distance.png)
+![McCree distnace](./screen_shots/mccree_distance.png)
+![Soldier distance](./screen_shots/soldier_distance.png)
+
 ### 1.0 Ashe
 Ashe has two modes of fire, ASD and hip fire. We will explore both of these in this section.
 #### ASD
@@ -50,7 +63,7 @@ At a distance of 50+ Meters, crit rate of 0.5, and a falloff of 0.5, Ashe ASD ca
 At a distance of 50+ Meters, crit rate of 1.0, and a falloff of 0.5, Ashe ASD can kill a Pharah with a mercy pocket after 2.61 seconds
 ```
 ##### Ashe ASD TTK under the new falloff changes  
-![Ashe ASD TTK](./reload_results/Ashe_ASD.png)  
+![Ashe ASD TTK](./reload_results/Ashe_ASD.png)
 
 #### Hip Fire
 When firing from the hip Ashe's effective range is within 20 meters, her falloff range is between 20-40 meters, and while in her
@@ -127,4 +140,4 @@ At a distance of 45+ Meters, crit rate of 0.5, and a falloff of 0.5, Baptiste ca
 At a distance of 45+ Meters, crit rate of 1.0, and a falloff of 0.5, Baptiste can kill a Pharah with a mercy pocket after 2.29 seconds
 ```
 ##### Baptiste TTK under the new falloff changes  
-![Baptiste TTK](./reload_results/Baptiste.png)  
+![Baptiste TTK](./reload_results/Baptiste.png)
