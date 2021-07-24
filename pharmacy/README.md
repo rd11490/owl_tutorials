@@ -1,6 +1,6 @@
 ## An exploration of how the hitscan falloff nerf interacts with pharmacy
-In this exploration we will be exploring how the most recent hitscan falloff changes
-impact the ability for hitscan heroes to kill a Pharah with and without a mercy pocket.
+In this exploration we will be looking at how the most recent hitscan falloff changes
+impact the ability for hitscan heroes to kill a Pharah with and without a mercy pocket. 
 
 ### 0.1 Requirements
 The code in this tutorial was written in python 3.7 and uses the following libraries:
@@ -23,7 +23,8 @@ Hitscan damage now scales to 30% at maximum falloff range, down from 50% for the
 - Wrecking Ball
 ```
 We will be assuming that falloff in overwatch is linear, or that the damage decrease from N + 0 to N + 1 meters is the 
-same as the damage decrease from N + 1 meters to N + 2 meters.
+same as the damage decrease from N + 1 meters to N + 2 meters. We will also be assuming that the hitscan player does not miss any shots
+and that ammo is infinite.
 
 How this change impacts each here can be seen below.
 1. [Ashe](#10-ashe)
