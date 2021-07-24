@@ -7,8 +7,8 @@ The code in this tutorial was written in python 3.7 and uses the following libra
 python 3.7  
 The environment.yml page for the entire project contains everything you need to run this script.  
 
-The code used to generate the [DPS and TTK Graphs](./killing_pharmacy.py), the [Comparison Pre and Post Patch](./killing_pharmacy_compare.py), and
-determining the [break points](./explore.py) are all provided with annotations.
+The code used to generate the [TTK Graphs](./explore_with_reload.py) has been provided. I have also included a [previous writeup](./ResultsWithoutReload.md)
+that did not account for reload time.
 
 ### 0.2 The Change
 
