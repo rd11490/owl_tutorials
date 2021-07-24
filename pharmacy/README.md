@@ -27,7 +27,7 @@ The environment.yml page for the entire project contains everything you need to 
 ### 1.0 Ashe
 Ashe has two modes of fire, ASD and hip fire. We will explore both of these in this section.
 #### ASD
-When aiming down sights Ashes effective range is within 30 meters, her falloff range is between 30-50 meters, and while in her
+When aiming down sights Ashe's effective range is within 30 meters, her falloff range is between 30-50 meters, and while in her
 effective range a shot does 75 damage. Her recovery time is .65 seconds, allowing her to shoot ~1.54 shots per second 
 
 Under the new falloff changes:
@@ -45,14 +45,10 @@ Due to the change Pharmacy TTK has increased from 1.733s to 2.889s at max fallof
 
 ##### Ashe ASD DPS and TTK under the new falloff changes compared to old falloff  
 ![Ashe ASD DPS](./results/Ashe_ASD_compare.png)  
-![Ashe ASD TTK](./results/Ashe_ASD_compare_ttk.png)  
-
-
-
-
+![Ashe ASD TTK](./results/Ashe_ASD_compare_ttk.png)
 
 #### Hip Fire
-When firing from the hip Ashes effective range is within 20 meters, her falloff range is between 20-40 meters, and while in her
+When firing from the hip Ashe's effective range is within 20 meters, her falloff range is between 20-40 meters, and while in her
 effective range a shot does 40 damage. Her recovery time is .25 seconds, allowing her to shoot 4 shots per second 
 
 Under the new falloff changes:
@@ -65,10 +61,78 @@ Due to the change Pharmacy TTK has increased from 1.667s to 2.778s at max fallof
 There is no range at which Ashe Hip Fire can not overcome mercy healing to kill Pharmacy with a crit rate of %100.0
 Due to the change Pharmacy TTK has increased from 1.25s to 2.083s at max falloff
 ```
-##### Ashe ASD DPS and TTK under the new falloff changes  
+##### Ashe Hip Fire DPS and TTK under the new falloff changes  
 ![Ashe Hip Fire DPS](./results/Ashe_Hip_Fire.png)  
 ![Ashe Hip Fire TTK](./results/Ashe_Hip_Fire_ttk.png)  
 
-##### Ashe ASD DPS and TTK under the new falloff changes compared to old falloff  
+##### Ashe Hip Fire DPS and TTK under the new falloff changes compared to old falloff  
 ![Ashe Hip Fire DPS](./results/Ashe_Hip_Fire_compare.png)  
 ![Ashe Hip Fire TTK](./results/Ashe_Hip_Fire_compare_ttk.png)  
+
+### 2.0 McCree
+McCree's effective range is within 20 meters, his falloff range is between 20-40 meters, and while in his
+effective range a shot does 70 damage. His recovery time is .5 seconds, allowing him to shoot 2 shots per second 
+
+Under the new falloff changes:
+```
+Range at which McCree can no longer kill Pharmacy with a crit rate of %0.0: 38 meters
+
+There is no range at which McCree can not overcome mercy healing to kill Pharmacy with a crit rate of %50.0
+Due to the change Pharmacy TTK has increased from 1.905s to 3.175s at max falloff
+
+There is no range at which McCree can not overcome mercy healing to kill Pharmacy with a crit rate of %100.0
+Due to the change Pharmacy TTK has increased from 1.429s to 2.381s at max falloff
+```
+##### McCree DPS and TTK under the new falloff changes  
+![Ashe ASD DPS](./results/McCree.png)  
+![Ashe ASD TTK](./results/McCree_ttk.png)  
+
+##### McCree DPS and TTK under the new falloff changes compared to old falloff  
+![Ashe ASD DPS](./results/McCree_compare.png)  
+![Ashe ASD TTK](./results/McCree_compare_ttk.png)
+
+### 3.0 Soldier
+Soldier's effective range is within 30 meters, his falloff range is between 30-50 meters, and while in his
+effective range a shot does 19 damage and he shoots 9 shots per second
+
+Under the new falloff changes:
+```
+Range at which Soldier can no longer kill Pharmacy with a crit rate of %0.0: 50 meters
+
+There is no range at which Soldier can not overcome mercy healing to kill Pharmacy with a crit rate of %50.0
+Due to the change Pharmacy TTK has increased from 1.559s to 2.599s at max falloff
+
+There is no range at which Soldier can not overcome mercy healing to kill Pharmacy with a crit rate of %100.0
+Due to the change Pharmacy TTK has increased from 1.17s to 1.949s at max falloff
+```
+##### Soldier DPS and TTK under the new falloff changes  
+![Ashe ASD DPS](./results/Soldier.png)  
+![Ashe ASD TTK](./results/Soldier_ttk.png)  
+
+##### Soldier DPS and TTK under the new falloff changes compared to old falloff  
+![Ashe ASD DPS](./results/Soldier_compare.png)  
+![Ashe ASD TTK](./results/Soldier_compare_ttk.png)
+
+### 3.0 Baptiste
+baptiste_falloff = (25, 45, 24, 3 / .58, 'Baptiste')
+
+Baptiste's effective range is within 25 meters, his falloff range is between 25-45 meters, and while in his
+effective range a shot does 24 damage. He can fire a 3 round burt ever .58 seconds resulting in ~5.12 shots per second.
+
+Under the new falloff changes:
+```
+Range at which Baptiste can no longer kill Pharmacy with a crit rate of %0.0: 41 meters
+
+There is no range at which Baptiste can not overcome mercy healing to kill Pharmacy with a crit rate of %50.0
+Due to the change Pharmacy TTK has increased from 2.148s to 3.58s at max falloff
+
+There is no range at which Baptiste can not overcome mercy healing to kill Pharmacy with a crit rate of %100.0
+Due to the change Pharmacy TTK has increased from 1.611s to 2.685s at max falloff
+```
+##### Baptiste DPS and TTK under the new falloff changes  
+![Ashe ASD DPS](./results/Baptiste.png)  
+![Ashe ASD TTK](./results/Baptiste_ttk.png)  
+
+##### Baptiste DPS and TTK under the new falloff changes compared to old falloff  
+![Ashe ASD DPS](./results/Baptiste_compare.png)  
+![Ashe ASD TTK](./results/Baptiste_compare_ttk.png)
