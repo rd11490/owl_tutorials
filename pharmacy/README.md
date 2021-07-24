@@ -1,6 +1,6 @@
 ## An exploration of how the hitscan falloff nerf interacts with pharmacy
 In this exploration we will be looking at how the most recent hitscan falloff changes
-impact the ability for hitscan heroes to kill a Pharah with and without a mercy pocket. 
+impact the ability for hitscan heroes to kill a Pharah with a mercy pocket. 
 
 ### 0.1 Requirements
 The code in this tutorial was written in python 3.7 and uses the following libraries:  
@@ -22,8 +22,8 @@ Hitscan damage now scales to 30% at maximum falloff range, down from 50% for the
 - Widowmaker
 - Wrecking Ball
 ```
-We will be assuming that falloff in overwatch is linear, or that the damage decrease from N + 0 to N + 1 meters is the 
-same as the damage decrease from N + 1 meters to N + 2 meters. We will also be assuming that the hitscan player does not miss any shots.
+We will be assuming that falloff in Overwatch is linear (damage decrease from N + 0 to N + 1 meters is the 
+same as the damage decrease from N + 1 meters to N + 2 meters). We will also be assuming that the hitscan player does not miss any shots.
 
 How this change impacts each here can be seen below.
 1. [Ashe](#10-ashe)
@@ -47,8 +47,11 @@ I have created a simple workshop code so that you can go to a map and see what t
 ### 1.0 Ashe
 Ashe has two modes of fire, ASD and hip fire. We will explore both of these in this section.
 #### ASD
-When aiming down sights Ashe's effective range is within 30 meters, her falloff range is between 30-50 meters, and while in her
-effective range a shot does 75 damage. Her recovery time is .65 seconds, allowing her to shoot ~1.54 shots per second 
+Stats:
+ - Effective Range: 0-30 meters
+ - Falloff Range: 30-50 meters
+ - Base Damage: 75
+ - Recovery Time: .65 seconds
 
 Under the new falloff changes the maximum range that Ashe can kill a Pharah with a mercy pocket is:
 ```
@@ -66,8 +69,11 @@ At a distance of 50+ Meters, crit rate of 1.0, and a falloff of 0.5, Ashe ASD ca
 ![Ashe ASD TTK](./reload_results/Ashe_ASD.png)
 
 #### Hip Fire
-When firing from the hip Ashe's effective range is within 20 meters, her falloff range is between 20-40 meters, and while in her
-effective range a shot does 40 damage. Her recovery time is .25 seconds, allowing her to shoot 4 shots per second 
+Stats:
+ - Effective Range: 0-20 meters
+ - Falloff Range: 20-40 meters
+ - Base Damage: 40
+ - Recovery Time: .25 seconds
 
 Under the new falloff changes the maximum range that Ashe can kill a Pharah with a mercy pocket is:
 ```
@@ -86,8 +92,11 @@ At a distance of 50+ Meters, crit rate of 1.0, and a falloff of 0.5, Ashe Hip Fi
 
 
 ### 2.0 McCree
-McCree's effective range is within 20 meters, his falloff range is between 20-40 meters, and while in his
-effective range a shot does 70 damage. His recovery time is .5 seconds, allowing him to shoot 2 shots per second 
+Stats:
+ - Effective Range: 0-20 meters
+ - Falloff Range: 20-40 meters
+ - Base Damage: 70
+ - Recovery Time: .5 seconds
 
 Under the new falloff changes the maximum range that McCree can kill a Pharah with a mercy pocket is:
 ```
@@ -105,8 +114,11 @@ At a distance of 40+ Meters, crit rate of 1.0, and a falloff of 0.5, McCree can 
 ![McCree TTK](./reload_results/McCree.png)  
 
 ### 3.0 Soldier
-Soldier's effective range is within 30 meters, his falloff range is between 30-50 meters, and while in his
-effective range a shot does 19 damage and he shoots 9 shots per second
+Stats:
+ - Effective Range: 0-30 meters
+ - Falloff Range: 30-50 meters
+ - Base Damage: 19
+ - Recovery Time: 9 shots per second
 
 Under the new falloff changes the maximum range that McCree can kill a Pharah with a mercy pocket is:
 ```
@@ -124,8 +136,11 @@ At a distance of 50+ Meters, crit rate of 1.0, and a falloff of 0.5, Soldier can
 ![Soldier TTK](./reload_results/Soldier.png)  
 
 ### 4.0 Baptiste
-Baptiste's effective range is within 25 meters, his falloff range is between 25-45 meters, and while in his
-effective range a shot does 24 damage. He can fire a 3 round burt ever .58 seconds resulting in ~5.12 shots per second.
+Stats:
+ - Effective Range: 0-25 meters
+ - Falloff Range: 25-45 meters
+ - Base Damage: 24 per bullet (3 round burst)
+ - Recovery Time: .58 seconds
 
 Under the new falloff changes the maximum range that McCree can kill a Pharah with a mercy pocket is:
 ```
