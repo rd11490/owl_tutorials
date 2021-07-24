@@ -3,9 +3,9 @@ In this exploration we will be looking at how the most recent hitscan falloff ch
 impact the ability for hitscan heroes to kill a Pharah with and without a mercy pocket. 
 
 ### 0.1 Requirements
-The code in this tutorial was written in python 3.7 and uses the following libraries:
-python 3.7
-The environment.yml page for the entire project contains everything you need to run this script.
+The code in this tutorial was written in python 3.7 and uses the following libraries:  
+python 3.7  
+The environment.yml page for the entire project contains everything you need to run this script.  
 
 The code used to generate the [DPS and TTK Graphs](./killing_pharmacy.py), the [Comparison Pre and Post Patch](./killing_pharmacy_compare.py), and
 determining the [break points](./explore.py) are all provided with annotations.
