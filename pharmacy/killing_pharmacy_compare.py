@@ -72,7 +72,7 @@ def plot_damage_fallof(hero_stats):
 
         plt.xlim((0, 80))
         plt.ylim((0, 300))
-        plt.title('{0} Damage Per Second'.format(hero_stats[4]))
+        plt.title('{0} Damage Per Second (0% Crit Rate)'.format(hero_stats[4]))
         plt.xlabel('Distance (meters)')
         plt.ylabel('Damage (Healing) per Second')
 
@@ -89,7 +89,7 @@ def plot_damage_fallof(hero_stats):
 
         plt.xlim((0, 80))
         plt.ylim((0, 10))
-        plt.title('{0} Time to Kill Pharah'.format(hero_stats[4]))
+        plt.title('{0} Time to Kill Pharah (0% Crit Rate)'.format(hero_stats[4]))
         plt.xlabel('Distance (meters)')
         plt.ylabel('Time to Kill (seconds)')
         plt.legend()

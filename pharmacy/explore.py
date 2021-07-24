@@ -47,14 +47,14 @@ def explore_data(hero_stats, crit_accuracy):
     # Find the range at which the hero DPS is less than mercy HPS
     ineffective_list = [i for i, j in enumerate(y) if j < mercy_healing]
     if len(ineffective_list) > 0:
-        print('Range at which {} can no longer kill Pharmacy with a crit rate of %{}: {} meters'.format(hero_stats[4],
+        print('Range at which {} can no longer kill Pharmacy with a crit rate of {}%: {} meters'.format(hero_stats[4],
                                                                                                         crit_accuracy * 100,
                                                                                                         x[
                                                                                                             ineffective_list[
                                                                                                                 0]]))
     else:
         print(
-            'There is no range at which {} can not overcome mercy healing to kill Pharmacy with a crit rate of %{}'.format(
+            'There is no range at which {} can not overcome mercy healing to kill Pharmacy with a crit rate of {}%'.format(
                 hero_stats[4], crit_accuracy * 100))
         new_ttk = round(200 / (damage * 0.3), 3)
         old_ttk = round(200 / (damage * 0.5), 3)

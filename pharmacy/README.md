@@ -39,11 +39,11 @@ effective range a shot does 75 damage. Her recovery time is .65 seconds, allowin
 
 Under the new falloff changes:
 ```
-Range at which Ashe ASD can no longer kill Pharmacy with a crit rate of %0.0: 45 meters
+Range at which Ashe ASD can no longer kill Pharmacy with a crit rate of 0%: 45 meters
 
-Range at which Ashe ASD can no longer kill Pharmacy with a crit rate of %50.0: 50 meters
+Range at which Ashe ASD can no longer kill Pharmacy with a crit rate of 50%: 50 meters
 
-There is no range at which Ashe ASD can not overcome mercy healing to kill Pharmacy with a crit rate of %100.0
+There is no range at which Ashe ASD can not overcome mercy healing to kill Pharmacy with a crit rate of 100%
 Due to the change Pharmacy TTK has increased from 1.733s to 2.889s at max falloff
 ```
 ##### Ashe ASD DPS and TTK under the new falloff changes  
@@ -60,12 +60,12 @@ effective range a shot does 40 damage. Her recovery time is .25 seconds, allowin
 
 Under the new falloff changes:
 ```
-Range at which Ashe Hip Fire can no longer kill Pharmacy with a crit rate of %0.0: 39 meters
+Range at which Ashe Hip Fire can no longer kill Pharmacy with a crit rate of 0%: 39 meters
 
-There is no range at which Ashe Hip Fire can not overcome mercy healing to kill Pharmacy with a crit rate of %50.0
+There is no range at which Ashe Hip Fire can not overcome mercy healing to kill Pharmacy with a crit rate of 50%
 Due to the change Pharmacy TTK has increased from 1.667s to 2.778s at max falloff
 
-There is no range at which Ashe Hip Fire can not overcome mercy healing to kill Pharmacy with a crit rate of %100.0
+There is no range at which Ashe Hip Fire can not overcome mercy healing to kill Pharmacy with a crit rate of 100%
 Due to the change Pharmacy TTK has increased from 1.25s to 2.083s at max falloff
 ```
 ##### Ashe Hip Fire DPS and TTK under the new falloff changes  
@@ -82,12 +82,12 @@ effective range a shot does 70 damage. His recovery time is .5 seconds, allowing
 
 Under the new falloff changes:
 ```
-Range at which McCree can no longer kill Pharmacy with a crit rate of %0.0: 38 meters
+Range at which McCree can no longer kill Pharmacy with a crit rate of 0%: 38 meters
 
-There is no range at which McCree can not overcome mercy healing to kill Pharmacy with a crit rate of %50.0
+There is no range at which McCree can not overcome mercy healing to kill Pharmacy with a crit rate of 50%
 Due to the change Pharmacy TTK has increased from 1.905s to 3.175s at max falloff
 
-There is no range at which McCree can not overcome mercy healing to kill Pharmacy with a crit rate of %100.0
+There is no range at which McCree can not overcome mercy healing to kill Pharmacy with a crit rate of 100%
 Due to the change Pharmacy TTK has increased from 1.429s to 2.381s at max falloff
 ```
 ##### McCree DPS and TTK under the new falloff changes  
@@ -104,12 +104,12 @@ effective range a shot does 19 damage and he shoots 9 shots per second
 
 Under the new falloff changes:
 ```
-Range at which Soldier can no longer kill Pharmacy with a crit rate of %0.0: 50 meters
+Range at which Soldier can no longer kill Pharmacy with a crit rate of 0%: 50 meters
 
-There is no range at which Soldier can not overcome mercy healing to kill Pharmacy with a crit rate of %50.0
+There is no range at which Soldier can not overcome mercy healing to kill Pharmacy with a crit rate of 50%
 Due to the change Pharmacy TTK has increased from 1.559s to 2.599s at max falloff
 
-There is no range at which Soldier can not overcome mercy healing to kill Pharmacy with a crit rate of %100.0
+There is no range at which Soldier can not overcome mercy healing to kill Pharmacy with a crit rate of 100%
 Due to the change Pharmacy TTK has increased from 1.17s to 1.949s at max falloff
 ```
 ##### Soldier DPS and TTK under the new falloff changes  
@@ -128,12 +128,12 @@ effective range a shot does 24 damage. He can fire a 3 round burt ever .58 secon
 
 Under the new falloff changes:
 ```
-Range at which Baptiste can no longer kill Pharmacy with a crit rate of %0.0: 41 meters
+Range at which Baptiste can no longer kill Pharmacy with a crit rate of 0%: 41 meters
 
-There is no range at which Baptiste can not overcome mercy healing to kill Pharmacy with a crit rate of %50.0
+There is no range at which Baptiste can not overcome mercy healing to kill Pharmacy with a crit rate of 50%
 Due to the change Pharmacy TTK has increased from 2.148s to 3.58s at max falloff
 
-There is no range at which Baptiste can not overcome mercy healing to kill Pharmacy with a crit rate of %100.0
+There is no range at which Baptiste can not overcome mercy healing to kill Pharmacy with a crit rate of 100%
 Due to the change Pharmacy TTK has increased from 1.611s to 2.685s at max falloff
 ```
 ##### Baptiste DPS and TTK under the new falloff changes  
