@@ -107,7 +107,7 @@ def true_ttk(hero_stats):
 
     plt.legend()
     plt.xlim(0, 80)
-    plt.ylim(0, 20)
+    plt.ylim(0, 10)
     plt.title('{} Time to Kill Pharah'.format(hero_stats[6]))
     plt.xlabel('Distance (meters)')
     plt.ylabel('Time to Kill (seconds)')
