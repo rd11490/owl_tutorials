@@ -95,6 +95,33 @@ def calculate_rmts(stint_X_rows, stint_Y_rows, map_type):
     print('MAE: ', metrics.mean_absolute_error(stint_Y_rows, pred))
     print('RME: ', metrics.mean_squared_error(stint_Y_rows, pred))
 
+    # residuals = stint_Y_rows - pred
+    # scalar = 1/(stint_X_rows.shape[0] - stint_X_rows.shape[1] - 1)
+    # weights = np.ones(shape=(stint_X_rows.shape[0], 1))
+    # idmat = np.eye(stint_X_rows.shape[1])
+    # mult = np.matmul(np.transpose(stint_X_rows), weights)
+    # important_part = np.linalg.inv(mult + idmat)
+    # errors = np.matmul(np.transpose(residuals), residuals)
+    # variance = errors * important_part * scalar
+    # stdev_o = []
+    # stdev_d = []
+    # for i in range(0, 20):
+    #     var_o = 1.96 * np.sqrt(variance[i][i])
+    #     var_d = 1.96 * np.sqrt(variance[20 + i][20 +i])
+    #
+    #     stdev_o.append(var_o)
+    #     stdev_d.append(var_d)
+    #
+    #
+    # attack_str_var = attack_str + ' stdev'
+    # defend_str_var = defend_str + ' stdev'
+    #
+    # rmts[attack_str_var] = stdev_o
+    # rmts[defend_str_var] = stdev_d
+
+
+
+
     rmts = rmts.sort_values(by='{} rmsa'.format(map_type), ascending=False)
     print(rmts.head(1000))
     return rmts

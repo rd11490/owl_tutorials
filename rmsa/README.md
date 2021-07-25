@@ -425,12 +425,28 @@ team 2 score 1.495
 
 Now that we have created a method for scoring each map type we want to be able to build a model to predict how two teams
 playing against each other on that map type would perform. To do this we are going to attempt to use a method that is
-commonly used in traditional teams sports for assigning credit/blame to each player using only the players involved in
-an event, and the outcome of the event. 
+commonly used in traditional team sports for assigning credit/blame to each player using only the players involved in
+an event, and the outcome of the event. In our case instead of players we will be using teams. This is because Overwatch League
+teams do not perform substitutions often enough to overcome multicolinearity. I plan to explore this subject in a later tutorial.  
+  
+The method we will be using to assign credit is regularized linear regression. We will build a sparse design matrix with 40 columns, 
+an attacking and defending column for each team in Overwatch League. Each row will represent a single map played, the attacking team will
+be represented by a 1, the defending team by a -1 and all other columns will be filled with 0s. Our target variable will be the map score
+for that stage of the map. Below is an example of a row from our map score data and it's resulting row in our regression input.  
+  
+Map Score
+```
+   match_id  game_number map_name map_type      map_winner  match_date        team_one_name        team_two_name  team_one_score  team_two_score  season
+0     37147            1    Busan  Control     Dallas Fuel  2021/05/02      Houston Outlaws          Dallas Fuel           0.495           1.000    2021
+```
+Input to regression
+```
+X = [ 0,  0,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 0,  0,  0,  0,  0, -1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0.]
+Y = [0.495]
+```
 
-// TODO: 
-1. Finish writing out verbal explination of regularization
-2. Come up with simple 3 team example
+Once we have built our design matrix and target array
+// TODO:
 4. show results for each map type
 5. explain summing for overall team rating and show results.
 
