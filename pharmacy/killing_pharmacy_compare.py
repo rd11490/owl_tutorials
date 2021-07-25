@@ -6,7 +6,7 @@ mercy_healing = 55
 # Tuple representing basic character information relevant to this script
 # (Range at which falloff starts, Range for maximum falloff, base damage per shot, shots per second, identifier)
 ashe_hip_falloff = (20, 40, 40, 4, 'Ashe Hip Fire')
-ashe_asd_falloff = (30, 50, 75, 1 / .65, 'Ashe ASD')
+ashe_ads_falloff = (30, 50, 75, 1 / .65, 'Ashe ADS')
 baptiste_falloff = (25, 45, 24, 3 / .58, 'Baptiste')
 mccree_falloff = (20, 40, 70, 2, 'McCree')
 soldier_falloff = (30, 50, 19, 9, 'Soldier')
@@ -102,5 +102,5 @@ def plot_damage_fallof(hero_stats):
     plt.close(fig2)
 
 
-for hero in [ashe_hip_falloff, ashe_asd_falloff, mccree_falloff, soldier_falloff, baptiste_falloff]:
+for hero in [ashe_hip_falloff, ashe_ads_falloff, mccree_falloff, soldier_falloff, baptiste_falloff]:
     plot_damage_fallof(hero)

@@ -45,8 +45,8 @@ I have created a simple workshop code so that you can go to a map and see what t
 ![Soldier distance](./screen_shots/soldier_distance.png)
 
 ### 1.0 Ashe
-Ashe has two modes of fire, ASD and hip fire. We will explore both of these in this section.
-#### ASD
+Ashe has two modes of fire, ADS and hip fire. We will explore both of these in this section.
+#### ADS
 Stats:
  - Effective Range: 0-30 meters
  - Falloff Range: 30-50 meters
@@ -55,18 +55,18 @@ Stats:
 
 Under the new falloff changes the maximum range that Ashe can kill a Pharah with a mercy pocket is:
 ```
-At a distance of 39 Meters, crit rate of 0.0, and a falloff of 0.3, Ashe ASD can kill a Pharah with a mercy pocket after 6.51 seconds
-At a distance of 46 Meters, crit rate of 0.5, and a falloff of 0.3, Ashe ASD can kill a Pharah with a mercy pocket after 7.16 seconds
-At a distance of 49 Meters, crit rate of 1.0, and a falloff of 0.3, Ashe ASD can kill a Pharah with a mercy pocket after 7.16 seconds
+At a distance of 39 Meters, crit rate of 0.0, and a falloff of 0.3, Ashe ADS can kill a Pharah with a mercy pocket after 6.51 seconds
+At a distance of 46 Meters, crit rate of 0.5, and a falloff of 0.3, Ashe ADS can kill a Pharah with a mercy pocket after 7.16 seconds
+At a distance of 49 Meters, crit rate of 1.0, and a falloff of 0.3, Ashe ADS can kill a Pharah with a mercy pocket after 7.16 seconds
 ```
 Compared to the old falloff
 ```
-At a distance of 43 Meters, crit rate of 0.0, and a falloff of 0.5, Ashe ASD can kill a Pharah with a mercy pocket after 7.16 seconds
-At a distance of 50+ Meters, crit rate of 0.5, and a falloff of 0.5, Ashe ASD can kill a Pharah with a mercy pocket after 5.21 seconds
-At a distance of 50+ Meters, crit rate of 1.0, and a falloff of 0.5, Ashe ASD can kill a Pharah with a mercy pocket after 2.61 seconds
+At a distance of 43 Meters, crit rate of 0.0, and a falloff of 0.5, Ashe ADS can kill a Pharah with a mercy pocket after 7.16 seconds
+At a distance of 50+ Meters, crit rate of 0.5, and a falloff of 0.5, Ashe ADS can kill a Pharah with a mercy pocket after 5.21 seconds
+At a distance of 50+ Meters, crit rate of 1.0, and a falloff of 0.5, Ashe ADS can kill a Pharah with a mercy pocket after 2.61 seconds
 ```
-##### Ashe ASD TTK under the new falloff changes  
-![Ashe ASD TTK](./reload_results/Ashe_ASD.png)
+##### Ashe ADS TTK under the new falloff changes  
+![Ashe ADS TTK](./reload_results/Ashe_ADS.png)
 
 #### Hip Fire
 Stats:

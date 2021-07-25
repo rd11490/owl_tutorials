@@ -33,27 +33,27 @@ How this change impacts each here can be seen below.
 4. [Baptiste](#30-baptiste)
 
 ### 1.0 Ashe
-Ashe has two modes of fire, ASD and hip fire. We will explore both of these in this section.
-#### ASD
+Ashe has two modes of fire, ADS and hip fire. We will explore both of these in this section.
+#### ADS
 When aiming down sights Ashe's effective range is within 30 meters, her falloff range is between 30-50 meters, and while in her
 effective range a shot does 75 damage. Her recovery time is .65 seconds, allowing her to shoot ~1.54 shots per second 
 
 Under the new falloff changes:
 ```
-Range at which Ashe ASD can no longer kill Pharmacy with a crit rate of 0%: 45 meters
+Range at which Ashe ADS can no longer kill Pharmacy with a crit rate of 0%: 45 meters
 
-Range at which Ashe ASD can no longer kill Pharmacy with a crit rate of 50%: 50 meters
+Range at which Ashe ADS can no longer kill Pharmacy with a crit rate of 50%: 50 meters
 
-There is no range at which Ashe ASD can not overcome mercy healing to kill Pharmacy with a crit rate of 100%
+There is no range at which Ashe ADS can not overcome mercy healing to kill Pharmacy with a crit rate of 100%
 Due to the change Pharmacy TTK has increased from 1.733s to 2.889s at max falloff
 ```
-##### Ashe ASD DPS and TTK under the new falloff changes  
-![Ashe ASD DPS](./results/Ashe_ASD.png)  
-![Ashe ASD TTK](./results/Ashe_ASD_ttk.png)  
+##### Ashe ADS DPS and TTK under the new falloff changes  
+![Ashe ADS DPS](./results/Ashe_ADS.png)  
+![Ashe ADS TTK](./results/Ashe_ADS_ttk.png)  
 
-##### Ashe ASD DPS and TTK under the new falloff changes compared to old falloff  
-![Ashe ASD DPS](./results/Ashe_ASD_compare.png)  
-![Ashe ASD TTK](./results/Ashe_ASD_compare_ttk.png)
+##### Ashe ADS DPS and TTK under the new falloff changes compared to old falloff  
+![Ashe ADS DPS](./results/Ashe_ADS_compare.png)  
+![Ashe ADS TTK](./results/Ashe_ADS_compare_ttk.png)
 
 #### Hip Fire
 When firing from the hip Ashe's effective range is within 20 meters, her falloff range is between 20-40 meters, and while in her

@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 tick_rate = 128
 
 # (falloff start, falloff end, damage, recover (s), reload(s), ammo, id
-ashe_asd = (30, 50, 75, .65, 3.5, 12, 'Ashe ASD')
+ashe_ads = (30, 50, 75, .65, 3.5, 12, 'Ashe ADS')
 ashe_hip = (20, 40, 40, .25, 3.5, 12, 'Ashe Hip Fire')
 mccree = (20, 40, 70, .5, 1.5, 6, 'McCree')
 baptiste = (25, 45, 24 * 3, .58, 1.5, 15, 'Baptiste')
@@ -115,5 +115,5 @@ def true_ttk(hero_stats):
     plt.savefig('reload_results/{}.png'.format(file_name))
 
 
-for hero in [ashe_hip, ashe_asd, mccree, soldier, baptiste]:
+for hero in [ashe_hip, ashe_ads, mccree, soldier, baptiste]:
     true_ttk(hero)
