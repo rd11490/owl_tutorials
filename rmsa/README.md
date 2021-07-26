@@ -628,14 +628,14 @@ We will then use our results to predict the winners of all maps in the Summer Sh
 The results of this exploration is shown below:
 ```
 Control Evaluation
-Correctly Predicted: 102/140 (72.857%) Maps correctly
+Correctly Predicted: 102/140 (72.857%) Map results
 
 Assault Evaluation
-Correctly Predicted: 56/94 (59.574%) Maps correctly
+Correctly Predicted: 56/94 (59.574%) Map results
 
 Hybrid Evaluation
-Correctly Predicted: 56/92 (60.87%) Maps correctly
+Correctly Predicted: 56/92 (60.87%) Map results
 
 Escort Evaluation
-Correctly Predicted: 50/82 (60.976%) Maps correctly
+Correctly Predicted: 50/82 (60.976%) Map results
 ```
