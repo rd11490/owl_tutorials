@@ -1,7 +1,6 @@
 import pandas as pd
 import numpy as np
 from sklearn.linear_model import RidgeCV
-from sklearn import metrics
 
 from rmsa.utils.constants import Maps
 
@@ -77,8 +76,8 @@ def calculate_rmts(stint_X_rows, stint_Y_rows, map_type):
     rmts = pd.DataFrame(team_coef_arr)
     intercept = model.intercept_[0]
 
-    attack_str = '{0} rmsa attack'.format(map_type)
-    defend_str = '{0} rmsa defend'.format(map_type)
+    attack_str = 'rmsa attack'
+    defend_str = 'rmsa defend'
 
     rmts.columns = ['team', attack_str, defend_str]
     rmts[attack_str] = rmts[attack_str].astype(float)
@@ -87,45 +86,33 @@ def calculate_rmts(stint_X_rows, stint_Y_rows, map_type):
     rmts['{} rmsa'.format(map_type)] = rmts[attack_str] + rmts[defend_str]
     rmts['{} intercept'.format(map_type)] = intercept
 
-    print('r^2: ', model.score(stint_X_rows, stint_Y_rows))
-    print('lambda: ', alpha_to_lambda(model.alpha_, stint_X_rows.shape[0]))
-    print('intercept: ', intercept)
-
-    pred = model.predict(stint_X_rows)
-    print('MAE: ', metrics.mean_absolute_error(stint_Y_rows, pred))
-    print('MSE: ', metrics.mean_squared_error(stint_Y_rows, pred))
-
-    # residuals = stint_Y_rows - pred
-    # scalar = 1/(stint_X_rows.shape[0] - stint_X_rows.shape[1] - 1)
-    # weights = np.ones(shape=(stint_X_rows.shape[0], 1))
-    # idmat = np.eye(stint_X_rows.shape[1])
-    # mult = np.matmul(np.transpose(stint_X_rows), weights)
-    # important_part = np.linalg.inv(mult + idmat)
-    # errors = np.matmul(np.transpose(residuals), residuals)
-    # variance = errors * important_part * scalar
-    # stdev_o = []
-    # stdev_d = []
-    # for i in range(0, 20):
-    #     var_o = 1.96 * np.sqrt(variance[i][i])
-    #     var_d = 1.96 * np.sqrt(variance[20 + i][20 +i])
-    #
-    #     stdev_o.append(var_o)
-    #     stdev_d.append(var_d)
-    #
-    #
-    # attack_str_var = attack_str + ' stdev'
-    # defend_str_var = defend_str + ' stdev'
-    #
-    # rmts[attack_str_var] = stdev_o
-    # rmts[defend_str_var] = stdev_d
-
-
-
-
-    rmts = rmts.sort_values(by='{} rmsa'.format(map_type), ascending=False)
-    print(rmts.head(1000).round(3))
     return rmts
 
+def determine_predicted_winner(row):
+    net_one_attack = row['rmsa attack_one'] - row['rmsa defend_two']
+    net_two_attack = row['rmsa attack_two'] - row['rmsa defend_one']
+    if net_one_attack > net_two_attack:
+        return row['team_one_name']
+    else:
+        return row['team_two_name']
+
+
+def evaluate(test_rows, rmsa):
+    rmsa_for_join = rmsa[['team', 'rmsa attack', 'rmsa defend']]
+    test_rows_for_join = test_rows[['match_id', 'game_number', 'map_winner', 'team_one_name', 'team_two_name']]
+    merged = test_rows_for_join.merge(rmsa_for_join, left_on='team_one_name', right_on='team').merge(rmsa_for_join, left_on='team_two_name', right_on='team', suffixes=('_one', '_two'))
+    merged = merged.drop_duplicates()
+    merged['predicted_winner'] = merged.apply(determine_predicted_winner, axis=1)
+    merged['correct_prediction'] = merged['map_winner'] == merged['predicted_winner']
+
+    total_maps = merged.shape[0]
+    correct_preds = merged['correct_prediction'].sum()
+
+    print('Correctly Predicted: {}/{} ({}%) Maps correctly'.format(correct_preds, total_maps, round(100*correct_preds/total_maps,3)))
+
+
+map_scores_for_test = map_scores[map_scores['match_date'] > '2021/06/24']
+map_scores = map_scores[map_scores['match_date'] <= '2021/06/24']
 
 control = map_scores[map_scores['map_type'] == Maps.Control]
 control_X, control_Y = extract_X_Y(control)
@@ -140,20 +127,26 @@ hybrid_X, hybrid_Y = extract_X_Y(hybrid)
 hybrid_rmts = calculate_rmts(hybrid_X, hybrid_Y, Maps.Hybrid)
 
 assault = map_scores[map_scores['map_type'] == Maps.Assault]
-
 assault_X, assault_Y = extract_X_Y(assault)
 assault_rmts = calculate_rmts(assault_X, assault_Y, Maps.Assault)
 
-merged = control_rmts.merge(escort_rmts, on='team').merge(hybrid_rmts, on='team').merge(assault_rmts, on='team')
 
-merged['Total Rating'] = (merged['Control rmsa'] * 2) + merged['Escort rmsa'] + merged['Hybrid rmsa'] + merged[
-    'Assault rmsa']
-merged = merged.round(3)
-print(merged)
+control_test = map_scores_for_test[map_scores_for_test['map_type'] == Maps.Control]
+print('Control Evaluation')
+evaluate(control_test, control_rmts)
 
-ratings = merged[['team', 'Total Rating']]
-ratings = ratings.sort_values(by='Total Rating', ascending=False)
-ratings['rank'] = ratings['Total Rating'].rank(ascending=False)
-print(ratings)
 
-merged.to_csv('./results/rmsa.csv', index=False)
+assault_test = map_scores_for_test[map_scores_for_test['map_type'] == Maps.Assault]
+print('Assault Evaluation')
+evaluate(assault_test, assault_rmts)
+
+hybrid_test = map_scores_for_test[map_scores_for_test['map_type'] == Maps.Hybrid]
+print('Hybrid Evaluation')
+evaluate(hybrid_test, hybrid_rmts)
+
+escort_test = map_scores_for_test[map_scores_for_test['map_type'] == Maps.Escort]
+print('Escort Evaluation')
+evaluate(escort_test, escort_rmts)
+
+
+
