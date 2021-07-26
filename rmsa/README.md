@@ -1,4 +1,4 @@
-## An attempt at ranking the performance of a team in a season
+## Regularized Map Score Added - An Attempt to Build a Predictive All in One Metric for OWL Teams
 
 In this "tutorial" we will attempt to generate a rating for each team that accounts who each team players and how dominant their win is. 
 We will do this by coming up with a method for calculating a "map score" for each map played, then use regularized linear 
@@ -790,3 +790,4 @@ While working on this project I came across a couple of areas that I would like 
 1. Is map score more predictive of future success than map win rate? Is it an actual predictive improvement?
 2. The coefficients we generated for each team are point estimate with an underlying distribution behind them. This means that we can make a more complicated MCMC prediction model to attempt to determine map winners and match winners.
 3. Build a match prediction engine. Given 2 teams and the order of game modes, predict who will win. Determine how well this system can predict final map score.
+4. Extend this concept to players. I've done this in the past and found the lack of substitutions make it impossible to overcome multicolinearity, but it would still be interesting to explore

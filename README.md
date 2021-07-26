@@ -20,4 +20,6 @@ Tutorials on acquiring and working with Overwatch League Data
 
 #### [Exploring how Hitscan Falloff Changes Impact Pharmacy](pharmacy/)
 
+#### [Regularized Map Score Added - An Attempt at Building a Predictive All In One Metric for OWL Teams](rmsa/)
+
 
