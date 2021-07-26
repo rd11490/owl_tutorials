@@ -13,16 +13,25 @@ are other tutorials in this project for how to [Automate the Download of Statsla
 If you see any issues or think there is a better way to do something,
 don't hesitate to open a PR, submit an issue, or reach out to me directly
 
-### 0.1 Requirements
-The code in this tutorial was written in python 3.7 and uses the following libraries:
-Pandas
-Requests
-sklearn
+### Index
+ - 0.1 [Results](#01-tldr-results)
+ - 0.2 [Requirements to run the code](#02-requirements)
+ - 1.0 [Calculating Map Score](#1-calculating-map-score)
+ - 1.1 [Calculating Map Score - Assault](#11-assault-map-score)
+ - 1.2 [Calculating Map Score - Escort](#12-escort-map-score)
+ - 1.3 [Calculating Map Score - Hybrid](#13-hybrid-map-score)
+ - 1.4 [Calculating Map Score - Control](#14-control-map-score)
+ - 2.0 [Calculating Map Score Added](#2-calculating-map-score-added)
+ - 2.1 [Calculating Map Score Added - Control](#21-control)
+ - 2.2 [Calculating Map Score Added - Assault](#22-assault)
+ - 2.3 [Calculating Map Score Added - Escord](#23-escort)
+ - 2.4 [Calculating Map Score Added - Hybrid](#24-hybrid)
+ - 2.5 [Calculating Total Map Score Added](#25-total-map-score-added)
+ - 3.0 [Predicting Map Winners](#30-predicting-map-winners)
+ - 4.0 [Future Work](#40-future-work)
 
-The environment.yml page for the entire project contains everything you need to run this script.
-
-### 0. TLDR Results:
-#### Total Map Score Added
+### 0.1 TLDR Results:
+#### 0.1.1 Total Map Score Added
 ``` 
                       team  Total Rating  rank
 0              Dallas Fuel         1.025   1.0
@@ -47,7 +56,7 @@ The environment.yml page for the entire project contains everything you need to 
 19     Los Angeles Valiant        -1.360  20.0
 ```
 
-#### Control
+#### 0.1.2 Control
 ```
                       team  Control rmsa attack  Control rmsa defend  Control rmsa  Control intercept
 3              Dallas Fuel                0.121                0.093         0.214              0.783
@@ -71,7 +80,7 @@ The environment.yml page for the entire project contains everything you need to 
 8          London Spitfire               -0.080               -0.079        -0.159              0.783
 10     Los Angeles Valiant               -0.114               -0.098        -0.212              0.783
 ```
-#### Assault
+#### 0.1.3 Assault
 ```
                       team  Assault rmsa attack  Assault rmsa defend  Assault rmsa  Assault intercept
 16        Shanghai Dragons                0.197                0.247         0.444              1.116
@@ -96,7 +105,7 @@ The environment.yml page for the entire project contains everything you need to 
 10     Los Angeles Valiant               -0.308               -0.046        -0.354              1.116
 ```
 
-#### Escort
+#### 0.1.4 Escort
 ```
                       team  Escort rmsa attack  Escort rmsa defend  Escort rmsa  Escort intercept
 13     Philadelphia Fusion               0.075               0.048        0.123             0.908
@@ -121,7 +130,7 @@ The environment.yml page for the entire project contains everything you need to 
 10     Los Angeles Valiant              -0.087              -0.113       -0.200             0.908
 ```
 
-#### Hybrid
+#### 0.1.5 Hybrid
 ```
                       team  Hybrid rmsa attack  Hybrid rmsa defend  Hybrid rmsa  Hybrid intercept
 0            Atlanta Reign               0.116               0.092        0.208             0.926
@@ -145,6 +154,15 @@ The environment.yml page for the entire project contains everything you need to 
 17         Toronto Defiant              -0.167              -0.106       -0.273             0.926
 10     Los Angeles Valiant              -0.228              -0.155       -0.383             0.926
 ```
+
+
+### 0.2 Requirements
+The code in this tutorial was written in python 3.7 and uses the following libraries:
+Pandas
+Requests
+sklearn
+
+The environment.yml page for the entire project contains everything you need to run this script.
 
 ### 1. Calculating Map Score
 
@@ -578,7 +596,7 @@ how predictive Regularized Map Score Added is when attempting to predict the out
 Below are the results for the regression over the 2021 season up to and through the Summer Showdown Tournament.
 
 
-#### Control
+#### 2.1 Control
 Results:
 ```
                       team  Control rmsa attack  Control rmsa defend  Control rmsa  Control intercept
@@ -612,7 +630,7 @@ r^2:  0.105
 MAE:  0.257
 MSE:  0.103
 ```
-#### Assault
+#### 2.2 Assault
 Results:
 ```
                       team  Assault rmsa attack  Assault rmsa defend  Assault rmsa  Assault intercept
@@ -647,7 +665,7 @@ MAE:  0.524
 RME:  0.441
 ```
 
-#### Escort
+#### 2.3 Escort
 Results:
 ```
                       team  Escort rmsa attack  Escort rmsa defend  Escort rmsa  Escort intercept
@@ -682,7 +700,7 @@ MAE:  0.3
 RME:  0.156
 ```
 
-#### Hybrid
+#### 2.4 Hybrid
 Results:
 ```
                       team  Hybrid rmsa attack  Hybrid rmsa defend  Hybrid rmsa  Hybrid intercept
@@ -717,7 +735,7 @@ MAE:  0.335
 RME:  0.221
 ```
 
-### Total Map Score Added
+### 2.5 Total Map Score Added
 The final thing we can do is attempt to create a power ranking by summing the RMSA for each game mode in a 5 map series. The results are shown below:
 ``` 
                       team  Total Rating  rank
@@ -743,7 +761,7 @@ The final thing we can do is attempt to create a power ranking by summing the RM
 19     Los Angeles Valiant        -1.360  20.0
 ```
 
-### Predicting Map Winners
+### 3.0 Predicting Map Winners
 
 In the previous section we showed the in sample map score prediction errors for each map played, but what we should really care about is how effective this
 model is at predicting out of sample map winners. To do this we will split our data into a training set of all maps played in the May Melee and the June Joust and retrain our model.
@@ -767,6 +785,8 @@ Escort Evaluation
 Correctly Predicted: 50/82 (60.976%) Map results
 ```
 
-### Future Work
-The coefficients we generated for each team are point estimate with an underlying distribution behind them. 
-This means that we can make a more complicated MCMC prediction model to attempt to determine map winners and match winners.
+### 4.0 Future Work
+While working on this project I came across a couple of areas that I would like to explore further.
+1. Is map score more predictive of future success than map win rate? Is it an actual predictive improvement?
+2. The coefficients we generated for each team are point estimate with an underlying distribution behind them. This means that we can make a more complicated MCMC prediction model to attempt to determine map winners and match winners.
+3. Build a match prediction engine. Given 2 teams and the order of game modes, predict who will win. Determine how well this system can predict final map score.

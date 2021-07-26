@@ -88,6 +88,9 @@ def calculate_rmts(stint_X_rows, stint_Y_rows, map_type):
 
     return rmts
 
+
+# Everything above this line is identical to map_scores.py
+# Calculate who will win a map based on the RMSA
 def determine_predicted_winner(row):
     net_one_attack = row['rmsa attack_one'] - row['rmsa defend_two']
     net_two_attack = row['rmsa attack_two'] - row['rmsa defend_one']
@@ -97,53 +100,69 @@ def determine_predicted_winner(row):
         return row['team_two_name']
 
 
+# Evaluate each game type for prediction results
 def evaluate(test_rows, rmsa):
+    # Select the columns necessary for rmsa for each team
     rmsa_for_join = rmsa[['team', 'rmsa attack', 'rmsa defend']]
+    # Select the necessary columns from scored map results
     test_rows_for_join = test_rows[['match_id', 'game_number', 'map_winner', 'team_one_name', 'team_two_name']]
+    # Merge RMSA with our scored maps
     merged = test_rows_for_join.merge(rmsa_for_join, left_on='team_one_name', right_on='team').merge(rmsa_for_join, left_on='team_two_name', right_on='team', suffixes=('_one', '_two'))
+    # Drop Duplicates
     merged = merged.drop_duplicates()
+    # Predict the winner of each map
     merged['predicted_winner'] = merged.apply(determine_predicted_winner, axis=1)
+    # Determine if the prediction is correct
     merged['correct_prediction'] = merged['map_winner'] == merged['predicted_winner']
 
     total_maps = merged.shape[0]
     correct_preds = merged['correct_prediction'].sum()
 
+    # Calculate the percentage of correct predictions
     print('Correctly Predicted: {}/{} ({}%) Map results'.format(correct_preds, total_maps, round(100*correct_preds/total_maps,3)))
 
 
+# Pull out the map scores for the Summer Showdown
 map_scores_for_test = map_scores[map_scores['match_date'] > '2021/06/24']
+# Pull out the map scores for all maps prior to the Summer Showdown
 map_scores = map_scores[map_scores['match_date'] <= '2021/06/24']
 
+# Calculate Control RMSA
 control = map_scores[map_scores['map_type'] == Maps.Control]
 control_X, control_Y = extract_X_Y(control)
 control_rmts = calculate_rmts(control_X, control_Y, Maps.Control)
 
+# Calculate Escort RMSA
 escort = map_scores[map_scores['map_type'] == Maps.Escort]
 escort_X, escort_Y = extract_X_Y(escort)
 escort_rmts = calculate_rmts(escort_X, escort_Y, Maps.Escort)
 
+# Calculate Hybrid RMSA
 hybrid = map_scores[map_scores['map_type'] == Maps.Hybrid]
 hybrid_X, hybrid_Y = extract_X_Y(hybrid)
 hybrid_rmts = calculate_rmts(hybrid_X, hybrid_Y, Maps.Hybrid)
 
+# Calculate Assault RMSA
 assault = map_scores[map_scores['map_type'] == Maps.Assault]
 assault_X, assault_Y = extract_X_Y(assault)
 assault_rmts = calculate_rmts(assault_X, assault_Y, Maps.Assault)
 
-
+# Calculate Correct prediction results for control
 control_test = map_scores_for_test[map_scores_for_test['map_type'] == Maps.Control]
 print('Control Evaluation')
 evaluate(control_test, control_rmts)
 
-
+# Calculate Correct prediction results for assault
 assault_test = map_scores_for_test[map_scores_for_test['map_type'] == Maps.Assault]
 print('Assault Evaluation')
 evaluate(assault_test, assault_rmts)
 
+# Calculate Correct prediction results for hybrid
 hybrid_test = map_scores_for_test[map_scores_for_test['map_type'] == Maps.Hybrid]
 print('Hybrid Evaluation')
 evaluate(hybrid_test, hybrid_rmts)
 
+# Calculate Correct prediction results for escort
 escort_test = map_scores_for_test[map_scores_for_test['map_type'] == Maps.Escort]
 print('Escort Evaluation')
 evaluate(escort_test, escort_rmts)
