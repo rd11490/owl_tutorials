@@ -4,7 +4,7 @@ In this "tutorial" we will attempt to generate a rating for each team that accou
 We will do this by coming up with a method for calculating a "map score" for each map played, then use regularized linear 
 regression on a sparse team matrix in an attempt to give each team credit/blame for the result of the map.
 
-Each game mode in Overwatch as a unique set of objects and mechanics. In order to account for that we need to develop a
+Each game mode in Overwatch as a unique set of objectives and mechanics. In order to account for that we need to develop a
 separate scoring system for each game mode. We also need to account for any limitations and bias in the data provided to
 us by Overwatch League. The input data we will use is in the [Match Map Stats File](./input/match_map_stats.csv). There
 are other tutorials in this project for how to [Automate the Download of Statslab Data](../getting_data/README.md) and 
