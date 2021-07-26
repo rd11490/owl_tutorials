@@ -108,7 +108,7 @@ def evaluate(test_rows, rmsa):
     total_maps = merged.shape[0]
     correct_preds = merged['correct_prediction'].sum()
 
-    print('Correctly Predicted: {}/{} ({}%) Maps correctly'.format(correct_preds, total_maps, round(100*correct_preds/total_maps,3)))
+    print('Correctly Predicted: {}/{} ({}%) Map results'.format(correct_preds, total_maps, round(100*correct_preds/total_maps,3)))
 
 
 map_scores_for_test = map_scores[map_scores['match_date'] > '2021/06/24']

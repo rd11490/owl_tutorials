@@ -21,6 +21,130 @@ sklearn
 
 The environment.yml page for the entire project contains everything you need to run this script.
 
+### 0. TLDR Results:
+#### Total Map Score Added
+``` 
+                      team  Total Rating  rank
+0              Dallas Fuel         1.025   1.0
+1         Shanghai Dragons         0.994   2.0
+3   Los Angeles Gladiators         0.643   3.0
+4            Atlanta Reign         0.561   4.0
+5          Houston Outlaws         0.522   5.0
+8          Chengdu Hunters         0.461   6.0
+7      San Francisco Shock         0.377   7.0
+2            Seoul Dynasty         0.320   8.0
+10     Philadelphia Fusion         0.086   9.0
+6       Washington Justice         0.030  10.0
+13          Hangzhou Spark        -0.041  11.0
+15           Paris Eternal        -0.115  12.0
+9          Boston Uprising        -0.173  13.0
+14          Florida Mayhem        -0.175  14.0
+16      New York Excelsior        -0.245  15.0
+12        Guangzhou Charge        -0.419  16.0
+11         Toronto Defiant        -0.636  17.0
+18         London Spitfire        -0.859  18.0
+17        Vancouver Titans        -0.996  19.0
+19     Los Angeles Valiant        -1.360  20.0
+```
+
+#### Control
+```
+                      team  Control rmsa attack  Control rmsa defend  Control rmsa  Control intercept
+3              Dallas Fuel                0.121                0.093         0.214              0.783
+16        Shanghai Dragons                0.090                0.086         0.176              0.783
+15           Seoul Dynasty                0.016                0.090         0.106              0.783
+9   Los Angeles Gladiators                0.071                0.024         0.096              0.783
+0            Atlanta Reign                0.033                0.044         0.078              0.783
+7          Houston Outlaws                0.017                0.046         0.063              0.783
+19      Washington Justice                0.039                0.020         0.060              0.783
+14     San Francisco Shock                0.044                0.004         0.048              0.783
+2          Chengdu Hunters                0.024                0.014         0.038              0.783
+1          Boston Uprising               -0.019                0.005        -0.014              0.783
+13     Philadelphia Fusion                0.000               -0.020        -0.020              0.783
+17         Toronto Defiant               -0.012               -0.011        -0.023              0.783
+5         Guangzhou Charge                0.009               -0.037        -0.029              0.783
+6           Hangzhou Spark               -0.036               -0.004        -0.040              0.783
+4           Florida Mayhem               -0.027               -0.037        -0.064              0.783
+12           Paris Eternal               -0.048               -0.030        -0.078              0.783
+11      New York Excelsior               -0.057               -0.050        -0.107              0.783
+18        Vancouver Titans               -0.073               -0.062        -0.134              0.783
+8          London Spitfire               -0.080               -0.079        -0.159              0.783
+10     Los Angeles Valiant               -0.114               -0.098        -0.212              0.783
+```
+#### Assault
+```
+                      team  Assault rmsa attack  Assault rmsa defend  Assault rmsa  Assault intercept
+16        Shanghai Dragons                0.197                0.247         0.444              1.116
+3              Dallas Fuel                0.270                0.127         0.397              1.116
+7          Houston Outlaws                0.098                0.167         0.266              1.116
+14     San Francisco Shock                0.161                0.085         0.246              1.116
+9   Los Angeles Gladiators                0.137                0.069         0.206              1.116
+12           Paris Eternal                0.115                0.059         0.174              1.116
+2          Chengdu Hunters                0.114                0.035         0.149              1.116
+0            Atlanta Reign                0.059                0.048         0.107              1.116
+19      Washington Justice               -0.010                0.082         0.072              1.116
+15           Seoul Dynasty               -0.020                0.073         0.053              1.116
+13     Philadelphia Fusion                0.079               -0.078         0.002              1.116
+6           Hangzhou Spark                0.035               -0.143        -0.107              1.116
+11      New York Excelsior               -0.132                0.013        -0.119              1.116
+5         Guangzhou Charge               -0.097               -0.057        -0.155              1.116
+4           Florida Mayhem               -0.173               -0.049        -0.222              1.116
+17         Toronto Defiant               -0.148               -0.103        -0.251              1.116
+8          London Spitfire               -0.070               -0.190        -0.260              1.116
+1          Boston Uprising               -0.127               -0.186        -0.312              1.116
+18        Vancouver Titans               -0.180               -0.153        -0.334              1.116
+10     Los Angeles Valiant               -0.308               -0.046        -0.354              1.116
+```
+
+#### Escort
+```
+                      team  Escort rmsa attack  Escort rmsa defend  Escort rmsa  Escort intercept
+13     Philadelphia Fusion               0.075               0.048        0.123             0.908
+0            Atlanta Reign               0.032               0.058        0.090             0.908
+11      New York Excelsior               0.022               0.060        0.082             0.908
+2          Chengdu Hunters               0.030               0.045        0.075             0.908
+9   Los Angeles Gladiators               0.054               0.021        0.075             0.908
+14     San Francisco Shock               0.039               0.033        0.071             0.908
+16        Shanghai Dragons               0.011               0.052        0.063             0.908
+7          Houston Outlaws               0.048              -0.000        0.047             0.908
+3              Dallas Fuel               0.048              -0.015        0.033             0.908
+12           Paris Eternal               0.027               0.004        0.031             0.908
+4           Florida Mayhem              -0.015               0.043        0.028             0.908
+15           Seoul Dynasty              -0.018               0.005       -0.013             0.908
+6           Hangzhou Spark              -0.018              -0.001       -0.019             0.908
+1          Boston Uprising              -0.023              -0.011       -0.034             0.908
+17         Toronto Defiant              -0.028              -0.038       -0.067             0.908
+19      Washington Justice              -0.038              -0.034       -0.072             0.908
+5         Guangzhou Charge              -0.037              -0.039       -0.076             0.908
+8          London Spitfire              -0.039              -0.053       -0.091             0.908
+18        Vancouver Titans              -0.081              -0.064       -0.146             0.908
+10     Los Angeles Valiant              -0.087              -0.113       -0.200             0.908
+```
+
+#### Hybrid
+```
+                      team  Hybrid rmsa attack  Hybrid rmsa defend  Hybrid rmsa  Hybrid intercept
+0            Atlanta Reign               0.116               0.092        0.208             0.926
+1          Boston Uprising               0.212              -0.011        0.201             0.926
+9   Los Angeles Gladiators               0.075               0.097        0.171             0.926
+3              Dallas Fuel               0.081               0.086        0.167             0.926
+6           Hangzhou Spark               0.176              -0.011        0.166             0.926
+2          Chengdu Hunters               0.025               0.136        0.161             0.926
+4           Florida Mayhem               0.132               0.014        0.146             0.926
+16        Shanghai Dragons               0.046               0.088        0.135             0.926
+7          Houston Outlaws               0.062               0.021        0.082             0.926
+15           Seoul Dynasty               0.030               0.038        0.068             0.926
+11      New York Excelsior               0.031              -0.024        0.007             0.926
+13     Philadelphia Fusion               0.015              -0.013        0.002             0.926
+14     San Francisco Shock               0.063              -0.099       -0.035             0.926
+19      Washington Justice              -0.114               0.025       -0.089             0.926
+5         Guangzhou Charge              -0.042              -0.089       -0.131             0.926
+12           Paris Eternal              -0.150              -0.014       -0.164             0.926
+8          London Spitfire              -0.137              -0.053       -0.190             0.926
+18        Vancouver Titans              -0.225              -0.024       -0.249             0.926
+17         Toronto Defiant              -0.167              -0.106       -0.273             0.926
+10     Los Angeles Valiant              -0.228              -0.155       -0.383             0.926
+```
 
 ### 1. Calculating Map Score
 
@@ -619,11 +743,14 @@ The final thing we can do is attempt to create a power ranking by summing the RM
 19     Los Angeles Valiant        -1.360  20.0
 ```
 
-### Exploration of Results
+### Predicting Map Winners
 
 In the previous section we showed the in sample map score prediction errors for each map played, but what we should really care about is how effective this
 model is at predicting out of sample map winners. To do this we will split our data into a training set of all maps played in the May Melee and the June Joust and retrain our model.
-We will then use our results to predict the winners of all maps in the Summer Showdown. The code we used to do this exploration can be found [here](./team_rating_testing.py).
+We will then use our results to predict the winners of all maps in the Summer Showdown. The simple way to evaluate who will win is to take 
+the attacker RMSA for team one, subtract the defender RMSA team two to get an estimate of the map score for team one. 
+We then repeat the process for team two and compare to determine who will have a higher map score.
+The code we used to do this exploration can be found [here](./team_rating_testing.py).
 
 The results of this exploration is shown below:
 ```
@@ -639,3 +766,7 @@ Correctly Predicted: 56/92 (60.87%) Map results
 Escort Evaluation
 Correctly Predicted: 50/82 (60.976%) Map results
 ```
+
+### Future Work
+The coefficients we generated for each team are point estimate with an underlying distribution behind them. 
+This means that we can make a more complicated MCMC prediction model to attempt to determine map winners and match winners.
