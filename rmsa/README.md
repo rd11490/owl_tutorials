@@ -593,7 +593,7 @@ There are some important things to note when reading the below results. Errors a
 the predicted map score for the attacking team when playing against the defending team. In the next section we will perform an experiment to investigate 
 how predictive Regularized Map Score Added is when attempting to predict the outcome of maps and matches.
 
-Below are the results for the regression over the 2021 season up to and through the Summer Showdown Tournament.
+Below are the results for the regression over the 2021 season up through the Summer Showdown Tournament.
 
 
 #### 2.1 Control
