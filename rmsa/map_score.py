@@ -96,8 +96,8 @@ def calculate_assault_map_score(group):
         'match_date': row['match_date'].values[0],
         'team_one_name': team_one,
         'team_two_name': team_two,
-        'team_one_score': team_one_score,
-        'team_two_score': team_two_score,
+        'team_one_score': team_one_score * 100,
+        'team_two_score': team_two_score * 100,
         'season': row['season'].values[0]
     })
 
@@ -200,8 +200,8 @@ def calculate_payload_map_score(group):
         'match_date': row['match_date'].values[0],
         'team_one_name': team_one,
         'team_two_name': team_two,
-        'team_one_score': team_one_score,
-        'team_two_score': team_two_score,
+        'team_one_score': team_one_score * 100,
+        'team_two_score': team_two_score * 100,
         'season': row['season'].values[0]
     })
 
@@ -211,8 +211,8 @@ def calculate_payload_map_score(group):
 ###############################
 # Controls maps are "easy" to score because each team is able to get a control percentage.
 # Convert the percentage to a decimal and use it as the map score
-control_maps['team_one_score'] = control_maps['attacker_control_perecent'] / 100
-control_maps['team_two_score'] = control_maps['defender_control_perecent'] / 100
+control_maps['team_one_score'] = control_maps['attacker_control_perecent']
+control_maps['team_two_score'] = control_maps['defender_control_perecent']
 
 # Finally we need to apply our scoring functions to each dataframe of map types,
 # and merge them all back together as a frame of scored maps

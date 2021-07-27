@@ -74,21 +74,29 @@ map_scores = map_scores[map_scores['match_date'] <= '2021/06/24']
 control = map_scores[map_scores['map_type'] == Maps.Control]
 control_X, control_Y = extract_X_Y(control)
 control_rmts = calculate_rmts(control_X, control_Y, Maps.Control)
+control_rmts.columns = ['team', 'rmsa attack', 'rmsa defend', 'rmsa', 'intercept']
+
 
 # Calculate Escort RMSA
 escort = map_scores[map_scores['map_type'] == Maps.Escort]
 escort_X, escort_Y = extract_X_Y(escort)
 escort_rmts = calculate_rmts(escort_X, escort_Y, Maps.Escort)
+escort_rmts.columns = ['team', 'rmsa attack', 'rmsa defend', 'rmsa', 'intercept']
+
 
 # Calculate Hybrid RMSA
 hybrid = map_scores[map_scores['map_type'] == Maps.Hybrid]
 hybrid_X, hybrid_Y = extract_X_Y(hybrid)
 hybrid_rmts = calculate_rmts(hybrid_X, hybrid_Y, Maps.Hybrid)
+hybrid_rmts.columns = ['team', 'rmsa attack', 'rmsa defend', 'rmsa', 'intercept']
+
 
 # Calculate Assault RMSA
 assault = map_scores[map_scores['map_type'] == Maps.Assault]
 assault_X, assault_Y = extract_X_Y(assault)
 assault_rmts = calculate_rmts(assault_X, assault_Y, Maps.Assault)
+assault_rmts.columns = ['team', 'rmsa attack', 'rmsa defend', 'rmsa', 'intercept']
+
 
 # Calculate Correct prediction results for control
 control_test = map_scores_for_test[map_scores_for_test['map_type'] == Maps.Control]
@@ -289,7 +297,7 @@ print('The model correctly predicted {} out of {} qualifier matches exactly ({}%
                                                                                                     0], 3)))
 
 # Calculate how many points the model would have gotten if entered into the pickem challenge
-qualifiers_only['approximate_pickem_points'] = (2 * qualifiers_only['correct_match_prediction'] + qualifiers_only[
+qualifiers_only['approximate_pickem_points'] = ((2 * qualifiers_only['correct_match_prediction']) + qualifiers_only[
     'correct_exact_prediction']) * qualifiers_only['multiplier']
 
 print('The model would have scored {} points if entered into the pickem challenge (qualifiers only)'.format(

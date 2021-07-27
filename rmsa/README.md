@@ -34,125 +34,125 @@ don't hesitate to open a PR, submit an issue, or reach out to me directly
 #### 0.1.1 Total Map Score Added
 ``` 
                       team  Total Rating  rank
-0              Dallas Fuel         1.025   1.0
-1         Shanghai Dragons         0.994   2.0
-3   Los Angeles Gladiators         0.643   3.0
-4            Atlanta Reign         0.561   4.0
-5          Houston Outlaws         0.522   5.0
-8          Chengdu Hunters         0.461   6.0
-7      San Francisco Shock         0.377   7.0
-2            Seoul Dynasty         0.320   8.0
-10     Philadelphia Fusion         0.086   9.0
-6       Washington Justice         0.030  10.0
-13          Hangzhou Spark        -0.041  11.0
-15           Paris Eternal        -0.115  12.0
-9          Boston Uprising        -0.173  13.0
-14          Florida Mayhem        -0.175  14.0
-16      New York Excelsior        -0.245  15.0
-12        Guangzhou Charge        -0.419  16.0
-11         Toronto Defiant        -0.636  17.0
-18         London Spitfire        -0.859  18.0
-17        Vancouver Titans        -0.996  19.0
-19     Los Angeles Valiant        -1.360  20.0
+1         Shanghai Dragons        98.579   1.0
+0              Dallas Fuel        98.078   2.0
+3   Los Angeles Gladiators        71.041   3.0
+4            Atlanta Reign        55.739   4.0
+5          Houston Outlaws        53.182   5.0
+8          Chengdu Hunters        46.011   6.0
+7      San Francisco Shock        37.441   7.0
+2            Seoul Dynasty        31.660   8.0
+10     Philadelphia Fusion         7.943   9.0
+6       Washington Justice         2.107  10.0
+13          Hangzhou Spark        -5.603  11.0
+15           Paris Eternal        -9.140  12.0
+9          Boston Uprising       -16.596  13.0
+14          Florida Mayhem       -18.416  14.0
+16      New York Excelsior       -24.178  15.0
+12        Guangzhou Charge       -42.188  16.0
+11         Toronto Defiant       -62.053  17.0
+18         London Spitfire       -86.825  18.0
+17        Vancouver Titans      -100.912  19.0
+19     Los Angeles Valiant      -135.869  20.0
 ```
 
 #### 0.1.2 Control
 ```
                       team  Control rmsa attack  Control rmsa defend  Control rmsa  Control intercept
-3              Dallas Fuel                0.121                0.093         0.214              0.783
-16        Shanghai Dragons                0.090                0.086         0.176              0.783
-15           Seoul Dynasty                0.016                0.090         0.106              0.783
-9   Los Angeles Gladiators                0.071                0.024         0.096              0.783
-0            Atlanta Reign                0.033                0.044         0.078              0.783
-7          Houston Outlaws                0.017                0.046         0.063              0.783
-19      Washington Justice                0.039                0.020         0.060              0.783
-14     San Francisco Shock                0.044                0.004         0.048              0.783
-2          Chengdu Hunters                0.024                0.014         0.038              0.783
-1          Boston Uprising               -0.019                0.005        -0.014              0.783
-13     Philadelphia Fusion                0.000               -0.020        -0.020              0.783
-17         Toronto Defiant               -0.012               -0.011        -0.023              0.783
-5         Guangzhou Charge                0.009               -0.037        -0.029              0.783
-6           Hangzhou Spark               -0.036               -0.004        -0.040              0.783
-4           Florida Mayhem               -0.027               -0.037        -0.064              0.783
-12           Paris Eternal               -0.048               -0.030        -0.078              0.783
-11      New York Excelsior               -0.057               -0.050        -0.107              0.783
-18        Vancouver Titans               -0.073               -0.062        -0.134              0.783
-8          London Spitfire               -0.080               -0.079        -0.159              0.783
-10     Los Angeles Valiant               -0.114               -0.098        -0.212              0.783
+3              Dallas Fuel               12.082                9.348        21.430             78.339
+16        Shanghai Dragons                9.000                8.629        17.629             78.339
+15           Seoul Dynasty                1.585                9.039        10.625             78.339
+9   Los Angeles Gladiators                7.127                2.427         9.553             78.339
+0            Atlanta Reign                3.332                4.444         7.775             78.339
+7          Houston Outlaws                1.741                4.560         6.302             78.339
+19      Washington Justice                3.946                2.025         5.972             78.339
+14     San Francisco Shock                4.367                0.399         4.765             78.339
+2          Chengdu Hunters                2.405                1.421         3.826             78.339
+1          Boston Uprising               -1.909                0.537        -1.372             78.339
+13     Philadelphia Fusion                0.026               -2.041        -2.015             78.339
+17         Toronto Defiant               -1.188               -1.095        -2.283             78.339
+5         Guangzhou Charge                0.871               -3.729        -2.857             78.339
+6           Hangzhou Spark               -3.627               -0.381        -4.008             78.339
+4           Florida Mayhem               -2.699               -3.657        -6.356             78.339
+12           Paris Eternal               -4.789               -2.994        -7.783             78.339
+11      New York Excelsior               -5.659               -5.015       -10.674             78.339
+18        Vancouver Titans               -7.262               -6.158       -13.421             78.339
+8          London Spitfire               -7.952               -7.950       -15.902             78.339
+10     Los Angeles Valiant              -11.397               -9.809       -21.206             78.339
 ```
 #### 0.1.3 Assault
 ```
                       team  Assault rmsa attack  Assault rmsa defend  Assault rmsa  Assault intercept
-16        Shanghai Dragons                0.197                0.247         0.444              1.116
-3              Dallas Fuel                0.270                0.127         0.397              1.116
-7          Houston Outlaws                0.098                0.167         0.266              1.116
-14     San Francisco Shock                0.161                0.085         0.246              1.116
-9   Los Angeles Gladiators                0.137                0.069         0.206              1.116
-12           Paris Eternal                0.115                0.059         0.174              1.116
-2          Chengdu Hunters                0.114                0.035         0.149              1.116
-0            Atlanta Reign                0.059                0.048         0.107              1.116
-19      Washington Justice               -0.010                0.082         0.072              1.116
-15           Seoul Dynasty               -0.020                0.073         0.053              1.116
-13     Philadelphia Fusion                0.079               -0.078         0.002              1.116
-6           Hangzhou Spark                0.035               -0.143        -0.107              1.116
-11      New York Excelsior               -0.132                0.013        -0.119              1.116
-5         Guangzhou Charge               -0.097               -0.057        -0.155              1.116
-4           Florida Mayhem               -0.173               -0.049        -0.222              1.116
-17         Toronto Defiant               -0.148               -0.103        -0.251              1.116
-8          London Spitfire               -0.070               -0.190        -0.260              1.116
-1          Boston Uprising               -0.127               -0.186        -0.312              1.116
-18        Vancouver Titans               -0.180               -0.153        -0.334              1.116
-10     Los Angeles Valiant               -0.308               -0.046        -0.354              1.116
+16        Shanghai Dragons               19.676               24.690        44.366             111.65
+3              Dallas Fuel               26.982               12.723        39.705             111.65
+7          Houston Outlaws                9.843               16.746        26.589             111.65
+14     San Francisco Shock               16.054                8.510        24.564             111.65
+9   Los Angeles Gladiators               13.701                6.867        20.567             111.65
+12           Paris Eternal               11.522                5.861        17.384             111.65
+2          Chengdu Hunters               11.390                3.487        14.877             111.65
+0            Atlanta Reign                5.943                4.786        10.729             111.65
+19      Washington Justice               -1.006                8.208         7.201             111.65
+15           Seoul Dynasty               -2.021                7.304         5.283             111.65
+13     Philadelphia Fusion                7.946               -7.778         0.168             111.65
+6           Hangzhou Spark                3.539              -14.279       -10.740             111.65
+11      New York Excelsior              -13.234                1.287       -11.947             111.65
+5         Guangzhou Charge               -9.732               -5.744       -15.476             111.65
+4           Florida Mayhem              -17.281               -4.908       -22.189             111.65
+17         Toronto Defiant              -14.831              -10.307       -25.138             111.65
+8          London Spitfire               -7.002              -18.998       -26.000             111.65
+1          Boston Uprising              -12.658              -18.578       -31.235             111.65
+18        Vancouver Titans              -18.030              -15.324       -33.354             111.65
+10     Los Angeles Valiant              -30.803               -4.552       -35.355             111.65
 ```
 
 #### 0.1.4 Escort
 ```
-                      team  Escort rmsa attack  Escort rmsa defend  Escort rmsa  Escort intercept
-13     Philadelphia Fusion               0.075               0.048        0.123             0.908
-0            Atlanta Reign               0.032               0.058        0.090             0.908
-11      New York Excelsior               0.022               0.060        0.082             0.908
-2          Chengdu Hunters               0.030               0.045        0.075             0.908
-9   Los Angeles Gladiators               0.054               0.021        0.075             0.908
-14     San Francisco Shock               0.039               0.033        0.071             0.908
-16        Shanghai Dragons               0.011               0.052        0.063             0.908
-7          Houston Outlaws               0.048              -0.000        0.047             0.908
-3              Dallas Fuel               0.048              -0.015        0.033             0.908
-12           Paris Eternal               0.027               0.004        0.031             0.908
-4           Florida Mayhem              -0.015               0.043        0.028             0.908
-15           Seoul Dynasty              -0.018               0.005       -0.013             0.908
-6           Hangzhou Spark              -0.018              -0.001       -0.019             0.908
-1          Boston Uprising              -0.023              -0.011       -0.034             0.908
-17         Toronto Defiant              -0.028              -0.038       -0.067             0.908
-19      Washington Justice              -0.038              -0.034       -0.072             0.908
-5         Guangzhou Charge              -0.037              -0.039       -0.076             0.908
-8          London Spitfire              -0.039              -0.053       -0.091             0.908
-18        Vancouver Titans              -0.081              -0.064       -0.146             0.908
-10     Los Angeles Valiant              -0.087              -0.113       -0.200             0.908
+                       team  Escort rmsa attack  Escort rmsa defend  Escort rmsa  Escort intercept
+13     Philadelphia Fusion               7.473               4.800       12.272            90.807
+0            Atlanta Reign               3.205               5.840        9.044            90.807
+11      New York Excelsior               2.202               5.953        8.155            90.807
+2          Chengdu Hunters               2.996               4.502        7.497            90.807
+9   Los Angeles Gladiators               5.387               2.109        7.495            90.807
+14     San Francisco Shock               3.852               3.279        7.131            90.807
+16        Shanghai Dragons               1.130               5.207        6.337            90.807
+7          Houston Outlaws               4.789              -0.044        4.745            90.807
+3              Dallas Fuel               4.811              -1.546        3.265            90.807
+12           Paris Eternal               2.668               0.386        3.054            90.807
+4           Florida Mayhem              -1.544               4.317        2.773            90.807
+15           Seoul Dynasty              -1.835               0.519       -1.316            90.807
+6           Hangzhou Spark              -1.793              -0.066       -1.858            90.807
+1          Boston Uprising              -2.298              -1.146       -3.444            90.807
+17         Toronto Defiant              -2.821              -3.834       -6.655            90.807
+19      Washington Justice              -3.808              -3.402       -7.211            90.807
+5         Guangzhou Charge              -3.708              -3.884       -7.592            90.807
+8          London Spitfire              -3.893              -5.250       -9.143            90.807
+18        Vancouver Titans              -8.149              -6.402      -14.551            90.807
+10     Los Angeles Valiant              -8.663             -11.336      -19.999            90.807
 ```
 
 #### 0.1.5 Hybrid
 ```
                       team  Hybrid rmsa attack  Hybrid rmsa defend  Hybrid rmsa  Hybrid intercept
-0            Atlanta Reign               0.116               0.092        0.208             0.926
-1          Boston Uprising               0.212              -0.011        0.201             0.926
-9   Los Angeles Gladiators               0.075               0.097        0.171             0.926
-3              Dallas Fuel               0.081               0.086        0.167             0.926
-6           Hangzhou Spark               0.176              -0.011        0.166             0.926
-2          Chengdu Hunters               0.025               0.136        0.161             0.926
-4           Florida Mayhem               0.132               0.014        0.146             0.926
-16        Shanghai Dragons               0.046               0.088        0.135             0.926
-7          Houston Outlaws               0.062               0.021        0.082             0.926
-15           Seoul Dynasty               0.030               0.038        0.068             0.926
-11      New York Excelsior               0.031              -0.024        0.007             0.926
-13     Philadelphia Fusion               0.015              -0.013        0.002             0.926
-14     San Francisco Shock               0.063              -0.099       -0.035             0.926
-19      Washington Justice              -0.114               0.025       -0.089             0.926
-5         Guangzhou Charge              -0.042              -0.089       -0.131             0.926
-12           Paris Eternal              -0.150              -0.014       -0.164             0.926
-8          London Spitfire              -0.137              -0.053       -0.190             0.926
-18        Vancouver Titans              -0.225              -0.024       -0.249             0.926
-17         Toronto Defiant              -0.167              -0.106       -0.273             0.926
-10     Los Angeles Valiant              -0.228              -0.155       -0.383             0.926
+9   Los Angeles Gladiators              13.242              10.629       23.871            94.795
+1          Boston Uprising              21.935              -1.107       20.828            94.795
+0            Atlanta Reign              10.986               9.429       20.415            94.795
+2          Chengdu Hunters               1.637              14.348       15.985            94.795
+6           Hangzhou Spark              16.922              -1.911       15.011            94.795
+4           Florida Mayhem              12.329               1.381       13.711            94.795
+16        Shanghai Dragons               3.175               9.444       12.619            94.795
+3              Dallas Fuel               7.120               5.129       12.249            94.795
+7          Houston Outlaws               6.440               2.804        9.244            94.795
+15           Seoul Dynasty               2.386               4.057        6.443            94.795
+11      New York Excelsior               3.016              -2.053        0.963            94.795
+13     Philadelphia Fusion               0.931              -1.398       -0.468            94.795
+14     San Francisco Shock               5.987              -9.772       -3.785            94.795
+19      Washington Justice             -11.567               1.740       -9.827            94.795
+5         Guangzhou Charge              -3.986              -9.419      -13.405            94.795
+12           Paris Eternal             -13.480              -0.532      -14.012            94.795
+8          London Spitfire             -14.549              -5.331      -19.880            94.795
+17         Toronto Defiant             -16.169              -9.526      -25.694            94.795
+18        Vancouver Titans             -23.526              -2.639      -26.165            94.795
+10     Los Angeles Valiant             -22.830             -15.272      -38.102            94.795
 ```
 
 
@@ -215,7 +215,7 @@ team 1 time used 480.0
 team 1 points 1
 team 1 rate:  0.0020833333333333333
 team 1 points added:  0.0
-team 1 score 0.5
+team 1 score 50.0
 
 team 2:  Shanghai Dragons
 team 2 time 480
@@ -224,7 +224,7 @@ team 2 time used 480.0
 team 2 points 2
 team 2 rate:  0.004166666666666667
 team 2 points added:  0.0
-team 2 score 1.0
+team 2 score 100.0
 ```
 
 ###### Shanghai Dragons V New York Excelsior On Volskaya Industries 2021-07-11
@@ -247,7 +247,7 @@ team 1 time used 399.7489776611328
 team 1 points 2
 team 1 rate:  0.005003139749604062
 team 1 points added:  0.40150707980995
-team 1 score 1.200753539904975
+team 1 score 120.0753539904975
 
 team 2:  Shanghai Dragons
 team 2 time 480
@@ -256,7 +256,7 @@ team 2 time used 189.302001953125
 team 2 points 2
 team 2 rate:  0.010565128627087845
 team 2 points added:  3.0712617410021656
-team 2 score 2.535630870501083
+team 2 score 253.5630870501083
 ```
 
 ###### Los Angeles Gladiators V Atlanta Reign On Temple of Anubis 2021-07-12
@@ -277,7 +277,7 @@ team 1 time used 69.54598999023438
 team 1 points 1
 team 1 rate:  0.014378974260635584
 team 1 points added:  2.45095382255254
-team 1 score 1.72547691127627
+team 1 score 172.547691127627
 
 team 2:  Atlanta Reign
 team 2 time 240
@@ -316,7 +316,7 @@ team 2 time used 196.00796508789062
 team 2 points 2
 team 2 rate:  0.010203666973957887
 team 2 points added:  2.8977601474997856
-team 2 score 2.448880073749893
+team 2 score 244.8880073749893
 ```
 
 #### 1.2 Escort Map Score
@@ -355,7 +355,7 @@ team 1 points 3
 team 1 total distance traveled 356.9410705566406
 team 1 rate:  1.2653580755276155
 team 1 distance added:  250.43080569661475
-team 1 score 1.6564378831635078
+team 1 score 165.64378831635078
 
 team 2:  Houston Outlaws
 team 2 time 480.0
@@ -364,7 +364,7 @@ team 2 points 3
 team 2 total distance traveled 356.9410705566406
 team 2 rate:  0.8498596918015253
 team 2 distance added:  50.99158150809152
-team 2 score 1.1125228629743606
+team 2 score 111.25228629743606
 ```
 
 ###### Paris Eternal V Vancouver Titans On Junkertown 2021-07-03
@@ -386,7 +386,7 @@ team 1 points 0
 team 1 total distance traveled 66.12671661376953
 team 1 rate:  0.2755279858907064
 team 1 distance added:  0.0
-team 1 score 0.18034222981143258
+team 1 score 018.034222981143258
 
 team 2:  Paris Eternal
 team 2 time 480.0
@@ -395,7 +395,7 @@ team 2 points 3
 team 2 total distance traveled 356.91029357910156
 team 2 rate:  0.7659101434970272
 team 2 distance added:  10.72657529947149
-team 2 score 1.0026273205382379
+team 2 score 100.26273205382379
 ```
 
 ###### Los Angeles Gladiators V Atlanta Reign On Watchpoint: Gibraltar 2021-07-12
@@ -417,7 +417,7 @@ team 1 points 1
 team 1 total distance traveled 213.60558319091797
 team 1 rate:  0.9710845980258594
 team 1 distance added:  19.4547203352883
-team 1 score 0.6356071641048833
+team 1 score 63.56071641048833
 
 team 2:  Atlanta Reign
 team 2 time 240
@@ -426,7 +426,7 @@ team 2 points 0
 team 2 total distance traveled 86.0776596069336
 team 2 rate:  0.35865691502888997
 team 2 distance added:  0.0
-team 2 score 0.23475287849437013
+team 2 score 23.475287849437013
 ```
 
 
@@ -458,7 +458,7 @@ team 1 points 1
 team 1 total distance traveled 193.7589340209961
 team 1 rate:  0.49681777954101564
 team 1 distance added:  0.0
-team 1 score 0.5284236084384165
+team 1 score 52.84236084384165
 
 team 2:  San Francisco Shock
 team 2 time 480.0
@@ -467,7 +467,7 @@ team 2 points 3
 team 2 total distance traveled 334.1524200439453
 team 2 rate:  0.909627129942229
 team 2 distance added:  102.46860232832462
-team 2 score 1.190762414790247
+team 2 score 119.0762414790247
 ```
 ###### Atlanta Reign V Los Angeles Gladiators On King's Row 2021-07-12
 ```
@@ -489,7 +489,7 @@ team 1 points 1
 team 1 total distance traveled 127.5192413330078
 team 1 rate:  1.4958796236879885
 team 1 distance added:  231.49186835210946
-team 1 score 0.9791029611503357
+team 1 score 97.91029611503357
 
 team 2:  Los Angeles Gladiators
 team 2 time 240
@@ -523,7 +523,7 @@ team 1 points 3
 team 1 total distance traveled 325.3280029296875
 team 1 rate:  0.8399897557689348
 team 1 distance added:  77.8670798394012
-team 1 score 1.099602460232262
+team 1 score 109.9602460232262
 
 team 2:  Los Angeles Gladiators
 team 2 time 480.0
@@ -532,7 +532,7 @@ team 2 points 3
 team 2 total distance traveled 325.3280029296875
 team 2 rate:  1.1499631344210162
 team 2 distance added:  226.65430159240026
-team 2 score 1.50537823003355
+team 2 score 150.537823003355
 ```
 
 #### 1.4 Control Map Score
@@ -557,10 +557,10 @@ In this map Shock won the first and third stages (Well and Lighthouse) and Dalla
 Using our map score calculations we generate the following results:
 ```
 team 1:  Dallas Fuel
-team 1 score 0.995
+team 1 score 99.5
 
 team 2:  San Francisco Shock
-team 2 score 1.495
+team 2 score 149.5
 ```
 
 ### 2. Calculating Map Score Added
@@ -584,7 +584,7 @@ Map Score
 Input to regression
 ```
 X = [ 0,  0,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 0,  0,  0,  0,  0, -1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0.]
-Y = [0.495]
+Y = [49.5]
 ```
 
 Once we have built our design matrix and target array we can run our regression and attempt to generate an attack and defense coefficient for each team on each game mode.
@@ -600,165 +600,165 @@ Below are the results for the regression over the 2021 season up through the Sum
 Results:
 ```
                       team  Control rmsa attack  Control rmsa defend  Control rmsa  Control intercept
-3              Dallas Fuel                0.121                0.093         0.214              0.783
-16        Shanghai Dragons                0.090                0.086         0.176              0.783
-15           Seoul Dynasty                0.016                0.090         0.106              0.783
-9   Los Angeles Gladiators                0.071                0.024         0.096              0.783
-0            Atlanta Reign                0.033                0.044         0.078              0.783
-7          Houston Outlaws                0.017                0.046         0.063              0.783
-19      Washington Justice                0.039                0.020         0.060              0.783
-14     San Francisco Shock                0.044                0.004         0.048              0.783
-2          Chengdu Hunters                0.024                0.014         0.038              0.783
-1          Boston Uprising               -0.019                0.005        -0.014              0.783
-13     Philadelphia Fusion                0.000               -0.020        -0.020              0.783
-17         Toronto Defiant               -0.012               -0.011        -0.023              0.783
-5         Guangzhou Charge                0.009               -0.037        -0.029              0.783
-6           Hangzhou Spark               -0.036               -0.004        -0.040              0.783
-4           Florida Mayhem               -0.027               -0.037        -0.064              0.783
-12           Paris Eternal               -0.048               -0.030        -0.078              0.783
-11      New York Excelsior               -0.057               -0.050        -0.107              0.783
-18        Vancouver Titans               -0.073               -0.062        -0.134              0.783
-8          London Spitfire               -0.080               -0.079        -0.159              0.783
-10     Los Angeles Valiant               -0.114               -0.098        -0.212              0.783
+3              Dallas Fuel               12.082                9.348        21.430             78.339
+16        Shanghai Dragons                9.000                8.629        17.629             78.339
+15           Seoul Dynasty                1.585                9.039        10.625             78.339
+9   Los Angeles Gladiators                7.127                2.427         9.553             78.339
+0            Atlanta Reign                3.332                4.444         7.775             78.339
+7          Houston Outlaws                1.741                4.560         6.302             78.339
+19      Washington Justice                3.946                2.025         5.972             78.339
+14     San Francisco Shock                4.367                0.399         4.765             78.339
+2          Chengdu Hunters                2.405                1.421         3.826             78.339
+1          Boston Uprising               -1.909                0.537        -1.372             78.339
+13     Philadelphia Fusion                0.026               -2.041        -2.015             78.339
+17         Toronto Defiant               -1.188               -1.095        -2.283             78.339
+5         Guangzhou Charge                0.871               -3.729        -2.857             78.339
+6           Hangzhou Spark               -3.627               -0.381        -4.008             78.339
+4           Florida Mayhem               -2.699               -3.657        -6.356             78.339
+12           Paris Eternal               -4.789               -2.994        -7.783             78.339
+11      New York Excelsior               -5.659               -5.015       -10.674             78.339
+18        Vancouver Titans               -7.262               -6.158       -13.421             78.339
+8          London Spitfire               -7.952               -7.950       -15.902             78.339
+10     Los Angeles Valiant              -11.397               -9.809       -21.206             78.339
 ```
 Errors and CV Chosen Params
 ```
 lambda:  0.05
-intercept:  0.783
+intercept: 78.34
 
 r^2:  0.105
-MAE:  0.257
-MSE:  0.103
+MAE:   25.699
+MSE:  1026.813
 ```
 #### 2.2 Assault
 Results:
 ```
-                      team  Assault rmsa attack  Assault rmsa defend  Assault rmsa  Assault intercept
-16        Shanghai Dragons                0.197                0.247         0.444              1.116
-3              Dallas Fuel                0.270                0.127         0.397              1.116
-7          Houston Outlaws                0.098                0.167         0.266              1.116
-14     San Francisco Shock                0.161                0.085         0.246              1.116
-9   Los Angeles Gladiators                0.137                0.069         0.206              1.116
-12           Paris Eternal                0.115                0.059         0.174              1.116
-2          Chengdu Hunters                0.114                0.035         0.149              1.116
-0            Atlanta Reign                0.059                0.048         0.107              1.116
-19      Washington Justice               -0.010                0.082         0.072              1.116
-15           Seoul Dynasty               -0.020                0.073         0.053              1.116
-13     Philadelphia Fusion                0.079               -0.078         0.002              1.116
-6           Hangzhou Spark                0.035               -0.143        -0.107              1.116
-11      New York Excelsior               -0.132                0.013        -0.119              1.116
-5         Guangzhou Charge               -0.097               -0.057        -0.155              1.116
-4           Florida Mayhem               -0.173               -0.049        -0.222              1.116
-17         Toronto Defiant               -0.148               -0.103        -0.251              1.116
-8          London Spitfire               -0.070               -0.190        -0.260              1.116
-1          Boston Uprising               -0.127               -0.186        -0.312              1.116
-18        Vancouver Titans               -0.180               -0.153        -0.334              1.116
-10     Los Angeles Valiant               -0.308               -0.046        -0.354              1.116
+                     team  Assault rmsa attack  Assault rmsa defend  Assault rmsa  Assault intercept
+16        Shanghai Dragons               19.676               24.690        44.366             111.65
+3              Dallas Fuel               26.982               12.723        39.705             111.65
+7          Houston Outlaws                9.843               16.746        26.589             111.65
+14     San Francisco Shock               16.054                8.510        24.564             111.65
+9   Los Angeles Gladiators               13.701                6.867        20.567             111.65
+12           Paris Eternal               11.522                5.861        17.384             111.65
+2          Chengdu Hunters               11.390                3.487        14.877             111.65
+0            Atlanta Reign                5.943                4.786        10.729             111.65
+19      Washington Justice               -1.006                8.208         7.201             111.65
+15           Seoul Dynasty               -2.021                7.304         5.283             111.65
+13     Philadelphia Fusion                7.946               -7.778         0.168             111.65
+6           Hangzhou Spark                3.539              -14.279       -10.740             111.65
+11      New York Excelsior              -13.234                1.287       -11.947             111.65
+5         Guangzhou Charge               -9.732               -5.744       -15.476             111.65
+4           Florida Mayhem              -17.281               -4.908       -22.189             111.65
+17         Toronto Defiant              -14.831              -10.307       -25.138             111.65
+8          London Spitfire               -7.002              -18.998       -26.000             111.65
+1          Boston Uprising              -12.658              -18.578       -31.235             111.65
+18        Vancouver Titans              -18.030              -15.324       -33.354             111.65
+10     Los Angeles Valiant              -30.803               -4.552       -35.355             111.65
 ```
 Errors and CV Chosen Params
 ```
 lambda:  0.1
-intercept:  1.116
+intercept:  111.65
 
 r^2:  0.196
-MAE:  0.524
-RME:  0.441
+MAE:  52.359
+MSE:  4408.592
 ```
 
 #### 2.3 Escort
 Results:
 ```
                       team  Escort rmsa attack  Escort rmsa defend  Escort rmsa  Escort intercept
-13     Philadelphia Fusion               0.075               0.048        0.123             0.908
-0            Atlanta Reign               0.032               0.058        0.090             0.908
-11      New York Excelsior               0.022               0.060        0.082             0.908
-2          Chengdu Hunters               0.030               0.045        0.075             0.908
-9   Los Angeles Gladiators               0.054               0.021        0.075             0.908
-14     San Francisco Shock               0.039               0.033        0.071             0.908
-16        Shanghai Dragons               0.011               0.052        0.063             0.908
-7          Houston Outlaws               0.048              -0.000        0.047             0.908
-3              Dallas Fuel               0.048              -0.015        0.033             0.908
-12           Paris Eternal               0.027               0.004        0.031             0.908
-4           Florida Mayhem              -0.015               0.043        0.028             0.908
-15           Seoul Dynasty              -0.018               0.005       -0.013             0.908
-6           Hangzhou Spark              -0.018              -0.001       -0.019             0.908
-1          Boston Uprising              -0.023              -0.011       -0.034             0.908
-17         Toronto Defiant              -0.028              -0.038       -0.067             0.908
-19      Washington Justice              -0.038              -0.034       -0.072             0.908
-5         Guangzhou Charge              -0.037              -0.039       -0.076             0.908
-8          London Spitfire              -0.039              -0.053       -0.091             0.908
-18        Vancouver Titans              -0.081              -0.064       -0.146             0.908
-10     Los Angeles Valiant              -0.087              -0.113       -0.200             0.908
+13     Philadelphia Fusion               7.473               4.800       12.272            90.807
+0            Atlanta Reign               3.205               5.840        9.044            90.807
+11      New York Excelsior               2.202               5.953        8.155            90.807
+2          Chengdu Hunters               2.996               4.502        7.497            90.807
+9   Los Angeles Gladiators               5.387               2.109        7.495            90.807
+14     San Francisco Shock               3.852               3.279        7.131            90.807
+16        Shanghai Dragons               1.130               5.207        6.337            90.807
+7          Houston Outlaws               4.789              -0.044        4.745            90.807
+3              Dallas Fuel               4.811              -1.546        3.265            90.807
+12           Paris Eternal               2.668               0.386        3.054            90.807
+4           Florida Mayhem              -1.544               4.317        2.773            90.807
+15           Seoul Dynasty              -1.835               0.519       -1.316            90.807
+6           Hangzhou Spark              -1.793              -0.066       -1.858            90.807
+1          Boston Uprising              -2.298              -1.146       -3.444            90.807
+17         Toronto Defiant              -2.821              -3.834       -6.655            90.807
+19      Washington Justice              -3.808              -3.402       -7.211            90.807
+5         Guangzhou Charge              -3.708              -3.884       -7.592            90.807
+8          London Spitfire              -3.893              -5.250       -9.143            90.807
+18        Vancouver Titans              -8.149              -6.402      -14.551            90.807
+10     Los Angeles Valiant              -8.663             -11.336      -19.999            90.807
 ```
 Errors and CV Chosen Params
 ```
 lambda:  0.2
-intercept:  0.908
+intercept:  90.807
 
 r^2:  0.112
-MAE:  0.3
-RME:  0.156
+MAE:  29.973
+MSE:  1564.357
 ```
 
 #### 2.4 Hybrid
 Results:
 ```
                       team  Hybrid rmsa attack  Hybrid rmsa defend  Hybrid rmsa  Hybrid intercept
-0            Atlanta Reign               0.116               0.092        0.208             0.926
-1          Boston Uprising               0.212              -0.011        0.201             0.926
-9   Los Angeles Gladiators               0.075               0.097        0.171             0.926
-3              Dallas Fuel               0.081               0.086        0.167             0.926
-6           Hangzhou Spark               0.176              -0.011        0.166             0.926
-2          Chengdu Hunters               0.025               0.136        0.161             0.926
-4           Florida Mayhem               0.132               0.014        0.146             0.926
-16        Shanghai Dragons               0.046               0.088        0.135             0.926
-7          Houston Outlaws               0.062               0.021        0.082             0.926
-15           Seoul Dynasty               0.030               0.038        0.068             0.926
-11      New York Excelsior               0.031              -0.024        0.007             0.926
-13     Philadelphia Fusion               0.015              -0.013        0.002             0.926
-14     San Francisco Shock               0.063              -0.099       -0.035             0.926
-19      Washington Justice              -0.114               0.025       -0.089             0.926
-5         Guangzhou Charge              -0.042              -0.089       -0.131             0.926
-12           Paris Eternal              -0.150              -0.014       -0.164             0.926
-8          London Spitfire              -0.137              -0.053       -0.190             0.926
-18        Vancouver Titans              -0.225              -0.024       -0.249             0.926
-17         Toronto Defiant              -0.167              -0.106       -0.273             0.926
-10     Los Angeles Valiant              -0.228              -0.155       -0.383             0.926
+9   Los Angeles Gladiators              13.242              10.629       23.871            94.795
+1          Boston Uprising              21.935              -1.107       20.828            94.795
+0            Atlanta Reign              10.986               9.429       20.415            94.795
+2          Chengdu Hunters               1.637              14.348       15.985            94.795
+6           Hangzhou Spark              16.922              -1.911       15.011            94.795
+4           Florida Mayhem              12.329               1.381       13.711            94.795
+16        Shanghai Dragons               3.175               9.444       12.619            94.795
+3              Dallas Fuel               7.120               5.129       12.249            94.795
+7          Houston Outlaws               6.440               2.804        9.244            94.795
+15           Seoul Dynasty               2.386               4.057        6.443            94.795
+11      New York Excelsior               3.016              -2.053        0.963            94.795
+13     Philadelphia Fusion               0.931              -1.398       -0.468            94.795
+14     San Francisco Shock               5.987              -9.772       -3.785            94.795
+19      Washington Justice             -11.567               1.740       -9.827            94.795
+5         Guangzhou Charge              -3.986              -9.419      -13.405            94.795
+12           Paris Eternal             -13.480              -0.532      -14.012            94.795
+8          London Spitfire             -14.549              -5.331      -19.880            94.795
+17         Toronto Defiant             -16.169              -9.526      -25.694            94.795
+18        Vancouver Titans             -23.526              -2.639      -26.165            94.795
+10     Los Angeles Valiant             -22.830             -15.272      -38.102            94.795
 ```
 Errors and CV Chosen Params
 ```
 lambda:  0.075
-intercept:  0.926
+intercept:  94.795
 
-r^2:  0.185
-MAE:  0.335
-RME:  0.221
+r^2:  0.193
+MAE:  32.55
+MSE:  2122.127
 ```
 
 ### 2.5 Total Map Score Added
 The final thing we can do is attempt to create a power ranking by summing the RMSA for each game mode in a 5 map series. The results are shown below:
 ``` 
                       team  Total Rating  rank
-0              Dallas Fuel         1.025   1.0
-1         Shanghai Dragons         0.994   2.0
-3   Los Angeles Gladiators         0.643   3.0
-4            Atlanta Reign         0.561   4.0
-5          Houston Outlaws         0.522   5.0
-8          Chengdu Hunters         0.461   6.0
-7      San Francisco Shock         0.377   7.0
-2            Seoul Dynasty         0.320   8.0
-10     Philadelphia Fusion         0.086   9.0
-6       Washington Justice         0.030  10.0
-13          Hangzhou Spark        -0.041  11.0
-15           Paris Eternal        -0.115  12.0
-9          Boston Uprising        -0.173  13.0
-14          Florida Mayhem        -0.175  14.0
-16      New York Excelsior        -0.245  15.0
-12        Guangzhou Charge        -0.419  16.0
-11         Toronto Defiant        -0.636  17.0
-18         London Spitfire        -0.859  18.0
-17        Vancouver Titans        -0.996  19.0
-19     Los Angeles Valiant        -1.360  20.0
+1         Shanghai Dragons        98.579   1.0
+0              Dallas Fuel        98.078   2.0
+3   Los Angeles Gladiators        71.041   3.0
+4            Atlanta Reign        55.739   4.0
+5          Houston Outlaws        53.182   5.0
+8          Chengdu Hunters        46.011   6.0
+7      San Francisco Shock        37.441   7.0
+2            Seoul Dynasty        31.660   8.0
+10     Philadelphia Fusion         7.943   9.0
+6       Washington Justice         2.107  10.0
+13          Hangzhou Spark        -5.603  11.0
+15           Paris Eternal        -9.140  12.0
+9          Boston Uprising       -16.596  13.0
+14          Florida Mayhem       -18.416  14.0
+16      New York Excelsior       -24.178  15.0
+12        Guangzhou Charge       -42.188  16.0
+11         Toronto Defiant       -62.053  17.0
+18         London Spitfire       -86.825  18.0
+17        Vancouver Titans      -100.912  19.0
+19     Los Angeles Valiant      -135.869  20.0
 ```
 
 ### 3.0 Predicting Map and Match Winners
@@ -774,13 +774,10 @@ The results of this exploration is shown below:
 ```
 Control Evaluation
 Correctly Predicted: 102/140 (72.857%) Map results
-
 Assault Evaluation
 Correctly Predicted: 56/94 (59.574%) Map results
-
 Hybrid Evaluation
-Correctly Predicted: 56/92 (60.87%) Map results
-
+Correctly Predicted: 58/92 (63.043%) Map results
 Escort Evaluation
 Correctly Predicted: 50/82 (60.976%) Map results
 ```
@@ -796,7 +793,7 @@ The model correctly predicted 23 out of 52 matches exactly (0.442%)
 The model correctly predicted 34 out of 40 qualifier matches (0.85%)
 The model correctly predicted 19 out of 40 qualifier matches exactly (0.475%)
 
-The model would have scored 98.0 points if entered into the pickem challenge (This inclues double points matches but does not include knock out sunday or the tournament bracket)
+The model would have scored 98.0 points if entered into the pickem challenge (qualifiers only)
 ```
 
 ### 4.0 Future Work
