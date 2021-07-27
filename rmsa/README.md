@@ -171,9 +171,9 @@ The environment.yml page for the entire project contains everything you need to 
 The basic idea behind our calculation for map score on Assault is   
 `How many times could you complete the map in at the rate at which you initially completed the map`.    
 For example if the attacking team captures Point A then fails to capture Point B they will be given a map score of 
-1 point divided by 2 total points on the map, or more simply put, 0.5. However, if the team captured both points and only
+100 time 1 point divided by 2 total points on the map, or more simply put, 50. However, if the team captured both points and only
 used half of their total time bank, then they will receive a map score of 2 points / 2 total points on the map plus an
-additional 2 points / 2 total points on the map because at the rate they capped the map, they could have
+additional 100 time 2 points / 2 total points on the map because at the rate they capped the map, they could have
 theoretically completed the map twice.
 
 This is a dangerous assumption to make because Assault is a map type subject to attacker snowballs
@@ -538,10 +538,10 @@ team 2 score 150.537823003355
 #### 1.4 Control Map Score
 Control is a very different map type than the others in that teams play a first to two series across 3 separate stages.
 The map score for each control map is simply calculated as the sum of  each team's score across all stages divided by
-the total score required to win the map (200). The only downside to this method is that it can result in the possibility 
+the total number of stages required to win the map (2). The only downside to this method is that it can result in the possibility 
 of the losing team having a significantly higher map score than the winner. 
-If Team A wins stages 1 and 3 100-99 and loses stage 2 100-0 Team A would have a map score of 1.0 while Team B would
-have a map score of 1.49. This edge case is consistent with our scoring in previous sections.
+If Team A wins stages 1 and 3 100-99 and loses stage 2 100-0 Team A would have a map score of 100 while Team B would
+have a map score of 149. This edge case is consistent with our scoring in previous sections.
 
 ##### 1.4.1 Control Map Score Examples 
 Below I will provide a handful of sample matches, a look at the input rows, and the resulting map score.
@@ -579,7 +579,7 @@ for that stage of the map. Below is an example of a row from our map score data 
 Map Score
 ```
    match_id  game_number map_name map_type      map_winner  match_date        team_one_name        team_two_name  team_one_score  team_two_score  season
-0     37147            1    Busan  Control     Dallas Fuel  2021/05/02      Houston Outlaws          Dallas Fuel           0.495           1.000    2021
+0     37147            1    Busan  Control     Dallas Fuel  2021/05/02      Houston Outlaws          Dallas Fuel           49.5           100.0    2021
 ```
 Input to regression
 ```
