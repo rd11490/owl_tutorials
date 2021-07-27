@@ -793,7 +793,19 @@ The model correctly predicted 23 out of 52 matches exactly (0.442%)
 The model correctly predicted 34 out of 40 qualifier matches (0.85%)
 The model correctly predicted 19 out of 40 qualifier matches exactly (0.475%)
 
-The model would have scored 98.0 points if entered into the pickem challenge (qualifiers only)
+Summer Showdown Knockouts
+Predicted Teams from the west: Dallas Fuel & Atlanta Reign
+Predicted Teams from the east: Shanghai Dragons & Seoul Dynasty
+
+Summer Showdown
+Round One: Shanghai Dragons(3), Atlanta Reign(2) -> Shanghai Dragons
+Round One: Dallas Fuel(3), Chengdu Hunters(0) -> Dallas Fuel
+losers: Atlanta Reign(3), Chengdu Hunters(2) -> Atlanta Reign
+winners finals: Shanghai Dragons(0), Dallas Fuel(3) -> Dallas Fuel
+losers finals: Shanghai Dragons(3), Atlanta Reign(2) -> Shanghai Dragons
+Grand Finals: Dallas Fuel(4), Shanghai Dragons(1) -> Dallas Fuel
+
+The model would have scored 106.0 points if entered into the pickem challenge
 ```
 
 ### 4.0 Future Work

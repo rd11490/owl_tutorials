@@ -76,13 +76,11 @@ control_X, control_Y = extract_X_Y(control)
 control_rmts = calculate_rmts(control_X, control_Y, Maps.Control)
 control_rmts.columns = ['team', 'rmsa attack', 'rmsa defend', 'rmsa', 'intercept']
 
-
 # Calculate Escort RMSA
 escort = map_scores[map_scores['map_type'] == Maps.Escort]
 escort_X, escort_Y = extract_X_Y(escort)
 escort_rmts = calculate_rmts(escort_X, escort_Y, Maps.Escort)
 escort_rmts.columns = ['team', 'rmsa attack', 'rmsa defend', 'rmsa', 'intercept']
-
 
 # Calculate Hybrid RMSA
 hybrid = map_scores[map_scores['map_type'] == Maps.Hybrid]
@@ -90,13 +88,11 @@ hybrid_X, hybrid_Y = extract_X_Y(hybrid)
 hybrid_rmts = calculate_rmts(hybrid_X, hybrid_Y, Maps.Hybrid)
 hybrid_rmts.columns = ['team', 'rmsa attack', 'rmsa defend', 'rmsa', 'intercept']
 
-
 # Calculate Assault RMSA
 assault = map_scores[map_scores['map_type'] == Maps.Assault]
 assault_X, assault_Y = extract_X_Y(assault)
 assault_rmts = calculate_rmts(assault_X, assault_Y, Maps.Assault)
 assault_rmts.columns = ['team', 'rmsa attack', 'rmsa defend', 'rmsa', 'intercept']
-
 
 # Calculate Correct prediction results for control
 control_test = map_scores_for_test[map_scores_for_test['map_type'] == Maps.Control]
@@ -134,29 +130,7 @@ def determine_missing_maps(map_type_list):
         return map_type_list + [missing, map_5]
 
 
-# Determine the winner, predicted winner, and how many maps each team was predicted to win in each match
-def evaluate_match(group):
-    group_relevant = group[['game_number', 'map_type', 'map_winner', 'team_one_name', 'team_two_name']] \
-        .drop_duplicates() \
-        .sort_values(by="game_number").groupby(by='game_number').head(1).reset_index()
-
-    team_one = group_relevant['team_one_name'].values[0]
-    team_two = group_relevant['team_two_name'].values[0]
-
-    # get the number of map wins each team actually got
-    team_one_wins = group_relevant[group_relevant['map_winner'] == team_one].shape[0]
-    team_two_wins = group_relevant[group_relevant['map_winner'] == team_two].shape[0]
-
-    # determine the actual match winner
-    if team_two_wins > team_one_wins:
-        match_winner = team_two
-    if team_one_wins > team_two_wins:
-        match_winner = team_one
-
-    # generate the map order
-    map_order = list(group_relevant['map_type'].values)
-    map_order = determine_missing_maps(map_order)
-
+def predict_match(team_one, team_two, map_order, maps_to_win=3):
     # initialize each team to have 0 projected wins
     team_one_projected_wins = 0
     team_two_projected_wins = 0
@@ -180,13 +154,43 @@ def evaluate_match(group):
             team_two_projected_wins += 1
 
         # break once a team reaches 3 map wins
-        if team_one_projected_wins >= 3:
+        if team_one_projected_wins >= maps_to_win:
             projected_winner = team_one
+            loser = team_two
             break
 
-        if team_two_projected_wins >= 3:
+        if team_two_projected_wins >= maps_to_win:
             projected_winner = team_two
+            loser = team_one
             break
+    return projected_winner, team_one_projected_wins, team_two_projected_wins, loser
+
+
+# Determine the winner, predicted winner, and how many maps each team was predicted to win in each match
+def evaluate_match(group):
+    group_relevant = group[['game_number', 'map_type', 'map_winner', 'team_one_name', 'team_two_name']] \
+        .drop_duplicates() \
+        .sort_values(by="game_number").groupby(by='game_number').head(1).reset_index()
+
+    team_one = group_relevant['team_one_name'].values[0]
+    team_two = group_relevant['team_two_name'].values[0]
+
+    # get the number of map wins each team actually got
+    team_one_wins = group_relevant[group_relevant['map_winner'] == team_one].shape[0]
+    team_two_wins = group_relevant[group_relevant['map_winner'] == team_two].shape[0]
+
+    # determine the actual match winner
+    if team_two_wins > team_one_wins:
+        match_winner = team_two
+    if team_one_wins > team_two_wins:
+        match_winner = team_one
+
+    # generate the map order
+    map_order = list(group_relevant['map_type'].values)
+    map_order = determine_missing_maps(map_order)
+
+    projected_winner, team_one_projected_wins, team_two_projected_wins, loser = predict_match(team_one, team_two,
+                                                                                              map_order)
 
     # return an estimated match result
     return pd.Series({
@@ -300,5 +304,98 @@ print('The model correctly predicted {} out of {} qualifier matches exactly ({}%
 qualifiers_only['approximate_pickem_points'] = ((2 * qualifiers_only['correct_match_prediction']) + qualifiers_only[
     'correct_exact_prediction']) * qualifiers_only['multiplier']
 
-print('The model would have scored {} points if entered into the pickem challenge (qualifiers only)'.format(
-    qualifiers_only['approximate_pickem_points'].sum()))
+points = qualifiers_only['approximate_pickem_points'].sum()
+
+### Predict Summer Showdown Knockouts
+print('Summer Showdown Knockouts')
+west_round_one_top = predict_match('Paris Eternal', 'Washington Justice',
+                                   [Maps.Control, Maps.Assault, Maps.Hybrid, Maps.Escort, Maps.Control])[0]
+west_top = \
+predict_match(west_round_one_top, 'Dallas Fuel', [Maps.Control, Maps.Assault, Maps.Hybrid, Maps.Escort, Maps.Control])[
+    0]
+
+west_round_one_bottom = predict_match('Los Angeles Gladiators', 'Boston Uprising',
+                                      [Maps.Control, Maps.Assault, Maps.Hybrid, Maps.Escort, Maps.Control])[0]
+west_bottom = predict_match(west_round_one_top, 'Atlanta Reign',
+                            [Maps.Control, Maps.Assault, Maps.Hybrid, Maps.Escort, Maps.Control])[0]
+
+if west_top == 'Dallas Fuel':
+    points += 2
+if west_bottom == 'Atlanta Reign':
+    points += 2
+
+print('Predicted Teams from the west: {} & {}'.format(west_top, west_bottom))
+
+east_top = predict_match('Shanghai Dragons', 'New York Excelsior',
+                         [Maps.Control, Maps.Assault, Maps.Hybrid, Maps.Escort, Maps.Control])[0]
+east_bottom = \
+predict_match('Seoul Dynasty', 'Chengdu Hunters', [Maps.Control, Maps.Assault, Maps.Hybrid, Maps.Escort, Maps.Control])[
+    0]
+
+print('Predicted Teams from the east: {} & {}'.format(east_top, east_bottom))
+
+if east_top == 'Shanghai Dragons':
+    points += 2
+if east_bottom == 'Chengdu Hunters':
+    points += 2
+
+### Predict Summer Showdown Playofs
+print('Summer Showdown')
+
+round_one_top = predict_match('Shanghai Dragons', 'Atlanta Reign',
+                              [Maps.Control, Maps.Assault, Maps.Hybrid, Maps.Escort, Maps.Control])
+round_one_bottom = predict_match('Dallas Fuel', 'Chengdu Hunters',
+                                 [Maps.Control, Maps.Assault, Maps.Hybrid, Maps.Escort, Maps.Control])
+losers = predict_match(round_one_top[3], round_one_bottom[3],
+                       [Maps.Control, Maps.Assault, Maps.Hybrid, Maps.Escort, Maps.Control])
+winners = predict_match(round_one_top[0], round_one_bottom[0],
+                        [Maps.Control, Maps.Assault, Maps.Hybrid, Maps.Escort, Maps.Control])
+losers_finals = predict_match(winners[3], losers[0],
+                              [Maps.Control, Maps.Assault, Maps.Hybrid, Maps.Escort, Maps.Control])
+finals = predict_match(winners[0], losers_finals[0],
+                       [Maps.Control, Maps.Assault, Maps.Hybrid, Maps.Escort, Maps.Control, Maps.Hybrid, Maps.Escort],
+                       4)
+
+print('Round One: {}({}), {}({}) -> {}'.format('Shanghai Dragons', round_one_top[1], 'Atlanta Reign', round_one_top[2],
+                                               round_one_top[0]))
+print(
+    'Round One: {}({}), {}({}) -> {}'.format('Dallas Fuel', round_one_bottom[1], 'Chengdu Hunters', round_one_bottom[2],
+                                             round_one_bottom[0]))
+print('losers: {}({}), {}({}) -> {}'.format(round_one_top[3], losers[1], round_one_bottom[3], losers[2], losers[0]))
+print('winners finals: {}({}), {}({}) -> {}'.format(round_one_top[0], winners[1], round_one_bottom[0], winners[2],
+                                                    winners[0]))
+print('losers finals: {}({}), {}({}) -> {}'.format(winners[3], losers_finals[1], losers[0], losers_finals[2],
+                                                   losers_finals[0]))
+print('Grand Finals: {}({}), {}({}) -> {}'.format(winners[0], finals[1], losers_finals[0], finals[2], finals[0]))
+
+if round_one_top[0] == 'Shanghai Dragons':
+    points += 2
+    if round_one_top[1] - round_one_top[2] == 3:
+        points += 1
+
+if round_one_bottom[0] == 'Chengdu Hunters':
+    points += 2
+    if round_one_bottom[1] - round_one_bottom[2] == -2:
+        points += 1
+
+if losers[0] == 'Dallas Fuel':
+    points += 2
+    if losers[1] - losers[2] == -1:
+        points += 1
+
+if winners[0] == 'Shanghai Dragons':
+    points += 2
+    if winners[1] - winners[2] == -1:
+        points += 1
+
+if losers_finals[0] == 'Chengdu Hunters':
+    points += 2
+    if losers_finals[1] - losers_finals[2] == 3:
+        points += 1
+
+if finals[0] == 'Shanghai Dragons':
+    points += 2
+    if finals[1] - finals[2] == 3:
+        points += 1
+
+print('The model would have scored {} points if entered into the pickem challenge'.format(points))
