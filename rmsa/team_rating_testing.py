@@ -292,5 +292,5 @@ print('The model correctly predicted {} out of {} qualifier matches exactly ({}%
 qualifiers_only['approximate_pickem_points'] = (2 * qualifiers_only['correct_match_prediction'] + qualifiers_only[
     'correct_exact_prediction']) * qualifiers_only['multiplier']
 
-print('The model would have approximately scored {} points if entered into the pickem challenge'.format(
+print('The model would have scored {} points if entered into the pickem challenge (qualifiers only)'.format(
     qualifiers_only['approximate_pickem_points'].sum()))

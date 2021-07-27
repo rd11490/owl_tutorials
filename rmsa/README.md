@@ -761,7 +761,7 @@ The final thing we can do is attempt to create a power ranking by summing the RM
 19     Los Angeles Valiant        -1.360  20.0
 ```
 
-### 3.0 Predicting Map Winners
+### 3.0 Predicting Map and Match Winners
 
 In the previous section we showed the in sample map score prediction errors for each map played, but what we should really care about is how effective this
 model is at predicting out of sample map winners. To do this we will split our data into a training set of all maps played in the May Melee and the June Joust and retrain our model.
@@ -796,7 +796,7 @@ The model correctly predicted 23 out of 52 matches exactly (0.442%)
 The model correctly predicted 34 out of 40 qualifier matches (0.85%)
 The model correctly predicted 19 out of 40 qualifier matches exactly (0.475%)
 
-The model would have approximately scored 98.0 points if entered into the pickem challenge (This inclues double points matches but does not include knock out sunday or the tournament bracket)
+The model would have scored 98.0 points if entered into the pickem challenge (This inclues double points matches but does not include knock out sunday or the tournament bracket)
 ```
 
 ### 4.0 Future Work
