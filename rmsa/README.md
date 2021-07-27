@@ -27,7 +27,7 @@ don't hesitate to open a PR, submit an issue, or reach out to me directly
  - 2.3 [Calculating Map Score Added - Escord](#23-escort)
  - 2.4 [Calculating Map Score Added - Hybrid](#24-hybrid)
  - 2.5 [Calculating Total Map Score Added](#25-total-map-score-added)
- - 3.0 [Predicting Map Winners](#30-predicting-map-winners)
+ - 3.0 [Predicting Map Winners](#30-predicting-map-and-match-winners)
  - 4.0 [Future Work](#40-future-work)
 
 ### 0.1 TLDR Results:
