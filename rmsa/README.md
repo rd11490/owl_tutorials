@@ -785,6 +785,20 @@ Escort Evaluation
 Correctly Predicted: 50/82 (60.976%) Map results
 ```
 
+I also wrote code to test against match results for the Summer Showdown. I did this by determining the order of map type 
+to be played in each match, and then simulated out the match, ending once a team got to 3 map wins using the same map win model as above.
+
+Below are the results of that experiment:
+```
+The model correctly predicted 43 out of 52 matches (0.827%)
+The model correctly predicted 23 out of 52 matches exactly (0.442%)
+
+The model correctly predicted 34 out of 40 qualifier matches (0.85%)
+The model correctly predicted 19 out of 40 qualifier matches exactly (0.475%)
+
+The model would have approximately scored 98.0 points if entered into the pickem challenge (This inclues double points matches but does not include knock out sunday or the tournament bracket)
+```
+
 ### 4.0 Future Work
 While working on this project I came across a couple of areas that I would like to explore further.
 1. Is map score more predictive of future success than map win rate? Is it an actual predictive improvement?

@@ -1,7 +1,5 @@
 import pandas as pd
-import numpy as np
-from sklearn.linear_model import RidgeCV
-
+from rmsa.team_rating import extract_X_Y, calculate_rmts
 from rmsa.utils.constants import Maps
 
 pd.set_option('display.max_columns', 500)
@@ -27,68 +25,6 @@ teams = [str(p) for p in teams]
 teams = sorted(teams)
 
 
-def map_teams(row_in, teams):
-    t1 = row_in[0]
-    t2 = row_in[1]
-
-    row_out = np.zeros([len(teams) * 2])
-
-    row_out[teams.index(t1)] = 1
-    row_out[teams.index(t2) + len(teams)] = -1
-    return row_out
-
-
-def extract_X_Y(frame):
-    stints_x_base = frame[['team_one_name', 'team_two_name']].values
-
-    stint_X_rows = np.apply_along_axis(map_teams, 1, stints_x_base, teams)
-
-    stint_Y_rows = frame[['team_one_score']].values
-    return stint_X_rows, stint_Y_rows
-
-
-# Convert lambda value to alpha needed for ridge CV
-def lambda_to_alpha(lambda_value, samples):
-    return (lambda_value * samples) / 2.0
-
-
-# Convert RidgeCV alpha back into a lambda value
-def alpha_to_lambda(alpha_value, samples):
-    return (alpha_value * 2.0) / samples
-
-
-def calculate_rmts(stint_X_rows, stint_Y_rows, map_type):
-    lambdas = [.01, 0.025, .05, 0.075, .1, .125, .15, .175, .2, .225, .25]
-
-    alphas = [lambda_to_alpha(l, stint_X_rows.shape[0]) for l in lambdas]
-
-    clf = RidgeCV(alphas=alphas, cv=5, fit_intercept=True, normalize=False)
-
-    model = clf.fit(stint_X_rows, stint_Y_rows)
-
-    team_arr = np.transpose(np.array(teams).reshape(1, len(teams)))
-    coef_array_attack = np.transpose(model.coef_[:, 0:len(teams)])
-    coef_array_def = np.transpose(model.coef_[:, len(teams):])
-
-    team_coef_arr = np.concatenate([team_arr, coef_array_attack, coef_array_def], axis=1)
-
-    # build a dataframe from our matrix
-    rmts = pd.DataFrame(team_coef_arr)
-    intercept = model.intercept_[0]
-
-    attack_str = 'rmsa attack'
-    defend_str = 'rmsa defend'
-
-    rmts.columns = ['team', attack_str, defend_str]
-    rmts[attack_str] = rmts[attack_str].astype(float)
-    rmts[defend_str] = rmts[defend_str].astype(float)
-
-    rmts['{} rmsa'.format(map_type)] = rmts[attack_str] + rmts[defend_str]
-    rmts['{} intercept'.format(map_type)] = intercept
-
-    return rmts
-
-
 # Everything above this line is identical to map_scores.py
 # Calculate who will win a map based on the RMSA
 def determine_predicted_winner(row):
@@ -107,7 +43,12 @@ def evaluate(test_rows, rmsa):
     # Select the necessary columns from scored map results
     test_rows_for_join = test_rows[['match_id', 'game_number', 'map_winner', 'team_one_name', 'team_two_name']]
     # Merge RMSA with our scored maps
-    merged = test_rows_for_join.merge(rmsa_for_join, left_on='team_one_name', right_on='team').merge(rmsa_for_join, left_on='team_two_name', right_on='team', suffixes=('_one', '_two'))
+    merged = test_rows_for_join.merge(rmsa_for_join, left_on='team_one_name', right_on='team').merge(rmsa_for_join,
+                                                                                                     left_on='team_two_name',
+                                                                                                     right_on='team',
+                                                                                                     suffixes=(
+                                                                                                         '_one',
+                                                                                                         '_two'))
     # Drop Duplicates
     merged = merged.drop_duplicates()
     # Predict the winner of each map
@@ -119,7 +60,8 @@ def evaluate(test_rows, rmsa):
     correct_preds = merged['correct_prediction'].sum()
 
     # Calculate the percentage of correct predictions
-    print('Correctly Predicted: {}/{} ({}%) Map results'.format(correct_preds, total_maps, round(100*correct_preds/total_maps,3)))
+    print('Correctly Predicted: {}/{} ({}%) Map results'.format(correct_preds, total_maps,
+                                                                round(100 * correct_preds / total_maps, 3)))
 
 
 # Pull out the map scores for the Summer Showdown
@@ -127,6 +69,7 @@ map_scores_for_test = map_scores[map_scores['match_date'] > '2021/06/24']
 # Pull out the map scores for all maps prior to the Summer Showdown
 map_scores = map_scores[map_scores['match_date'] <= '2021/06/24']
 
+#
 # Calculate Control RMSA
 control = map_scores[map_scores['map_type'] == Maps.Control]
 control_X, control_Y = extract_X_Y(control)
@@ -168,4 +111,186 @@ print('Escort Evaluation')
 evaluate(escort_test, escort_rmts)
 
 
+##### Determine Match Winners
 
+# Based on the first three maps of the series, determine the game type order (it rotates each week)
+def determine_missing_maps(map_type_list):
+    map_types = [Maps.Escort, Maps.Hybrid, Maps.Assault]
+    map_5 = Maps.Control
+    if len(map_type_list) >= 5:
+        return map_type_list
+    elif len(map_type_list) == 4:
+        return map_type_list + [map_5]
+    else:
+        missing = list(set(map_types) - set(map_type_list))[0]
+        return map_type_list + [missing, map_5]
+
+
+# Determine the winner, predicted winner, and how many maps each team was predicted to win in each match
+def evaluate_match(group):
+    group_relevant = group[['game_number', 'map_type', 'map_winner', 'team_one_name', 'team_two_name']] \
+        .drop_duplicates() \
+        .sort_values(by="game_number").groupby(by='game_number').head(1).reset_index()
+
+    team_one = group_relevant['team_one_name'].values[0]
+    team_two = group_relevant['team_two_name'].values[0]
+
+    # get the number of map wins each team actually got
+    team_one_wins = group_relevant[group_relevant['map_winner'] == team_one].shape[0]
+    team_two_wins = group_relevant[group_relevant['map_winner'] == team_two].shape[0]
+
+    # determine the actual match winner
+    if team_two_wins > team_one_wins:
+        match_winner = team_two
+    if team_one_wins > team_two_wins:
+        match_winner = team_one
+
+    # generate the map order
+    map_order = list(group_relevant['map_type'].values)
+    map_order = determine_missing_maps(map_order)
+
+    # initialize each team to have 0 projected wins
+    team_one_projected_wins = 0
+    team_two_projected_wins = 0
+
+    # iterate over the game mode order, determine the expected winner of the game mode, increment wins, and continue
+    # until one team reaches 3 wins
+    for map_type in map_order:
+        team_one_attack = rmsa[map_type][team_one]['attack']
+        team_one_defend = rmsa[map_type][team_one]['defend']
+        team_two_attack = rmsa[map_type][team_two]['attack']
+        team_two_defend = rmsa[map_type][team_two]['defend']
+
+        # estimate the map score for each team on the map
+        team_one_attack_expected = team_one_attack - team_two_defend
+        team_two_attack_expected = team_two_attack - team_one_defend
+
+        # use estimated map score to determine the map winner
+        if team_one_attack_expected > team_two_attack_expected:
+            team_one_projected_wins += 1
+        else:
+            team_two_projected_wins += 1
+
+        # break once a team reaches 3 map wins
+        if team_one_projected_wins >= 3:
+            projected_winner = team_one
+            break
+
+        if team_two_projected_wins >= 3:
+            projected_winner = team_two
+            break
+
+    # return an estimated match result
+    return pd.Series({
+        'team_one': team_one,
+        'team_two': team_two,
+        'match_winner': match_winner,
+        'team_one_map_wins': team_one_wins,
+        'team_two_map_wins': team_two_wins,
+        'net_wins': team_one_wins - team_two_wins,
+        'projected_winner': projected_winner,
+        'team_one_projected_wins': team_one_projected_wins,
+        'team_two_projected_wins': team_two_projected_wins,
+        'projected_net_wins': team_one_projected_wins - team_two_projected_wins
+    })
+
+
+# Build a dictionary for RMSA
+rmsa = {
+    Maps.Control: {},
+    Maps.Assault: {},
+    Maps.Escort: {},
+    Maps.Hybrid: {}
+}
+
+# Add control RMSA to the dictionary
+for index in control_rmts.index:
+    row = control_rmts.iloc[index]
+    rmsa[Maps.Control][row['team']] = {'attack': row['rmsa attack'], 'defend': row['rmsa defend']}
+
+# Add Assault RMSA to the dictionary
+for index in assault_rmts.index:
+    row = assault_rmts.iloc[index]
+    rmsa[Maps.Assault][row['team']] = {'attack': row['rmsa attack'], 'defend': row['rmsa defend']}
+
+# Add Escort RMSA to the dictionary
+for index in escort_rmts.index:
+    row = escort_rmts.iloc[index]
+    rmsa[Maps.Escort][row['team']] = {'attack': row['rmsa attack'], 'defend': row['rmsa defend']}
+
+# Add Hybrid RMSA to the dictionary
+for index in hybrid_rmts.index:
+    row = hybrid_rmts.iloc[index]
+    rmsa[Maps.Hybrid][row['team']] = {'attack': row['rmsa attack'], 'defend': row['rmsa defend']}
+
+# Apply our evaluation method to the season maps
+evaluation = map_scores_for_test.groupby(by='match_id').apply(evaluate_match).reset_index()
+# Add a boolean column to determine if the match winner was predicted correctly
+evaluation['correct_match_prediction'] = evaluation['match_winner'] == evaluation['projected_winner']
+correct = evaluation['correct_match_prediction'].sum()
+print('The model correctly predicted {} out of {} matches ({}%)'.format(correct, evaluation.shape[0],
+                                                                        round(correct / evaluation.shape[0], 3)))
+
+# Add a boolean column to determine if the final score of the match was predicted correctly
+evaluation['correct_exact_prediction'] = evaluation['net_wins'] == evaluation['projected_net_wins']
+exect_correct = evaluation['correct_exact_prediction'].sum()
+print('The model correctly predicted {} out of {} matches exactly ({}%)'.format(exect_correct, evaluation.shape[0],
+                                                                                round(
+                                                                                    exect_correct / evaluation.shape[0],
+                                                                                    3)))
+
+# Filter out the tournament matches and knockouts
+qualifiers_only = evaluation[evaluation['match_id'] <= 37330]
+
+# Build a dataframe of the double point matches
+double_points = [
+    {
+        'match_id': 37307,
+        'multiplier': 2
+    },
+    {
+        'match_id': 37327,
+        'multiplier': 2
+    },
+    {
+        'match_id': 37299,
+        'multiplier': 2
+    },
+    {
+        'match_id': 37321,
+        'multiplier': 2
+    },
+    {
+        'match_id': 37294,
+        'multiplier': 2
+    },
+    {
+        'match_id': 37317,
+        'multiplier': 2
+    }
+]
+double_points = pd.DataFrame(double_points)
+
+# Merge the double point matches into our evaluation dataframe
+qualifiers_only = qualifiers_only.merge(double_points, on='match_id', how='outer')
+# fill all non double point matches with 1.0
+qualifiers_only = qualifiers_only.fillna(1.0)
+
+correct = qualifiers_only['correct_match_prediction'].sum()
+print('The model correctly predicted {} out of {} qualifier matches ({}%)'.format(correct, qualifiers_only.shape[0],
+                                                                                  round(correct / qualifiers_only.shape[
+                                                                                      0], 3)))
+
+exect_correct = qualifiers_only['correct_exact_prediction'].sum()
+print('The model correctly predicted {} out of {} qualifier matches exactly ({}%)'.format(exect_correct,
+                                                                                          qualifiers_only.shape[0],
+                                                                                          round(exect_correct /
+                                                                                                qualifiers_only.shape[
+                                                                                                    0], 3)))
+
+# Calculate how many points the model would have gotten if entered into the pickem challenge
+qualifiers_only['approximate_pickem_points'] = (2 * qualifiers_only['correct_match_prediction'] + qualifiers_only[
+    'correct_exact_prediction']) * qualifiers_only['multiplier']
+
+print('The model would have approximately scored {} points if entered into the pickem challenge'.format(
+    qualifiers_only['approximate_pickem_points'].sum()))
