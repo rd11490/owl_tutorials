@@ -1247,6 +1247,38 @@ match_id,game_number,map_name,map_type,map_winner,match_date,team_one_name,team_
 37328,5,Oasis,Control,Guangzhou Charge,2021/06/26,Guangzhou Charge,New York Excelsior,149.5,80.0,2021
 37329,1,Ilios,Control,Seoul Dynasty,2021/06/26,Seoul Dynasty,Chengdu Hunters,100.0,25.5,2021
 37330,1,Lijiang Tower,Control,Hangzhou Spark,2021/06/26,Hangzhou Spark,Los Angeles Valiant,149.5,116.0,2021
+37331,1,Busan,Control,Toronto Defiant,2021/08/14,San Francisco Shock,Toronto Defiant,142.5,100.0,2021
+37332,1,Oasis,Control,Los Angeles Gladiators,2021/08/14,Los Angeles Gladiators,Houston Outlaws,100.0,21.5,2021
+37333,1,Lijiang Tower,Control,London Spitfire,2021/08/14,London Spitfire,Vancouver Titans,100.0,58.0,2021
+37333,5,Oasis,Control,London Spitfire,2021/08/14,London Spitfire,Vancouver Titans,100.0,46.0,2021
+37334,1,Ilios,Control,Los Angeles Gladiators,2021/08/13,Florida Mayhem,Los Angeles Gladiators,24.5,100.0,2021
+37335,1,Oasis,Control,San Francisco Shock,2021/08/13,San Francisco Shock,Vancouver Titans,100.0,30.0,2021
+37336,1,Busan,Control,Paris Eternal,2021/08/13,London Spitfire,Paris Eternal,99.0,100.0,2021
+37337,1,Busan,Control,Houston Outlaws,2021/08/12,Florida Mayhem,Houston Outlaws,28.0,100.0,2021
+37337,5,Ilios,Control,Houston Outlaws,2021/08/12,Florida Mayhem,Houston Outlaws,14.0,100.0,2021
+37338,1,Oasis,Control,Toronto Defiant,2021/08/12,Paris Eternal,Toronto Defiant,130.0,115.0,2021
+37338,5,Nepal,Control,Toronto Defiant,2021/08/12,Paris Eternal,Toronto Defiant,56.5,114.0,2021
+37339,1,Nepal,Control,Washington Justice,2021/08/08,Vancouver Titans,Washington Justice,13.0,100.0,2021
+37340,1,Busan,Control,Atlanta Reign,2021/08/08,Atlanta Reign,Dallas Fuel,100.0,53.0,2021
+37341,1,Nepal,Control,Florida Mayhem,2021/08/08,Boston Uprising,Florida Mayhem,50.0,100.5,2021
+37342,1,Lijiang Tower,Control,Toronto Defiant,2021/08/07,Toronto Defiant,Washington Justice,100.0,60.5,2021
+37343,1,Oasis,Control,Atlanta Reign,2021/08/07,Florida Mayhem,Atlanta Reign,36.5,100.0,2021
+37343,5,Nepal,Control,Atlanta Reign,2021/08/07,Florida Mayhem,Atlanta Reign,99.5,129.5,2021
+37344,1,Nepal,Control,Dallas Fuel,2021/08/07,Dallas Fuel,London Spitfire,100.0,49.5,2021
+37344,5,Busan,Control,Dallas Fuel,2021/08/07,Dallas Fuel,London Spitfire,131.5,125.0,2021
+37345,1,Busan,Control,Vancouver Titans,2021/08/06,Vancouver Titans,Boston Uprising,100.0,97.5,2021
+37346,1,Ilios,Control,Toronto Defiant,2021/08/06,London Spitfire,Toronto Defiant,72.5,138.5,2021
+37347,1,Busan,Control,Los Angeles Gladiators,2021/08/01,Los Angeles Gladiators,Washington Justice,130.0,120.5,2021
+37348,1,Lijiang Tower,Control,San Francisco Shock,2021/08/01,San Francisco Shock,Boston Uprising,117.0,138.5,2021
+37349,1,Nepal,Control,Atlanta Reign,2021/08/01,Atlanta Reign,Houston Outlaws,147.5,135.0,2021
+37350,1,Ilios,Control,Dallas Fuel,2021/07/31,Dallas Fuel,San Francisco Shock,128.0,128.5,2021
+37350,5,Lijiang Tower,Control,Dallas Fuel,2021/08/01,Dallas Fuel,San Francisco Shock,148.5,60.0,2021
+37351,1,Lijiang Tower,Control,Atlanta Reign,2021/07/31,Atlanta Reign,Los Angeles Gladiators,100.0,149.0,2021
+37351,5,Oasis,Control,Atlanta Reign,2021/07/31,Atlanta Reign,Los Angeles Gladiators,100.0,48.5,2021
+37352,1,Ilios,Control,Boston Uprising,2021/07/31,Boston Uprising,Paris Eternal,100.0,83.5,2021
+37353,1,Ilios,Control,Houston Outlaws,2021/07/30,Houston Outlaws,Washington Justice,100.0,38.5,2021
+37354,1,Lijiang Tower,Control,Paris Eternal,2021/07/30,Dallas Fuel,Paris Eternal,149.0,119.5,2021
+37354,5,Oasis,Control,Paris Eternal,2021/07/30,Dallas Fuel,Paris Eternal,97.0,149.5,2021
 37355,1,Lijiang Tower,Control,Atlanta Reign,2021/06/11,New York Excelsior,Atlanta Reign,71.5,100.0,2021
 37356,1,Busan,Control,Dallas Fuel,2021/06/11,Dallas Fuel,Shanghai Dragons,100.0,61.0,2021
 37357,1,Nepal,Control,Atlanta Reign,2021/06/12,Dallas Fuel,Atlanta Reign,137.0,100.0,2021
@@ -1254,6 +1286,28 @@ match_id,game_number,map_name,map_type,map_winner,match_date,team_one_name,team_
 37358,5,Busan,Control,Shanghai Dragons,2021/06/13,Shanghai Dragons,Dallas Fuel,120.0,140.5,2021
 37359,1,Lijiang Tower,Control,Shanghai Dragons,2021/06/12,Shanghai Dragons,Atlanta Reign,126.5,122.0,2021
 37360,1,Busan,Control,Shanghai Dragons,2021/06/12,New York Excelsior,Shanghai Dragons,23.5,100.0,2021
+37361,1,Lijiang Tower,Control,Shanghai Dragons,2021/08/08,Shanghai Dragons,Guangzhou Charge,100.0,84.0,2021
+37362,1,Nepal,Control,New York Excelsior,2021/08/08,Chengdu Hunters,New York Excelsior,49.5,100.0,2021
+37363,1,Oasis,Control,Philadelphia Fusion,2021/08/08,Philadelphia Fusion,Seoul Dynasty,100.0,92.0,2021
+37363,5,Nepal,Control,Seoul Dynasty,2021/08/08,Philadelphia Fusion,Seoul Dynasty,67.0,100.0,2021
+37364,1,Oasis,Control,Chengdu Hunters,2021/08/07,Chengdu Hunters,Guangzhou Charge,100.0,23.5,2021
+37364,5,Nepal,Control,Chengdu Hunters,2021/08/07,Chengdu Hunters,Guangzhou Charge,100.0,66.0,2021
+37365,1,Nepal,Control,Seoul Dynasty,2021/08/07,Seoul Dynasty,Shanghai Dragons,100.0,61.0,2021
+37365,5,Busan,Control,Shanghai Dragons,2021/08/07,Seoul Dynasty,Shanghai Dragons,93.0,100.0,2021
+37366,1,Lijiang Tower,Control,Philadelphia Fusion,2021/08/07,New York Excelsior,Philadelphia Fusion,139.5,149.0,2021
+37367,1,Lijiang Tower,Control,Chengdu Hunters,2021/08/14,Los Angeles Valiant,Chengdu Hunters,86.0,100.0,2021
+37368,1,Ilios,Control,Guangzhou Charge,2021/08/14,Guangzhou Charge,Hangzhou Spark,100.0,57.5,2021
+37368,5,Lijiang Tower,Control,Guangzhou Charge,2021/08/14,Guangzhou Charge,Hangzhou Spark,134.0,124.5,2021
+37369,1,Nepal,Control,Guangzhou Charge,2021/08/13,Los Angeles Valiant,Guangzhou Charge,50.0,147.0,2021
+37370,1,Busan,Control,Chengdu Hunters,2021/08/13,Hangzhou Spark,Chengdu Hunters,7.5,100.0,2021
+37371,1,Nepal,Control,Hangzhou Spark,2021/08/01,Hangzhou Spark,Philadelphia Fusion,141.0,126.0,2021
+37372,1,Ilios,Control,New York Excelsior,2021/08/01,Shanghai Dragons,New York Excelsior,146.0,134.5,2021
+37372,5,Lijiang Tower,Control,New York Excelsior,2021/08/01,Shanghai Dragons,New York Excelsior,131.0,122.5,2021
+37373,1,Ilios,Control,Seoul Dynasty,2021/08/01,Seoul Dynasty,Los Angeles Valiant,100.0,84.5,2021
+37374,1,Busan,Control,Philadelphia Fusion,2021/07/31,Philadelphia Fusion,Shanghai Dragons,100.0,99.0,2021
+37375,1,Oasis,Control,New York Excelsior,2021/07/31,New York Excelsior,Los Angeles Valiant,149.5,84.0,2021
+37376,1,Lijiang Tower,Control,Hangzhou Spark,2021/07/31,Hangzhou Spark,Seoul Dynasty,100.0,99.0,2021
+37376,5,Oasis,Control,Seoul Dynasty,2021/07/31,Hangzhou Spark,Seoul Dynasty,66.0,149.5,2021
 37377,1,Ilios,Control,Shanghai Dragons,2021/05/07,Shanghai Dragons,Florida Mayhem,100.0,53.0,2021
 37377,5,Oasis,Control,Florida Mayhem,2021/05/07,Shanghai Dragons,Florida Mayhem,90.5,100.0,2021
 37378,1,Nepal,Control,Dallas Fuel,2021/05/07,Dallas Fuel,Chengdu Hunters,128.0,67.5,2021
@@ -1275,6 +1329,9 @@ match_id,game_number,map_name,map_type,map_winner,match_date,team_one_name,team_
 37405,1,Busan,Control,Seoul Dynasty,2021/07/11,Seoul Dynasty,Chengdu Hunters,149.5,141.0,2021
 37405,5,Nepal,Control,Chengdu Hunters,2021/07/11,Seoul Dynasty,Chengdu Hunters,92.0,106.0,2021
 37406,1,Ilios,Control,Shanghai Dragons,2021/07/11,New York Excelsior,Shanghai Dragons,54.5,100.0,2021
+37407,1,Busan,Control,Seoul Dynasty,2021/08/15,Seoul Dynasty,Philadelphia Fusion,100.0,99.0,2021
+37407,5,Ilios,Control,Seoul Dynasty,2021/08/15,Seoul Dynasty,Philadelphia Fusion,100.0,106.0,2021
+37408,1,Ilios,Control,Chengdu Hunters,2021/08/15,New York Excelsior,Chengdu Hunters,49.5,100.0,2021
 37411,1,Lijiang Tower,Control,Atlanta Reign,2021/07/12,Los Angeles Gladiators,Atlanta Reign,31.5,100.0,2021
 37411,5,Nepal,Control,Atlanta Reign,2021/07/12,Los Angeles Gladiators,Atlanta Reign,135.0,100.0,2021
 37412,1,Lijiang Tower,Control,Washington Justice,2021/07/11,Washington Justice,Dallas Fuel,149.5,99.5,2021
@@ -1291,6 +1348,13 @@ match_id,game_number,map_name,map_type,map_winner,match_date,team_one_name,team_
 37419,1,Lijiang Tower,Control,Chengdu Hunters,2021/07/17,Chengdu Hunters,Dallas Fuel,100.0,97.0,2021
 37420,1,Lijiang Tower,Control,Dallas Fuel,2021/07/17,Atlanta Reign,Dallas Fuel,49.5,100.0,2021
 37420,5,Nepal,Control,Dallas Fuel,2021/07/17,Atlanta Reign,Dallas Fuel,103.5,149.5,2021
+37421,1,Ilios,Control,Los Angeles Gladiators,2021/08/16,San Francisco Shock,Los Angeles Gladiators,79.0,100.0,2021
+37421,5,Oasis,Control,Los Angeles Gladiators,2021/08/16,San Francisco Shock,Los Angeles Gladiators,87.5,130.5,2021
+37422,1,Busan,Control,Atlanta Reign,2021/08/15,Toronto Defiant,Atlanta Reign,83.5,126.0,2021
+37422,5,Oasis,Control,Atlanta Reign,2021/08/16,Toronto Defiant,Atlanta Reign,98.0,117.5,2021
+37423,1,Oasis,Control,San Francisco Shock,2021/08/15,Dallas Fuel,San Francisco Shock,67.0,100.0,2021
+37424,1,Lijiang Tower,Control,Paris Eternal,2021/08/15,Paris Eternal,Toronto Defiant,132.5,118.5,2021
+37424,5,Oasis,Control,Toronto Defiant,2021/08/15,Paris Eternal,Toronto Defiant,115.5,148.0,2021
 10223,4,Numbani,Hybrid,Los Angeles Valiant,2018/01/11,Los Angeles Valiant,San Francisco Shock,156.8673971666848,55.381353831220146,2018
 10224,4,Eichenwalde,Hybrid,Los Angeles Gladiators,2018/01/11,Los Angeles Gladiators,Shanghai Dragons,63.05190474826621,0.0,2018
 10225,4,Numbani,Hybrid,draw,2018/01/11,Seoul Dynasty,Dallas Fuel,69.55465356060986,69.55465356060986,2018
@@ -2258,6 +2322,27 @@ match_id,game_number,map_name,map_type,map_winner,match_date,team_one_name,team_
 37328,2,King's Row,Hybrid,New York Excelsior,2021/06/26,Guangzhou Charge,New York Excelsior,81.18474063250402,109.82857406258866,2021
 37329,2,Hollywood,Hybrid,Seoul Dynasty,2021/06/26,Chengdu Hunters,Seoul Dynasty,86.73174668604527,86.8412770877385,2021
 37330,2,Eichenwalde,Hybrid,Hangzhou Spark,2021/06/26,Hangzhou Spark,Los Angeles Valiant,325.375934601662,49.93370873277585,2021
+37331,3,Numbani,Hybrid,San Francisco Shock,2021/08/14,Toronto Defiant,San Francisco Shock,0.0,88.52905774495795,2021
+37332,3,Numbani,Hybrid,Los Angeles Gladiators,2021/08/14,Los Angeles Gladiators,Houston Outlaws,98.55258363832444,60.218308836532294,2021
+37333,3,Blizzard World,Hybrid,Vancouver Titans,2021/08/14,London Spitfire,Vancouver Titans,63.87410368682441,99.56407353719821,2021
+37334,3,King's Row,Hybrid,Florida Mayhem,2021/08/13,Los Angeles Gladiators,Florida Mayhem,87.30321444606979,92.64375750817199,2021
+37335,3,King's Row,Hybrid,San Francisco Shock,2021/08/13,Vancouver Titans,San Francisco Shock,0.0,151.38649102342004,2021
+37336,3,Numbani,Hybrid,Paris Eternal,2021/08/13,London Spitfire,Paris Eternal,0.0,86.8921836208178,2021
+37337,3,Blizzard World,Hybrid,draw,2021/08/12,Florida Mayhem,Houston Outlaws,114.27731299266067,114.27731299266067,2021
+37338,3,King's Row,Hybrid,Paris Eternal,2021/08/12,Toronto Defiant,Paris Eternal,118.30003306864754,127.21194217426763,2021
+37340,4,Blizzard World,Hybrid,Atlanta Reign,2021/08/08,Dallas Fuel,Atlanta Reign,0.0,106.69602451859106,2021
+37341,4,Blizzard World,Hybrid,Florida Mayhem,2021/08/08,Boston Uprising,Florida Mayhem,88.55169997879139,99.28758943209004,2021
+37343,4,Numbani,Hybrid,Atlanta Reign,2021/08/07,Florida Mayhem,Atlanta Reign,60.356290800938126,98.21712869125842,2021
+37344,4,King's Row,Hybrid,Dallas Fuel,2021/08/07,London Spitfire,Dallas Fuel,0.0,123.20033900565551,2021
+37346,4,Numbani,Hybrid,Toronto Defiant,2021/08/06,London Spitfire,Toronto Defiant,84.77412561537638,134.89967513522492,2021
+37347,2,Numbani,Hybrid,Los Angeles Gladiators,2021/08/01,Los Angeles Gladiators,Washington Justice,96.70659151258894,79.22749616947378,2021
+37348,2,Blizzard World,Hybrid,San Francisco Shock,2021/08/01,San Francisco Shock,Boston Uprising,260.7967167692097,61.9161039278117,2021
+37349,2,King's Row,Hybrid,Atlanta Reign,2021/08/01,Atlanta Reign,Houston Outlaws,115.30924160488996,87.92492915562966,2021
+37350,2,Numbani,Hybrid,San Francisco Shock,2021/07/31,Dallas Fuel,San Francisco Shock,86.74755380334287,88.6850378092222,2021
+37351,2,Blizzard World,Hybrid,Los Angeles Gladiators,2021/07/31,Atlanta Reign,Los Angeles Gladiators,63.88104491932472,99.27195501332288,2021
+37352,2,King's Row,Hybrid,Paris Eternal,2021/07/31,Boston Uprising,Paris Eternal,0.0,101.25252330858487,2021
+37353,2,Blizzard World,Hybrid,Houston Outlaws,2021/07/30,Houston Outlaws,Washington Justice,88.99013577204744,88.98868552053284,2021
+37354,2,Blizzard World,Hybrid,Dallas Fuel,2021/07/30,Paris Eternal,Dallas Fuel,118.07327574303036,114.2774842049731,2021
 37355,3,Numbani,Hybrid,Atlanta Reign,2021/06/11,New York Excelsior,Atlanta Reign,101.87024631503918,194.21645552490918,2021
 37356,3,Numbani,Hybrid,Dallas Fuel,2021/06/11,Shanghai Dragons,Dallas Fuel,88.59159542002666,139.23418769264669,2021
 37357,3,Numbani,Hybrid,Dallas Fuel,2021/06/12,Atlanta Reign,Dallas Fuel,88.6515987961789,89.13113892038326,2021
@@ -2265,6 +2350,22 @@ match_id,game_number,map_name,map_type,map_winner,match_date,team_one_name,team_
 37358,6,Eichenwalde,Hybrid,Shanghai Dragons,2021/06/13,Dallas Fuel,Shanghai Dragons,85.91729833581664,88.0258475185583,2021
 37359,3,Numbani,Hybrid,Shanghai Dragons,2021/06/12,Atlanta Reign,Shanghai Dragons,89.13526703947218,115.11103795543968,2021
 37360,3,Numbani,Hybrid,Shanghai Dragons,2021/06/12,New York Excelsior,Shanghai Dragons,88.52913265034465,123.44931532904494,2021
+37361,4,Numbani,Hybrid,Shanghai Dragons,2021/08/08,Guangzhou Charge,Shanghai Dragons,89.13414553937696,141.54598258069782,2021
+37362,4,King's Row,Hybrid,Chengdu Hunters,2021/08/08,New York Excelsior,Chengdu Hunters,64.09210957268164,88.72463154820551,2021
+37363,4,King's Row,Hybrid,Seoul Dynasty,2021/08/08,Seoul Dynasty,Philadelphia Fusion,111.35320798509139,88.09606091505795,2021
+37364,4,Blizzard World,Hybrid,Chengdu Hunters,2021/08/07,Chengdu Hunters,Guangzhou Charge,132.72233065579846,65.02607362879085,2021
+37365,4,Blizzard World,Hybrid,Shanghai Dragons,2021/08/07,Seoul Dynasty,Shanghai Dragons,62.91003598808498,98.88446944795501,2021
+37366,4,Numbani,Hybrid,Philadelphia Fusion,2021/08/07,Philadelphia Fusion,New York Excelsior,88.83749315890145,88.83636333598548,2021
+37367,3,Numbani,Hybrid,Chengdu Hunters,2021/08/14,Los Angeles Valiant,Chengdu Hunters,0.0,104.48081665774215,2021
+37368,3,Numbani,Hybrid,Hangzhou Spark,2021/08/14,Guangzhou Charge,Hangzhou Spark,101.86847712114393,113.50610759584244,2021
+37369,3,King's Row,Hybrid,Guangzhou Charge,2021/08/13,Guangzhou Charge,Los Angeles Valiant,269.6799135464373,53.51090598502155,2021
+37370,3,King's Row,Hybrid,Chengdu Hunters,2021/08/13,Hangzhou Spark,Chengdu Hunters,101.40470339186425,123.93091945264054,2021
+37371,2,Blizzard World,Hybrid,Philadelphia Fusion,2021/08/01,Philadelphia Fusion,Hangzhou Spark,161.83571938502382,54.77809289595441,2021
+37372,2,King's Row,Hybrid,Shanghai Dragons,2021/08/01,New York Excelsior,Shanghai Dragons,87.74750950512946,88.1240443191037,2021
+37373,2,Numbani,Hybrid,Seoul Dynasty,2021/08/01,Seoul Dynasty,Los Angeles Valiant,167.7329266111101,0.0,2021
+37374,2,Numbani,Hybrid,Philadelphia Fusion,2021/07/31,Philadelphia Fusion,Shanghai Dragons,34.77732678030493,0.0,2021
+37375,2,Blizzard World,Hybrid,New York Excelsior,2021/07/31,New York Excelsior,Los Angeles Valiant,152.28259611245008,91.43113378728357,2021
+37376,2,King's Row,Hybrid,Hangzhou Spark,2021/07/31,Hangzhou Spark,Seoul Dynasty,99.62446896336199,87.70600151737507,2021
 37377,3,King's Row,Hybrid,Florida Mayhem,2021/05/07,Florida Mayhem,Shanghai Dragons,262.93574074545177,62.66690766781268,2021
 37378,3,Blizzard World,Hybrid,Chengdu Hunters,2021/05/07,Chengdu Hunters,Dallas Fuel,75.4859741125604,0.0,2021
 37379,3,Blizzard World,Hybrid,Shanghai Dragons,2021/05/08,Shanghai Dragons,Dallas Fuel,97.6077591493861,62.82972076790756,2021
@@ -2282,6 +2383,8 @@ match_id,game_number,map_name,map_type,map_winner,match_date,team_one_name,team_
 37404,3,Eichenwalde,Hybrid,Dallas Fuel,2021/06/06,Houston Outlaws,Dallas Fuel,84.22023357205751,142.4288250229578,2021
 37405,3,Eichenwalde,Hybrid,Chengdu Hunters,2021/07/11,Seoul Dynasty,Chengdu Hunters,0.0,88.84279919908319,2021
 37406,3,King's Row,Hybrid,Shanghai Dragons,2021/07/11,New York Excelsior,Shanghai Dragons,101.40305071745941,171.12442775419254,2021
+37407,3,Blizzard World,Hybrid,Philadelphia Fusion,2021/08/15,Philadelphia Fusion,Seoul Dynasty,99.21727824244667,99.21610680542697,2021
+37408,3,King's Row,Hybrid,Chengdu Hunters,2021/08/15,New York Excelsior,Chengdu Hunters,101.40296748925198,125.61272636689498,2021
 37411,3,King's Row,Hybrid,Atlanta Reign,2021/07/12,Atlanta Reign,Los Angeles Gladiators,97.91029611503357,0.0,2021
 37412,3,King's Row,Hybrid,Dallas Fuel,2021/07/11,Washington Justice,Dallas Fuel,63.6795889625165,112.68618577930454,2021
 37413,3,King's Row,Hybrid,Los Angeles Gladiators,2021/07/11,Boston Uprising,Los Angeles Gladiators,109.9602460232262,150.53782300335502,2021
@@ -2292,6 +2395,10 @@ match_id,game_number,map_name,map_type,map_winner,match_date,team_one_name,team_
 37418,3,Eichenwalde,Hybrid,Shanghai Dragons,2021/07/18,Chengdu Hunters,Shanghai Dragons,68.15028991817815,121.86699554616077,2021
 37419,3,King's Row,Hybrid,Chengdu Hunters,2021/07/17,Dallas Fuel,Chengdu Hunters,65.4991469212773,79.31360199218368,2021
 37420,3,King's Row,Hybrid,Dallas Fuel,2021/07/17,Dallas Fuel,Atlanta Reign,150.20204812910646,101.73995735536391,2021
+37421,3,Blizzard World,Hybrid,San Francisco Shock,2021/08/16,Los Angeles Gladiators,San Francisco Shock,98.63282688206183,134.58928818119912,2021
+37422,3,King's Row,Hybrid,Atlanta Reign,2021/08/15,Toronto Defiant,Atlanta Reign,120.31573140273588,118.30110116397631,2021
+37423,3,Blizzard World,Hybrid,San Francisco Shock,2021/08/15,Dallas Fuel,San Francisco Shock,65.61748078661228,153.879742483422,2021
+37424,3,Blizzard World,Hybrid,Toronto Defiant,2021/08/15,Toronto Defiant,Paris Eternal,161.58478001448145,60.90233650500081,2021
 10223,1,Dorado,Escort,Los Angeles Valiant,2018/01/11,Los Angeles Valiant,San Francisco Shock,122.1999691380544,90.17655594977754,2018
 10224,1,Dorado,Escort,Los Angeles Gladiators,2018/01/11,Los Angeles Gladiators,Shanghai Dragons,241.0258716394535,19.13469755046277,2018
 10225,1,Junkertown,Escort,Dallas Fuel,2018/01/11,Seoul Dynasty,Dallas Fuel,93.27324450955481,112.27085989297669,2018
@@ -3216,9 +3323,44 @@ match_id,game_number,map_name,map_type,map_winner,match_date,team_one_name,team_
 37328,3,Junkertown,Escort,Guangzhou Charge,2021/06/26,Guangzhou Charge,New York Excelsior,111.24239403049488,114.40123847773296,2021
 37329,3,Watchpoint: Gibraltar,Escort,Chengdu Hunters,2021/06/26,Seoul Dynasty,Chengdu Hunters,23.205149895145986,54.958009392677745,2021
 37330,3,Route 66,Escort,Hangzhou Spark,2021/06/26,Hangzhou Spark,Los Angeles Valiant,161.84712207509307,14.954886462264156,2021
+37331,4,Rialto,Escort,San Francisco Shock,2021/08/14,Toronto Defiant,San Francisco Shock,25.26790067603984,128.72440099236684,2021
+37333,4,Rialto,Escort,London Spitfire,2021/08/14,London Spitfire,Vancouver Titans,108.9552409057499,81.70625066101405,2021
+37334,4,Rialto,Escort,Los Angeles Gladiators,2021/08/13,Florida Mayhem,Los Angeles Gladiators,91.65201728841295,92.63746423293796,2021
+37337,4,Route 66,Escort,Houston Outlaws,2021/08/12,Florida Mayhem,Houston Outlaws,88.7862703586339,97.23819082128267,2021
+37338,4,Route 66,Escort,Paris Eternal,2021/08/12,Toronto Defiant,Paris Eternal,88.54215786480864,105.95551930537061,2021
+37339,2,Route 66,Escort,Washington Justice,2021/08/08,Vancouver Titans,Washington Justice,89.54484969391476,106.22651906371621,2021
+37340,2,Rialto,Escort,Atlanta Reign,2021/08/08,Atlanta Reign,Dallas Fuel,277.17542472844025,106.98177563534237,2021
+37341,2,Route 66,Escort,Boston Uprising,2021/08/08,Boston Uprising,Florida Mayhem,102.74929788609897,102.74929788609897,2021
+37342,2,Havana,Escort,Toronto Defiant,2021/08/07,Washington Justice,Toronto Defiant,56.19431655794601,92.69058047492472,2021
+37343,2,Havana,Escort,Florida Mayhem,2021/08/07,Florida Mayhem,Atlanta Reign,102.59970603689261,97.06041092387701,2021
+37344,2,Route 66,Escort,London Spitfire,2021/08/07,Dallas Fuel,London Spitfire,22.55878923265861,83.58114913560537,2021
+37345,2,Havana,Escort,Vancouver Titans,2021/08/06,Boston Uprising,Vancouver Titans,58.34790676584779,94.1605404290485,2021
+37346,2,Rialto,Escort,London Spitfire,2021/08/06,Toronto Defiant,London Spitfire,23.13694645985595,59.68489717435867,2021
+37347,3,Rialto,Escort,Los Angeles Gladiators,2021/08/01,Los Angeles Gladiators,Washington Justice,113.6870005036052,53.552900857789446,2021
+37348,3,Route 66,Escort,Boston Uprising,2021/08/01,Boston Uprising,San Francisco Shock,99.97729792218767,51.0442299870857,2021
+37349,3,Rialto,Escort,Atlanta Reign,2021/08/01,Atlanta Reign,Houston Outlaws,141.05097630075105,62.36130825503762,2021
+37350,3,Rialto,Escort,Dallas Fuel,2021/08/01,San Francisco Shock,Dallas Fuel,106.98500488979097,106.98500488979097,2021
+37351,3,Route 66,Escort,Atlanta Reign,2021/07/31,Los Angeles Gladiators,Atlanta Reign,87.72144867267552,89.90204851459602,2021
+37352,3,Rialto,Escort,Boston Uprising,2021/07/31,Boston Uprising,Paris Eternal,200.08422449064503,63.12849546767272,2021
+37353,3,Route 66,Escort,Houston Outlaws,2021/07/30,Houston Outlaws,Washington Justice,93.3580769406909,58.57782676959972,2021
+37354,3,Havana,Escort,Paris Eternal,2021/07/30,Dallas Fuel,Paris Eternal,24.164053283613914,97.74477566658565,2021
 37357,4,Rialto,Escort,Dallas Fuel,2021/06/12,Atlanta Reign,Dallas Fuel,63.11450896741282,89.37829756660072,2021
 37358,4,Rialto,Escort,Dallas Fuel,2021/06/13,Dallas Fuel,Shanghai Dragons,106.96910592422158,126.39798226247618,2021
 37358,7,Junkertown,Escort,Shanghai Dragons,2021/06/13,Dallas Fuel,Shanghai Dragons,53.5046076904237,88.47371514842223,2021
+37361,2,Havana,Escort,Shanghai Dragons,2021/08/08,Guangzhou Charge,Shanghai Dragons,24.054239906015383,97.74446772221813,2021
+37362,2,Rialto,Escort,Chengdu Hunters,2021/08/08,New York Excelsior,Chengdu Hunters,60.03841938897638,120.99614135204584,2021
+37363,2,Havana,Escort,Philadelphia Fusion,2021/08/08,Seoul Dynasty,Philadelphia Fusion,23.9762883669292,97.75234527205211,2021
+37364,2,Route 66,Escort,Guangzhou Charge,2021/08/07,Guangzhou Charge,Chengdu Hunters,112.3561231035056,22.065081586843156,2021
+37365,2,Route 66,Escort,Shanghai Dragons,2021/08/07,Seoul Dynasty,Shanghai Dragons,89.64240979867327,93.87561472191243,2021
+37366,2,Route 66,Escort,Philadelphia Fusion,2021/08/07,New York Excelsior,Philadelphia Fusion,22.70249313632579,140.04261129879748,2021
+37368,4,Rialto,Escort,Guangzhou Charge,2021/08/14,Guangzhou Charge,Hangzhou Spark,118.5552317542242,90.72269528557358,2021
+37370,4,Havana,Escort,Chengdu Hunters,2021/08/13,Chengdu Hunters,Hangzhou Spark,151.8415285022828,57.09683907799044,2021
+37371,3,Route 66,Escort,Philadelphia Fusion,2021/08/01,Hangzhou Spark,Philadelphia Fusion,22.086906103538514,89.89200286995829,2021
+37372,3,Havana,Escort,New York Excelsior,2021/08/01,New York Excelsior,Shanghai Dragons,118.50054895413062,59.524260491888285,2021
+37373,3,Havana,Escort,Seoul Dynasty,2021/08/01,Los Angeles Valiant,Seoul Dynasty,94.13860563497828,104.22684564509703,2021
+37374,3,Rialto,Escort,Philadelphia Fusion,2021/07/31,Shanghai Dragons,Philadelphia Fusion,62.74530655851384,78.53573451982912,2021
+37375,3,Rialto,Escort,New York Excelsior,2021/07/31,Los Angeles Valiant,New York Excelsior,53.15856977235983,121.13802156055162,2021
+37376,3,Rialto,Escort,Seoul Dynasty,2021/07/31,Hangzhou Spark,Seoul Dynasty,26.21901182358642,119.10190832977659,2021
 37377,4,Watchpoint: Gibraltar,Escort,Shanghai Dragons,2021/05/07,Florida Mayhem,Shanghai Dragons,19.232555196062876,58.23118336632673,2021
 37377,6,Dorado,Escort,Shanghai Dragons,2021/05/07,Florida Mayhem,Shanghai Dragons,85.38539102349245,109.54687322509176,2021
 37378,4,Watchpoint: Gibraltar,Escort,Dallas Fuel,2021/05/07,Dallas Fuel,Chengdu Hunters,107.13385497187018,135.13593638223372,2021
@@ -3232,6 +3374,8 @@ match_id,game_number,map_name,map_type,map_winner,match_date,team_one_name,team_
 37394,4,Dorado,Escort,New York Excelsior,2021/06/06,New York Excelsior,Hangzhou Spark,72.58771816353375,22.887384599148717,2021
 37402,4,Junkertown,Escort,Dallas Fuel,2021/06/06,Dallas Fuel,Los Angeles Gladiators,97.21295739188336,89.14406426099835,2021
 37405,4,Junkertown,Escort,Seoul Dynasty,2021/07/11,Seoul Dynasty,Chengdu Hunters,74.07597164726033,24.340051812472122,2021
+37407,4,Rialto,Escort,Seoul Dynasty,2021/08/15,Seoul Dynasty,Philadelphia Fusion,91.98897454320931,25.82648262884783,2021
+37408,4,Havana,Escort,Chengdu Hunters,2021/08/15,New York Excelsior,Chengdu Hunters,93.86435204582946,113.86486260268201,2021
 37411,4,Watchpoint: Gibraltar,Escort,Los Angeles Gladiators,2021/07/12,Los Angeles Gladiators,Atlanta Reign,63.560716410488325,23.475287849437013,2021
 37412,4,Route 66,Escort,Washington Justice,2021/07/11,Washington Justice,Dallas Fuel,133.1219724679295,59.32256525398368,2021
 37414,4,Route 66,Escort,Washington Justice,2021/07/11,Washington Justice,Paris Eternal,181.46447277047827,21.007305168644383,2021
@@ -3239,6 +3383,9 @@ match_id,game_number,map_name,map_type,map_winner,match_date,team_one_name,team_
 37417,4,Watchpoint: Gibraltar,Escort,Chengdu Hunters,2021/07/17,Shanghai Dragons,Chengdu Hunters,91.35020683978149,91.9174736560356,2021
 37418,4,Route 66,Escort,Shanghai Dragons,2021/07/18,Shanghai Dragons,Chengdu Hunters,96.04610399895286,83.4739761728878,2021
 37420,4,Route 66,Escort,Atlanta Reign,2021/07/17,Atlanta Reign,Dallas Fuel,104.75586844324202,87.96377176004086,2021
+37421,4,Havana,Escort,Los Angeles Gladiators,2021/08/16,Los Angeles Gladiators,San Francisco Shock,94.01936042077187,94.01716319609551,2021
+37422,4,Route 66,Escort,Toronto Defiant,2021/08/16,Toronto Defiant,Atlanta Reign,73.03085233406095,22.33416462360491,2021
+37424,4,Rialto,Escort,Paris Eternal,2021/08/15,Toronto Defiant,Paris Eternal,93.08993854408357,116.89762066428658,2021
 10223,2,Temple of Anubis,Assault,Los Angeles Valiant,2018/01/11,Los Angeles Valiant,San Francisco Shock,188.81954769426355,209.14304041290777,2018
 10224,2,Temple of Anubis,Assault,Los Angeles Gladiators,2018/01/11,Los Angeles Gladiators,Shanghai Dragons,389.81293309408863,50.0,2018
 10225,2,Temple of Anubis,Assault,Seoul Dynasty,2018/01/11,Seoul Dynasty,Dallas Fuel,250.04300221258706,453.1893835601638,2018
@@ -4189,12 +4336,46 @@ match_id,game_number,map_name,map_type,map_winner,match_date,team_one_name,team_
 37324,3,Hanamura,Assault,draw,2021/07/03,Philadelphia Fusion,Guangzhou Charge,118.65445529048489,114.28571428571428,2021
 37328,4,Volskaya Industries,Assault,New York Excelsior,2021/06/26,Guangzhou Charge,New York Excelsior,144.46299755870407,133.33333333333334,2021
 37329,4,Hanamura,Assault,Seoul Dynasty,2021/06/26,Chengdu Hunters,Seoul Dynasty,50.0,150.04971243867988,2021
+37331,2,Hanamura,Assault,San Francisco Shock,2021/08/14,San Francisco Shock,Toronto Defiant,259.3837676366941,50.0,2021
+37332,2,Hanamura,Assault,Los Angeles Gladiators,2021/08/14,Houston Outlaws,Los Angeles Gladiators,0.0,181.89604337849826,2021
+37333,2,Temple of Anubis,Assault,Vancouver Titans,2021/08/14,Vancouver Titans,London Spitfire,100.0,50.0,2021
+37334,2,Temple of Anubis,Assault,Los Angeles Gladiators,2021/08/13,Los Angeles Gladiators,Florida Mayhem,148.48545896736192,0.0,2021
+37335,2,Volskaya Industries,Assault,San Francisco Shock,2021/08/13,Vancouver Titans,San Francisco Shock,50.0,283.86747927525056,2021
+37336,2,Hanamura,Assault,Paris Eternal,2021/08/13,London Spitfire,Paris Eternal,0.0,261.2131234988911,2021
+37337,2,Volskaya Industries,Assault,Florida Mayhem,2021/08/12,Houston Outlaws,Florida Mayhem,133.33333333333334,133.66564255880937,2021
+37338,2,Volskaya Industries,Assault,Toronto Defiant,2021/08/12,Toronto Defiant,Paris Eternal,133.33333333333334,152.69748924399275,2021
+37339,3,Temple of Anubis,Assault,Washington Justice,2021/08/08,Vancouver Titans,Washington Justice,114.28571428571428,137.5496004070351,2021
+37340,3,Temple of Anubis,Assault,Dallas Fuel,2021/08/08,Atlanta Reign,Dallas Fuel,114.28571428571428,171.42793616705433,2021
+37341,3,Volskaya Industries,Assault,Florida Mayhem,2021/08/08,Florida Mayhem,Boston Uprising,128.03550984843451,0.0,2021
+37342,3,Hanamura,Assault,Toronto Defiant,2021/08/08,Washington Justice,Toronto Defiant,50.0,172.35870322886558,2021
+37343,3,Hanamura,Assault,Florida Mayhem,2021/08/07,Atlanta Reign,Florida Mayhem,0.0,123.49619778625114,2021
+37344,3,Volskaya Industries,Assault,draw,2021/08/07,London Spitfire,Dallas Fuel,129.36540617155953,100.0,2021
+37345,3,Hanamura,Assault,Vancouver Titans,2021/08/06,Boston Uprising,Vancouver Titans,133.33333333333334,203.931617748019,2021
+37346,3,Temple of Anubis,Assault,Toronto Defiant,2021/08/06,London Spitfire,Toronto Defiant,50.0,100.0,2021
+37348,4,Temple of Anubis,Assault,San Francisco Shock,2021/08/01,San Francisco Shock,Boston Uprising,278.9659736727707,50.0,2021
+37350,4,Hanamura,Assault,San Francisco Shock,2021/08/01,San Francisco Shock,Dallas Fuel,182.64006455775595,50.0,2021
+37351,4,Temple of Anubis,Assault,Los Angeles Gladiators,2021/07/31,Atlanta Reign,Los Angeles Gladiators,50.0,199.2362498950214,2021
+37352,4,Volskaya Industries,Assault,Boston Uprising,2021/07/31,Boston Uprising,Paris Eternal,170.44063309270192,114.28571428571428,2021
+37354,4,Temple of Anubis,Assault,Dallas Fuel,2021/07/30,Paris Eternal,Dallas Fuel,50.0,125.6896597810933,2021
 37355,2,Temple of Anubis,Assault,Atlanta Reign,2021/06/11,New York Excelsior,Atlanta Reign,188.07599142284974,133.33333333333334,2021
 37356,2,Volskaya Industries,Assault,Dallas Fuel,2021/06/11,Shanghai Dragons,Dallas Fuel,50.0,162.62972987895702,2021
 37357,2,Volskaya Industries,Assault,Dallas Fuel,2021/06/12,Dallas Fuel,Atlanta Reign,157.08657801843168,114.58719072534281,2021
 37358,2,Volskaya Industries,Assault,Dallas Fuel,2021/06/13,Shanghai Dragons,Dallas Fuel,0.0,209.06470214808962,2021
 37359,2,Hanamura,Assault,Shanghai Dragons,2021/06/12,Atlanta Reign,Shanghai Dragons,114.28571428571428,271.1174919342898,2021
 37360,2,Temple of Anubis,Assault,Shanghai Dragons,2021/06/12,New York Excelsior,Shanghai Dragons,0.0,186.7915218056096,2021
+37361,3,Hanamura,Assault,Guangzhou Charge,2021/08/08,Guangzhou Charge,Shanghai Dragons,66.11170068960507,0.0,2021
+37362,3,Volskaya Industries,Assault,Chengdu Hunters,2021/08/08,Chengdu Hunters,New York Excelsior,178.44529172002953,50.0,2021
+37363,3,Volskaya Industries,Assault,Seoul Dynasty,2021/08/08,Philadelphia Fusion,Seoul Dynasty,150.0126754026801,133.33333333333334,2021
+37364,3,Temple of Anubis,Assault,draw,2021/08/07,Guangzhou Charge,Chengdu Hunters,50.0,50.0,2021
+37365,3,Temple of Anubis,Assault,Seoul Dynasty,2021/08/07,Shanghai Dragons,Seoul Dynasty,0.0,100.0,2021
+37366,3,Hanamura,Assault,New York Excelsior,2021/08/07,Philadelphia Fusion,New York Excelsior,50.0,100.0,2021
+37367,2,Volskaya Industries,Assault,Chengdu Hunters,2021/08/14,Los Angeles Valiant,Chengdu Hunters,50.0,176.14872224577795,2021
+37368,2,Volskaya Industries,Assault,Hangzhou Spark,2021/08/14,Guangzhou Charge,Hangzhou Spark,117.02407853984178,155.21573670371723,2021
+37369,2,Hanamura,Assault,Guangzhou Charge,2021/08/13,Los Angeles Valiant,Guangzhou Charge,50.0,194.02719576236584,2021
+37370,2,Hanamura,Assault,Hangzhou Spark,2021/08/13,Chengdu Hunters,Hangzhou Spark,50.0,124.6160920064779,2021
+37371,4,Temple of Anubis,Assault,Philadelphia Fusion,2021/08/01,Hangzhou Spark,Philadelphia Fusion,50.0,128.55260462904585,2021
+37372,4,Volskaya Industries,Assault,Shanghai Dragons,2021/08/01,New York Excelsior,Shanghai Dragons,114.28571428571428,131.09488698235234,2021
+37376,4,Volskaya Industries,Assault,Seoul Dynasty,2021/07/31,Hangzhou Spark,Seoul Dynasty,100.0,197.3611300723561,2021
 37377,2,Hanamura,Assault,draw,2021/05/07,Shanghai Dragons,Florida Mayhem,50.0,50.0,2021
 37378,2,Temple of Anubis,Assault,Dallas Fuel,2021/05/07,Chengdu Hunters,Dallas Fuel,50.0,185.11233865705802,2021
 37379,2,Temple of Anubis,Assault,draw,2021/05/08,Shanghai Dragons,Dallas Fuel,114.28571428571428,173.85760262243707,2021
@@ -4211,6 +4392,8 @@ match_id,game_number,map_name,map_type,map_winner,match_date,team_one_name,team_
 37404,2,Hanamura,Assault,Dallas Fuel,2021/06/06,Houston Outlaws,Dallas Fuel,50.0,100.0,2021
 37405,2,Temple of Anubis,Assault,Chengdu Hunters,2021/07/11,Chengdu Hunters,Seoul Dynasty,100.50609803029036,50.0,2021
 37406,2,Volskaya Industries,Assault,Shanghai Dragons,2021/07/11,New York Excelsior,Shanghai Dragons,120.07535399049749,253.5630870501083,2021
+37407,2,Volskaya Industries,Assault,draw,2021/08/15,Philadelphia Fusion,Seoul Dynasty,133.33333333333334,171.3098780065822,2021
+37408,2,Hanamura,Assault,New York Excelsior,2021/08/15,New York Excelsior,Chengdu Hunters,177.46230207801165,120.32578211014399,2021
 37411,2,Temple of Anubis,Assault,Los Angeles Gladiators,2021/07/12,Los Angeles Gladiators,Atlanta Reign,172.547691127627,0.0,2021
 37412,2,Volskaya Industries,Assault,Dallas Fuel,2021/07/11,Dallas Fuel,Washington Justice,168.5286784966242,50.0,2021
 37413,2,Hanamura,Assault,Los Angeles Gladiators,2021/07/11,Boston Uprising,Los Angeles Gladiators,0.0,244.8880073749893,2021
@@ -4221,3 +4404,7 @@ match_id,game_number,map_name,map_type,map_winner,match_date,team_one_name,team_
 37418,2,Temple of Anubis,Assault,Shanghai Dragons,2021/07/18,Shanghai Dragons,Chengdu Hunters,109.24136873420882,50.0,2021
 37419,2,Temple of Anubis,Assault,Chengdu Hunters,2021/07/17,Dallas Fuel,Chengdu Hunters,133.33333333333334,228.50508144520677,2021
 37420,2,Hanamura,Assault,Atlanta Reign,2021/07/17,Atlanta Reign,Dallas Fuel,167.48198294943492,50.0,2021
+37421,2,Hanamura,Assault,San Francisco Shock,2021/08/16,San Francisco Shock,Los Angeles Gladiators,259.8822877633105,50.0,2021
+37422,2,Volskaya Industries,Assault,draw,2021/08/15,Toronto Defiant,Atlanta Reign,132.8183005497236,251.33259338540233,2021
+37423,2,Temple of Anubis,Assault,San Francisco Shock,2021/08/15,Dallas Fuel,San Francisco Shock,114.28571428571428,118.17624388997403,2021
+37424,2,Volskaya Industries,Assault,Toronto Defiant,2021/08/15,Toronto Defiant,Paris Eternal,190.62143841583162,0.0,2021

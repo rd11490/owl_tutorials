@@ -211,14 +211,31 @@ def calculate_payload_map_score(group):
 ###############################
 # Controls maps are "easy" to score because each team is able to get a control percentage.
 # Convert the percentage to a decimal and use it as the map score
-control_maps['team_one_score'] = control_maps['attacker_control_perecent']
-control_maps['team_two_score'] = control_maps['defender_control_perecent']
+def calculate_control_map_score(group):
+    # Break out attacker and defender into team 1 and team 2
+    team_one = group['attacker'].values[0]
+    team_two = group['defender'].values[0]
+
+    # Pull out how many points each team was given credit for capping
+    team_one_score = group['attacker_control_perecent'].sum()/2
+    team_two_score = group['defender_control_perecent'].sum()/2
+
+
+    return pd.Series({
+        'map_name': group['map_name'].values[0],
+        'map_type': group['map_type'].values[0],
+        'map_winner': group['map_winner'].values[0],
+        'match_date': group['match_date'].values[0],
+        'team_one_name': team_one,
+        'team_two_name': team_two,
+        'team_one_score': team_one_score,
+        'team_two_score': team_two_score,
+        'season': group['season'].values[0]
+    })
 
 # Finally we need to apply our scoring functions to each dataframe of map types,
 # and merge them all back together as a frame of scored maps
-control_maps_score = control_maps[
-    ['match_id', 'game_number', 'map_name', 'map_type', 'map_winner', 'match_date', 'team_one_name', 'team_two_name',
-     'team_one_score', 'team_two_score', 'season']]
+control_maps_score = control_maps.groupby(by=['match_id', 'game_number']).apply(calculate_control_map_score).reset_index()
 assault_scores = assault_maps.groupby(by=['match_id', 'game_number']).apply(calculate_assault_map_score).reset_index()
 escort_maps_score = escort_maps.groupby(by=['match_id', 'game_number']).apply(calculate_payload_map_score).reset_index()
 hybrid_maps_score = hybrid_maps.groupby(by=['match_id', 'game_number']).apply(calculate_payload_map_score).reset_index()
