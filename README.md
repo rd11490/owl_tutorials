@@ -22,4 +22,7 @@ Tutorials on acquiring and working with Overwatch League Data
 
 #### [Regularized Map Score Added - An Attempt at Building a Predictive All In One Metric for OWL Teams](rmsa/)
 
+#### [Calculating Strength of Schedule for the 2021 OWL Season](strength_of_schedule/)
+
+
 

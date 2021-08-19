@@ -1,4 +1,4 @@
-## Calculating Strength of Schedule
+## Calculating Strength of Schedule for the 2021 OWL Season
 In this exploration we will using [Regularized Map Score Added](../rmsa) to determine the strength of schedule
 for each team in the Overwatch League this season. The script used to generate these results can be found [here](calculate_strength_of_schedule.py)
 
