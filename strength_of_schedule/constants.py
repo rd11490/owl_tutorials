@@ -194,3 +194,4 @@ def total_escort_map_distance(map_name, point):
 
 def calc_map_type(map_name):
     return Maps.map_types[map_name]
+
