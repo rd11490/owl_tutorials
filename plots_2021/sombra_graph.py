@@ -70,7 +70,7 @@ def plot_stats(frame, x_label, y_label, size_label, size_scale=1.0):
         team = row['team_name']
         color = Teams.TeamColors[team]
         txt = plt.text(x * 1.005, y * 1.005, label, color=color, weight='bold', alpha=.75)
-        txt.set_path_effects([path_effects.withStroke(linewidth=.25, foreground='k')])
+        txt.set_path_effects([path_effects.withStroke(linewidth=.5, foreground='k')])
 
     return fig
 
