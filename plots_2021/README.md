@@ -33,6 +33,8 @@ for further film study or to tell general trends in the data. The plots below ar
 
 ##### EMP Efficiency and Time to build EMP
 ![EMP Efficiency vs Time to build EMP](plots/emp_efficiency.png)
+![EMP Efficiency vs Time Holding EMP](plots/emp_efficiency2.png)
+
 
 The first thing I looked at was his EMP Efficiency (Players EMP'd per EMP) vs how quickly he builds EMP.
 I expected him to have one of the lowest efficiencies of the entire league, but it turns out that he is about league average. 
