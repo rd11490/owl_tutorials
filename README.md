@@ -24,5 +24,8 @@ Tutorials on acquiring and working with Overwatch League Data
 
 #### [Calculating Strength of Schedule for the 2021 OWL Season](strength_of_schedule/)
 
+#### [Overwatch League Stats for the 2021 OWL Season](plots_2021/)
+
+
 
 

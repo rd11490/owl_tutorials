@@ -60,6 +60,7 @@ pb_stats['Kills Per Stick'] = pb_stats['Pulse Bomb Kills'] / pb_stats['Pulse Bom
 pb_stats = pb_stats.merge(players_and_teams, on='player_name')
 
 pb_stats = pb_stats.sort_values(by='Ultimates Used', ascending=False)
+print(pb_stats)
 pb_stats = pb_stats[pb_stats['Ultimates Used'] > min_pulse_bombs_used]
 
 # Plot each player for kills per stick
