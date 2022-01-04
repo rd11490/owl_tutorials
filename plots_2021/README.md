@@ -1,12 +1,13 @@
 # Overwatch League Stats - 2021
 #### [Tracer](tracer/)
 #### [Sombra](sombra/)
+#### [Cassidy](cassidy/)
 
 
 ## Tracer
-[Tracer Code](pulse_bomb_graph.py)
+[Tracer Code](tracer.py)
 ##### Pulse Bomb Kills Per Stick vs Attach Rate
-![Pulse Bomb Status](plots/pulse_bombs_kills_per_stick.png)
+![Pulse Bomb Status](plots/tracer/pulse_bombs_kills_per_stick.png)
 
 From this plot the following trends can be assumed but not confirmed without watching replays to confirm
 
@@ -16,12 +17,12 @@ From this plot the following trends can be assumed but not confirmed without wat
 4. Players in the lower left quadrant are attempting to stick tanks but are not accurate
 
 ##### Pulse Bomb Kill Rate vs Attach Rate
-![Pulse Bomb Status](plots/pulse_bombs_kill_rate.png)
+![Pulse Bomb Status](plots/tracer/pulse_bombs_kill_rate.png)
 
 This chart just gives us an idea of the efficiency of pulse bomb usage for each player.
 
 ## Sombra
-[Sombra Code](sombra_graph.py)
+[Sombra Code](sombra.py)
 
 On a recent episode of PlatChat, the hosts discussed Assassin's Sombra play, his time holding EMPs, and his high 
 number of 0 player EMPs. After listening, I wanted to dig in and see how bad Assassin's Sombra really was. Thinking back
@@ -32,8 +33,8 @@ for further film study or to tell general trends in the data. The plots below ar
 10 minutes of play time on Sombra in 2021
 
 ##### EMP Efficiency and Time to build EMP
-![EMP Efficiency vs Time to build EMP](plots/emp_efficiency.png)
-![EMP Efficiency vs Time Holding EMP](plots/emp_efficiency2.png)
+![EMP Efficiency vs Time to build EMP](plots/sombra/emp_efficiency.png)
+![EMP Efficiency vs Time Holding EMP](plots/sombra/emp_efficiency2.png)
 
 
 The first thing I looked at was his EMP Efficiency (Players EMP'd per EMP) vs how quickly he builds EMP.
@@ -46,7 +47,7 @@ many dive comps as Lip, he could get a lower efficiency, but this type of claim 
 and could never truly be answered.
 
 ##### Time Holding EMP vs Time to build EMP
-![Time Holding EMP vs Time to build EMP](plots/emp_hold_build.png)
+![Time Holding EMP vs Time to build EMP](plots/sombra/emp_hold_build.png)
 
 The next thing I wanted to look at was how long Assassin was holding onto his EMPs. After listing to PlatChat
 discuss the subject, I assumed that Assassin would be one of the players holding EMP for the longest, but he was once
@@ -55,11 +56,34 @@ more than likely being a better Sombra then the public thinks with some terrible
 
 
 ##### Assassin or Hacker?
-![Eliminations per 10 vs Hacks per 10](plots/hack_vs_assassin3.png)
-![Final Blows per 10 vs Hacks per 10](plots/hack_vs_assassin2.png)
-![Solo Kills per 10 vs Hacks per 10](plots/hack_vs_assassin.png)
+![Eliminations per 10 vs Hacks per 10](plots/sombra/hack_vs_assassin3.png)
+![Final Blows per 10 vs Hacks per 10](plots/sombra/hack_vs_assassin2.png)
+![Solo Kills per 10 vs Hacks per 10](plots/sombra/hack_vs_assassin.png)
 
 The last thing I wanted to look at was how the various Sombras in the league trying to secure kills vs how much time
 they spend getting off hacks. Once again Assassin showed up as being about league average in Hacks per 10, and Eliminations, Final Blows and Solo Kills per 10.
 One thing to note about this set of graphs is that hacking players and getting kills are not mutually exclusive, and the data alone can tell
 us that a player is definitively sacrificing one stat for another without deeper film study.
+
+## Cassidy
+[Cassidy Code](cassidy.py)
+#### Kills or Damage?
+![Eliminations per 10 vs Hero Damage per 10](plots/cassidy/hero_damage_vs_elims.png)
+![Final Blows per 10 vs Hero Damage per 10](plots/cassidy/hero_damage_vs_final_blows.png)
+![Solo Kills per 10 vs Hero Damage per 10](plots/cassidy/hero_damage_vs_solo_kills.png)
+![Eliminations per 10 vs All Damage per 10](plots/cassidy/all_damage_vs_elims.png)
+
+#### McRightClick?
+![Final Blows per 10 vs Fan the Hammer Kills per 10](plots/cassidy/fb_fan_kills.png)
+
+#### Inting for Elims?
+![Eliminations per 10 vs Deaths per 10](plots/cassidy/elims_vs_deaths.png)
+
+#### The Heads on Tanks are bigger
+![Critical Hit Accuracy vs Final Blows per 10](plots/cassidy/crit_vs_fb.png)
+
+#### Nobody dies from deadeye
+![Deadeye Efficiency vs Hold Time](plots/cassidy/deadeye_eff_hold.png)
+![Deadeye Hold Time vs Build Time](plots/cassidy/deadeye_hold_build.png)
+
+

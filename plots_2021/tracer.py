@@ -94,7 +94,7 @@ plt.ylim((0.5, 1.5))
 plt.xlabel('Pulse Bomb Attach Rate')
 plt.ylabel('Pulse Bomb Kills Per Attach')
 
-plt.savefig('./plots/pulse_bombs_kills_per_stick.png')
+plt.savefig('./plots/tracer/pulse_bombs_kills_per_stick.png')
 
 # Plot each player Again with kill Rate
 plt.figure(figsize=(10, 8))
@@ -127,4 +127,4 @@ plt.ylim((0.3, 0.6))
 plt.xlabel('Pulse Bomb Attach Rate')
 plt.ylabel('Pulse Bomb Kill Rate')
 
-plt.savefig('./plots/pulse_bombs_kill_rate.png')
+plt.savefig('./plots/tracer/pulse_bombs_kill_rate.png')

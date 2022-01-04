@@ -81,7 +81,7 @@ plt.xlabel('Time to Build EMP (sec)')
 plt.ylabel('EMP Efficiency')
 plt.title('EMP Efficiency vs Time to Build EMP')
 plt.text(82, 2.1, '*Dot size based on number of EMPs Used', weight='bold', size='x-small', wrap=True)
-plt.savefig('./plots/emp_efficiency.png')
+plt.savefig('./plots/sombra/emp_efficiency.png')
 
 plot_stats(sombra_sums, 'Time Holding EMP', 'EMP Efficiency', 'Ultimates Used', 3)
 
@@ -89,7 +89,7 @@ plt.xlabel('Time Holding EMP (sec)')
 plt.ylabel('EMP Efficiency')
 plt.title('EMP Efficiency vs Time Holding EMP')
 plt.text(82, 2.1, '*Dot size based on number of EMPs Used', weight='bold', size='x-small', wrap=True)
-plt.savefig('./plots/emp_efficiency2.png')
+plt.savefig('./plots/sombra/emp_efficiency2.png')
 
 plot_stats(sombra_sums, 'Enemies Hacked per 10', 'Solo Kills per 10', 'Time Played', 1 / 50)
 
@@ -97,7 +97,7 @@ plt.xlabel('Enemies Hacked per 10')
 plt.ylabel('Solo Kills per 10')
 plt.title('Assassin or Hacker')
 plt.text(28, .9, '*Dot size based on Time Played', weight='bold', size='x-small', wrap=True)
-plt.savefig('./plots/hack_vs_assassin.png')
+plt.savefig('./plots/sombra/hack_vs_assassin.png')
 
 plot_stats(sombra_sums, 'Enemies Hacked per 10', 'Final Blows per 10', 'Time Played', 1 / 50)
 
@@ -105,7 +105,7 @@ plt.xlabel('Enemies Hacked per 10')
 plt.ylabel('Final Blows per 10')
 plt.title('Assassin or Hacker')
 plt.text(29, 7.3, '*Dot size based on Time Played', weight='bold', size='x-small', wrap=True)
-plt.savefig('./plots/hack_vs_assassin2.png')
+plt.savefig('./plots/sombra/hack_vs_assassin2.png')
 
 plot_stats(sombra_sums, 'Time to Build EMP', 'Time Holding EMP', 'Ultimates Used', 3)
 
@@ -113,4 +113,4 @@ plt.xlabel('Time to Build EMP (sec)')
 plt.ylabel('Time Holding EMP (sec)')
 plt.title('Time Holding EMP vs Time to Build EMP')
 plt.text(82, 10, '*Dot size based on number of EMPs Used', weight='bold', size='x-small', wrap=True)
-plt.savefig('./plots/emp_hold_build.png')
+plt.savefig('./plots/sombra/emp_hold_build.png')
