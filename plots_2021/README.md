@@ -2,6 +2,7 @@
 #### [Tracer](tracer/)
 #### [Sombra](sombra/)
 #### [Cassidy](cassidy/)
+#### [Discord Usage](discord_usage/)
 
 
 ## Tracer
@@ -86,4 +87,17 @@ us that a player is definitively sacrificing one stat for another without deeper
 ![Deadeye Efficiency vs Hold Time](plots/cassidy/deadeye_eff_hold.png)
 ![Deadeye Hold Time vs Build Time](plots/cassidy/deadeye_hold_build.png)
 
+## Team Tendencies
+
+#### Discord Usage
+[Discord Code](discord_usage.py)
+
+![Discord Orb Usage Breakdown Between Tanks and Non Tanks](plots/team/squshiy_discord_usage.png)
+![Discord Orb Usage Breakdown Between Roles](plots/team/role_discord_usage.png)
+![Discord Orb Usage Breakdown Between Heros for Top Zen Teams](plots/team/top_discord_usage.png)
+
+#### Tanking is not fun
+![Percent Time Alive Tanks are Discorded and Hacked](plots/team/tanks_no_fun.png)
+![Percent of Teams Hacks and Discords Each Tank Receives](plots/team/tanks_no_fun2.png)
+![Percent of Teams Hacks and Discords Each Tank Receives (Zoomed)](plots/team/tanks_no_fun2_zoom.png)
 
