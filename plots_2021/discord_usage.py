@@ -374,7 +374,7 @@ plt.ylabel('Percent of Discords Received')
 plt.xlabel('Percent of Hacks Received')
 plt.text(35, 22.5, '*Dot size based on Time Alive in Games\nin which the opponent played either Zen or Sombra',
          weight='bold', size='x-small')
-
+plt.tight_layout()
 plt.savefig('./plots/team/tanks_no_fun2_zoom.png')
 
 
