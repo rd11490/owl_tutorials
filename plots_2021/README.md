@@ -1,8 +1,8 @@
 # Overwatch League Stats - 2021
-#### [Tracer](tracer/)
-#### [Sombra](sombra/)
-#### [Cassidy](cassidy/)
-#### [Discord Usage](discord_usage/)
+#### [Tracer](#tracer))
+#### [Sombra](#sombra)
+#### [Cassidy](#cassidy)
+#### [Discord Usage](#discord_usage)
 
 
 ## Tracer
