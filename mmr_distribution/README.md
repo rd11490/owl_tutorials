@@ -1,4 +1,4 @@
-# Though Experiment: Overwatch 2 MMR Distribution
+# Though Experiment: Overwatch 2 SR/MMR Distribution
 Many people have complained about the matchmaking in OW2, claiming that it's broken and boosting players to new peaks. 
 While there could be issues with these systems, it's important to note that the massive influx of 
 new players is a major factor that's being overlooked.
@@ -6,7 +6,7 @@ new players is a major factor that's being overlooked.
 ### TL;DR
 The introduction of a large number of new players with below average true skill to the ranked system in OW2 has caused 
 players who were at or above average in OW1 to climb without any actual increase in their true skill level. 
-Therefore, it's possible for a plat player from OW1 with high diamond/low masters MMR to climb in OW2 due to the influx 
+Therefore, it's possible for a plat player from OW1 to end up in high diamond/low masters in OW2 due to the influx 
 of new low ranked players, which has shifted the distribution left and lowered the "average" skill of the community.
 
 
@@ -74,9 +74,9 @@ A Value of 10 will settle at 10.98
 ### OW1 Distribution
 Now that we've looked at the simple example, lets attempt to do the same for the OW player population. In order to do
 this we need to make some assumptions:
-1. The OW1 MMR distribution was centered at 2500, with a standard deviation of 750. (This creates a distribution close to the distribution last time blizzard reported it in 2019)
-2. The New players true skill scaled in MMR is centered at 1500 with a standard deviation of 750. (This is a guess. We know blizzard started dropping new players in bronze 5 due to their win rates, but beyond that we know nothing)
-3. The MMR system is capped between 0 and 5000 and when settled is centered at 2500 with a standard deviation of 750. (Once enough games are played and every thing is settled, we should expect the system to return to where is historically has been stable)
+1. The OW1 SR distribution was centered at 2500, with a standard deviation of 750. (This creates a distribution close to the distribution last time blizzard reported it in 2019)
+2. The New players true skill scaled in SR is centered at 1500 with a standard deviation of 750. (This is a guess. We know blizzard started dropping new players in bronze 5 due to their win rates, but beyond that we know nothing)
+3. The SR system is capped between 0 and 5000 and when settled is centered at 2500 with a standard deviation of 750. (Once enough games are played and every thing is settled, we should expect the system to return to where is historically has been stable)
 4. The number of players who have played OW2 is 40MM. 
 5. 1% of players play ranked, and of those, only 1/4 of them played ranked in OW1 
 
@@ -93,27 +93,27 @@ We then want to merge these counts together to get a look at the combined distri
 
 ### Settled Distribution
 Because we are assuming that the distribution is capped between 0 and 5000 and that the mean should settle at 2500, we
-take the percentiles from our distribution and convert them to expected MMR values once the system has settled back into 
+take the percentiles from our distribution and convert them to expected SR values once the system has settled back into 
 its stable state.
 
 ![Settled MMR](MMR_Distribution.png)
 
 Under this settled distribution, MMR values would change as follows:
 ```
-An MMR of 1000 (0.02 in OW1) in OW2 will roughly translates to an MMR of 1795 (0.17 in OW2) in OW1 once ranks have settled
-An MMR of 1250 (0.05 in OW1) in OW2 will roughly translates to an MMR of 2007 (0.26 in OW2) in OW1 once ranks have settled
-An MMR of 1500 (0.09 in OW1) in OW2 will roughly translates to an MMR of 2219 (0.35 in OW2) in OW1 once ranks have settled
-An MMR of 1750 (0.16 in OW1) in OW2 will roughly translates to an MMR of 2430 (0.46 in OW2) in OW1 once ranks have settled
-An MMR of 2000 (0.25 in OW1) in OW2 will roughly translates to an MMR of 2642 (0.58 in OW2) in OW1 once ranks have settled
-An MMR of 2250 (0.37 in OW1) in OW2 will roughly translates to an MMR of 2854 (0.68 in OW2) in OW1 once ranks have settled
-An MMR of 2500 (0.5 in OW1) in OW2 will roughly translates to an MMR of 3066 (0.77 in OW2) in OW1 once ranks have settled
-An MMR of 2750 (0.63 in OW1) in OW2 will roughly translates to an MMR of 3278 (0.85 in OW2) in OW1 once ranks have settled
-An MMR of 3000 (0.75 in OW1) in OW2 will roughly translates to an MMR of 3489 (0.91 in OW2) in OW1 once ranks have settled
-An MMR of 3250 (0.84 in OW1) in OW2 will roughly translates to an MMR of 3701 (0.95 in OW2) in OW1 once ranks have settled
-An MMR of 3500 (0.91 in OW1) in OW2 will roughly translates to an MMR of 3913 (0.97 in OW2) in OW1 once ranks have settled
-An MMR of 3750 (0.95 in OW1) in OW2 will roughly translates to an MMR of 4125 (0.98 in OW2) in OW1 once ranks have settled
-An MMR of 4000 (0.98 in OW1) in OW2 will roughly translates to an MMR of 4337 (0.99 in OW2) in OW1 once ranks have settled
-An MMR of 4250 (0.99 in OW1) in OW2 will roughly translates to an MMR of 4548 (1.0 in OW2) in OW1 once ranks have settled
+An SR of 1000 (0.02 in OW1) in OW2 will roughly translates to an SR of 1795 (0.17 in OW2) in OW1 once ranks have settled
+An SR of 1250 (0.05 in OW1) in OW2 will roughly translates to an SR of 2007 (0.26 in OW2) in OW1 once ranks have settled
+An SR of 1500 (0.09 in OW1) in OW2 will roughly translates to an SR of 2219 (0.35 in OW2) in OW1 once ranks have settled
+An SR of 1750 (0.16 in OW1) in OW2 will roughly translates to an SR of 2430 (0.46 in OW2) in OW1 once ranks have settled
+An SR of 2000 (0.25 in OW1) in OW2 will roughly translates to an SR of 2642 (0.58 in OW2) in OW1 once ranks have settled
+An SR of 2250 (0.37 in OW1) in OW2 will roughly translates to an SR of 2854 (0.68 in OW2) in OW1 once ranks have settled
+An SR of 2500 (0.5 in OW1) in OW2 will roughly translates to an SR of 3066 (0.77 in OW2) in OW1 once ranks have settled
+An SR of 2750 (0.63 in OW1) in OW2 will roughly translates to an SR of 3278 (0.85 in OW2) in OW1 once ranks have settled
+An SR of 3000 (0.75 in OW1) in OW2 will roughly translates to an SR of 3489 (0.91 in OW2) in OW1 once ranks have settled
+An SR of 3250 (0.84 in OW1) in OW2 will roughly translates to an SR of 3701 (0.95 in OW2) in OW1 once ranks have settled
+An SR of 3500 (0.91 in OW1) in OW2 will roughly translates to an SR of 3913 (0.97 in OW2) in OW1 once ranks have settled
+An SR of 3750 (0.95 in OW1) in OW2 will roughly translates to an SR of 4125 (0.98 in OW2) in OW1 once ranks have settled
+An SR of 4000 (0.98 in OW1) in OW2 will roughly translates to an SR of 4337 (0.99 in OW2) in OW1 once ranks have settled
+An SR of 4250 (0.99 in OW1) in OW2 will roughly translates to an SR of 4548 (1.0 in OW2) in OW1 once ranks have settled
 ```
 
 ### Concluding Thoughts
@@ -121,6 +121,6 @@ This is not an analysis of the actual ranked system, but instead a thought exerc
 issues and complaints we've seen with the system. All numbers in this exercise are based on assumptions and estimates and 
 therefore should not be seen as fact. One could make a compelling argument that the matchmaker isn't tuned for tight enough games and/or
 that the ranks should be scaled with a more narrow standard distribution so that GM goes from 2.5% of players down to <1% of players in order to
-prevent this influx of plays from boosting MMR at the tails. Just remember that next time see someone who was 2900 peak in OW1 in a GM lobby,
+prevent this influx of plays from boosting SR at the tails. Just remember that next time see someone who was 2900 peak in OW1 in a GM lobby,
 it's not necessarily that the matchmaker is looking too wide, but instead the population increase shifted the average skill of the player base down
 and led to an increase in size of the top X% of players.

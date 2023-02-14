@@ -23,7 +23,7 @@ def handle_edge(x):
 
 def build_fig():
     fig = plt.figure(figsize=(12, 6))
-    plt.xlabel('MMR (SR Scale)')
+    plt.xlabel('MMR/SR)')
     plt.ylabel('# of Players')
     plt.title('Player Rank Distribution')
     plt.xlim(0, 5000)
@@ -98,7 +98,7 @@ for sr in bins:
     z_old = (sr - sr_mean) / sr_std
     percentile_old = stats.norm.cdf(z_old)
     print(
-        f'An MMR of {sr} ({round(percentile_old,2)} in OW1) in OW2 will roughly translates to an MMR of {round(new_rating,2)} ({round(percentile,2)} in OW2) in OW1 once ranks have settled')
+        f'An SR of {sr} ({round(percentile_old,2)} in OW1) in OW2 will roughly translates to an SR of {round(new_rating,2)} ({round(percentile,2)} in OW2) in OW1 once ranks have settled')
 
 z = (2500 - mean) / stdev
 percentile_2500 = stats.norm.cdf(z)
