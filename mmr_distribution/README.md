@@ -1,16 +1,14 @@
 # Though Experiment: Overwatch 2 MMR Distribution
-### TL;DR
-Due to the introduction of a massive population of new players to the ranked system with a below average true skill, 
-players who were at or above average in OW1 will climb in OW2 without any change in true skill. A plat player from OW1 
-with high diamond/low masters MMR isn't necessarily the result of the matchmaker failing, but a result of the influx of new low ranked
-players shifting the distribution left and lowering the "average" skill of the community.
+Many people have complained about the matchmaking in OW2, claiming that it's broken and boosting players to new peaks. 
+While there could be issues with these systems, it's important to note that the massive influx of 
+new players is a major factor that's being overlooked.
 
-### What Happens When You Flood The Population With Low MMR Players
-There have been many observations and complaints about the match making for OW2, specifically seeing players in ranks 
-significantly higher than their peak in OW1. This has lead to complaints of a broken matchmaker that is boosting players 
-to new peaks. There obviously could be issues with the matchmaker and ranking system, and it can easily be argued that it
-should be tuned towards higher quality games over shorter queues, however a major factor that is completely being ignored
-is the massive influx of new players.
+### TL;DR
+The introduction of a large number of new players with below average true skill to the ranked system in OW2 has caused 
+players who were at or above average in OW1 to climb without any actual increase in their true skill level. 
+Therefore, it's possible for a plat player from OW1 with high diamond/low masters MMR to climb in OW2 due to the influx 
+of new low ranked players, which has shifted the distribution left and lowered the "average" skill of the community.
+
 
 ### Simple Example
 Let's start with a simple example so that we can see how it works at a small scale. Once we go through this, we will move
@@ -124,5 +122,5 @@ issues and complaints we've seen with the system. All numbers in this exercise a
 therefore should not be seen as fact. One could make a compelling argument that the matchmaker isn't tuned for tight enough games and/or
 that the ranks should be scaled with a more narrow standard distribution so that GM goes from 2.5% of players down to <1% of players in order to
 prevent this influx of plays from boosting MMR at the tails. Just remember that next time see someone who was 2900 peak in OW1 in a GM lobby,
-it's not necessarily that the matchmaker is looking too wide, but that the population increase shifting the average skill of the player base down
-will lead to an increase in size of your top X% of players.
+it's not necessarily that the matchmaker is looking too wide, but instead the population increase shifted the average skill of the player base down
+and led to an increase in size of the top X% of players.
