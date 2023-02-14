@@ -102,20 +102,20 @@ its stable state.
 
 Under this settled distribution, MMR values would change as follows:
 ```
-An MMR of 1000 (0.022750131948179195 in OW1) in OW2 will roughly translates to an MMR of 1794.0544165546535 (0.17328561860966668 in OW2) in OW1 once ranks have settled
-An MMR of 1250 (0.0477903522728147 in OW1) in OW2 will roughly translates to an MMR of 2005.8054673971653 (0.2549716305370602 in OW2) in OW1 once ranks have settled
-An MMR of 1500 (0.09121121972586788 in OW1) in OW2 will roughly translates to an MMR of 2217.5565182396776 (0.35323867373573925 in OW2) in OW1 once ranks have settled
-An MMR of 1750 (0.15865525393145707 in OW1) in OW2 will roughly translates to an MMR of 2429.30756908219 (0.462452672381909 in OW2) in OW1 once ranks have settled
-An MMR of 2000 (0.2524925375469229 in OW1) in OW2 will roughly translates to an MMR of 2641.0586199247023 (0.5745923092779993 in OW2) in OW1 once ranks have settled
-An MMR of 2250 (0.36944134018176367 in OW1) in OW2 will roughly translates to an MMR of 2852.8096707672144 (0.6809699732232941 in OW2) in OW1 once ranks have settled
-An MMR of 2500 (0.5 in OW1) in OW2 will roughly translates to an MMR of 3064.560721609727 (0.7741992085193782 in OW2) in OW1 once ranks have settled
-An MMR of 2750 (0.6305586598182363 in OW1) in OW2 will roughly translates to an MMR of 3276.311772452239 (0.8496847758314965 in OW2) in OW1 once ranks have settled
-An MMR of 3000 (0.7475074624530771 in OW1) in OW2 will roughly translates to an MMR of 3488.062823294751 (0.906150573543691 in OW2) in OW1 once ranks have settled
-An MMR of 3250 (0.8413447460685429 in OW1) in OW2 will roughly translates to an MMR of 3699.813874137263 (0.9451731758535523 in OW2) in OW1 once ranks have settled
-An MMR of 3500 (0.9087887802741321 in OW1) in OW2 will roughly translates to an MMR of 3911.5649249797752 (0.9700878685120566 in OW2) in OW1 once ranks have settled
-An MMR of 3750 (0.9522096477271853 in OW1) in OW2 will roughly translates to an MMR of 4123.315975822288 (0.9847839847542328 in OW2) in OW1 once ranks have settled
-An MMR of 4000 (0.9772498680518208 in OW1) in OW2 will roughly translates to an MMR of 4335.067026664802 (0.9927925813027697 in OW2) in OW1 once ranks have settled
-An MMR of 4250 (0.9901846713713547 in OW1) in OW2 will roughly translates to an MMR of 4546.8180775073115 (0.9968245389967686 in OW2) in OW1 once ranks have settled
+An MMR of 1000 (0.02 in OW1) in OW2 will roughly translates to an MMR of 1795 (0.17 in OW2) in OW1 once ranks have settled
+An MMR of 1250 (0.05 in OW1) in OW2 will roughly translates to an MMR of 2007 (0.26 in OW2) in OW1 once ranks have settled
+An MMR of 1500 (0.09 in OW1) in OW2 will roughly translates to an MMR of 2219 (0.35 in OW2) in OW1 once ranks have settled
+An MMR of 1750 (0.16 in OW1) in OW2 will roughly translates to an MMR of 2430 (0.46 in OW2) in OW1 once ranks have settled
+An MMR of 2000 (0.25 in OW1) in OW2 will roughly translates to an MMR of 2642 (0.58 in OW2) in OW1 once ranks have settled
+An MMR of 2250 (0.37 in OW1) in OW2 will roughly translates to an MMR of 2854 (0.68 in OW2) in OW1 once ranks have settled
+An MMR of 2500 (0.5 in OW1) in OW2 will roughly translates to an MMR of 3066 (0.77 in OW2) in OW1 once ranks have settled
+An MMR of 2750 (0.63 in OW1) in OW2 will roughly translates to an MMR of 3278 (0.85 in OW2) in OW1 once ranks have settled
+An MMR of 3000 (0.75 in OW1) in OW2 will roughly translates to an MMR of 3489 (0.91 in OW2) in OW1 once ranks have settled
+An MMR of 3250 (0.84 in OW1) in OW2 will roughly translates to an MMR of 3701 (0.95 in OW2) in OW1 once ranks have settled
+An MMR of 3500 (0.91 in OW1) in OW2 will roughly translates to an MMR of 3913 (0.97 in OW2) in OW1 once ranks have settled
+An MMR of 3750 (0.95 in OW1) in OW2 will roughly translates to an MMR of 4125 (0.98 in OW2) in OW1 once ranks have settled
+An MMR of 4000 (0.98 in OW1) in OW2 will roughly translates to an MMR of 4337 (0.99 in OW2) in OW1 once ranks have settled
+An MMR of 4250 (0.99 in OW1) in OW2 will roughly translates to an MMR of 4548 (1.0 in OW2) in OW1 once ranks have settled
 ```
 
 ### Concluding Thoughts
