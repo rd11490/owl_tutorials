@@ -26,6 +26,6 @@ Tutorials on acquiring and working with Overwatch League Data
 
 #### [Overwatch League Stats for the 2021 OWL Season](plots_2021/)
 
-#### [Though Experiment - MMR distribution](mmr_distribution/)
+#### [Thought Experiment - MMR distribution](mmr_distribution/)
 
 
