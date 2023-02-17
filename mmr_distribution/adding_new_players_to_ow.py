@@ -23,7 +23,7 @@ def handle_edge(x):
 
 def build_fig():
     fig = plt.figure(figsize=(12, 6))
-    plt.xlabel('MMR/SR)')
+    plt.xlabel('MMR/SR')
     plt.ylabel('# of Players')
     plt.title('Player Rank Distribution')
     plt.xlim(0, 5000)
