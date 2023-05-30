@@ -163,11 +163,13 @@ The resulting schedule will resemble something like:
 | Washington Justice     | Florida Mayhem         | Toronto Defiant     | Atlanta Reign       | Vancouver Titans    | Vancouver Titans    | Toronto Defiant     | San Francisco Shock    | Atlanta Reign          |      196 |
 
 ### 2.0 Why this Matters and How is it Different
-The reality is that this process is likely very similar to what the league will do to generate balanced schedules 
-(though I expect they will use some pre-packaged and optimized software). The big difference is that I am using RMSA instead
-of map differential or table placement. This is because RMSA accounts for the strength of your opponents when generating ratings, 
-while table placements and map differential is based opponent agnostic results. The perfect example of this is London and Toronto. 
-London went 2-6, finished in 10th place, and has a map differential of -8. Toronto on the other hand has a record of 3-5 and a map 
-differential of -3. Despite this, London just beat Toronto 3-1 and by RMSA is a noticably better team. The difference in their score is 
-almost entirely due to London playing a much more difficult schedule in the first half of the season.
+The reality is that this process is likely very similar to what the league will use to generate balanced schedules 
+(although they may employ pre-packaged and optimized software). The main difference is that I am utilizing RMSA instead 
+of map differential or table placement. The reason for this choice is that RMSA takes into account the strength of 
+opponents when generating ratings, whereas table placements and map differentials are based on opponent-agnostic results.
 
+A prime example of this distinction can be seen with London and Toronto. London finished with a record of 2-6, 
+securing 10th place, and a map differential of -8. On the other hand, Toronto achieved a record of 3-5 with a map 
+differential of -3. However, London managed to defeat Toronto with a score of 3-1, and according to RMSA, is noticeably 
+the stronger team. The disparity in their scores is primarily attributed to London facing a considerably tougher 
+schedule in the first half of the season.
