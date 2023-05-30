@@ -50,20 +50,20 @@ round-robin of five games (Control, Hybrid, Escort, Push, Control) in the West r
 The rating represents the percentage of matches each team wins during the simulation.
 
 | rating | team |
-|--------| ---- |
+|--------|------|
 | 2      | VAL  |
-| 8      | LVE  |
-| 30     | TOR  |
-| 36     | SFS  |
-| 39     | LDN  |
-| 41     | NYE  |
-| 42     | VAN  |
-| 56     | GLA  |
-| 67     | BOS  |
-| 70     | WAS  |
-| 83     | FLA  |
+| 7      | LVE  |
+| 32     | TOR  |
+| 35     | SFS  |
+| 37     | VAN  |
+| 38     | LDN  |
+| 52     | GLA  |
+| 52     | NYE  |
+| 65     | WAS  |
+| 66     | BOS  |
+| 81     | FLA  |
 | 88     | ATL  |
-| 90     | HOU  |
+| 95     | HOU  |
  
 Now that we have team ratings, we need to initialize the schedule. We will accomplish this using a brute force approach, 
 primarily because I didn't invest the effort to implement a more efficient method, but also because it is effective. 
@@ -113,7 +113,7 @@ We then determine the schedule set that exhibits the lowest difference in SoS wh
 
 Below is an example calculation:
 ```
-`Los Angeles Gladiators, Vancouver Titans, New York Excelsior, Vegas Eternal, Florida Mayhem, Vancouver Titans, Los Angeles Valiant, Houston Outlaws
+Los Angeles Gladiators, Vancouver Titans, New York Excelsior, Vegas Eternal, Florida Mayhem, Vancouver Titans, Los Angeles Valiant, Houston Outlaws
 
 Schedule 1:
 Los Angeles Gladiators: 56, Vancouver Titans: 42, New York Excelsior: 41, Vegas Eternal: 7
