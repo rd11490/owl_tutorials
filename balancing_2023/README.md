@@ -113,7 +113,7 @@ We then determine the schedule set that exhibits the lowest difference in SoS wh
 
 Below is an example calculation:
 ```
-`Los Angeles Gladiators, Vancouver Titans, New York Excelsior, Vegas Eternal, Florida Mayhem, Vancouver Titans, Los Angeles Valiant, Houston Outlaws
+Los Angeles Gladiators, Vancouver Titans, New York Excelsior, Vegas Eternal, Florida Mayhem, Vancouver Titans, Los Angeles Valiant, Houston Outlaws
 
 Schedule 1:
 Los Angeles Gladiators: 56, Vancouver Titans: 42, New York Excelsior: 41, Vegas Eternal: 7
