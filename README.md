@@ -28,4 +28,9 @@ Tutorials on acquiring and working with Overwatch League Data
 
 #### [Thought Experiment - MMR distribution](mmr_distribution/)
 
+#### [Balancing Strength of Schedule for the 2023 OWL Season](strength_of_schedule_2023/)
+
+#### [Balancing Strength of Schedule for the 2023 OWL Season Pt. 2 - Comparing Solutions](strength_of_schedule_2023_part_2/)
+
+
 

@@ -152,14 +152,14 @@ print(second_half_df_original)
 # Function to check if the entire schedule is balanced using the max_sos_difference we determined above
 def check_balanced(team_sos):
     values = [v for k, v in team_sos.items()]
-    avg = sum(values) / len(values)
-    diff = [abs(v - avg) for v in values]
+    diff = [abs(v - target_average) for v in values]
     sum_diff = sum(diff)
     print(f'check_balanced: {sum_diff}, {values}')
     for v in values:
-        if (abs(avg - max_sos_difference) > v):
+        if abs(target_average - v) > max_sos_difference:
             return False, sum_diff
     return True, sum_diff
+
 
 
 # Randomly select 2 teams and their schedules

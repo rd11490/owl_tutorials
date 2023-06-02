@@ -7,28 +7,28 @@ for each team in the Overwatch League this season. The script used to generate t
 
 ### 0.1 TLDR Final Results
 
-| team | adjusted sos rank | adjusted sos | raw sos rank | raw sos |
-| ---- | ------------- | ------------ | -------- | ------- |
-Florida Mayhem     |       1.0     |   383.85   |    3.0  | 390.83
-Atlanta Reign      |      2.0    |    371.32   |    6.0 |  283.21
-London Spitfire      |      3.0    |    348.99   |    2.0 |  421.22
-Dallas Fuel      |      4.0    |    340.76   |    9.0 |  263.76
-Houston Outlaws      |      5.0    |    334.50   |    5.0 |  303.68
-Los Angeles Gladiators      |      6.0    |    325.50   |    7.0 |  269.67
-San Francisco Shock      |      7.0    |    303.13   |   10.0 |  252.94
-Vancouver Titans      |      8.0    |    225.71   |    4.0 |  333.25
-Boston Uprising      |      9.0    |    219.65   |   11.0 |  227.79
-Shanghai Dragons      |     10.0    |    215.79   |   19.0 |   75.37
-Toronto Defiant      |     11.0    |    188.99   |   14.0 |  182.72
-Philadelphia Fusion      |     12.0    |    172.84   |   15.0 |  166.79
-Seoul Dynasty      |     13.0    |    158.61   |   16.0 |  150.54
-Washington Justice      |     14.0    |    155.78   |   13.0 |  191.51
-Guangzhou Charge      |     15.0    |    143.76   |   12.0 |  224.69
-Paris Eternal      |     16.0    |    137.23   |   17.0 |  149.50
-Hangzhou Spark      |     17.0    |    133.96   |    8.0 |  264.68
-Chengdu Hunters      |     18.0    |     87.29   |   20.0 |   10.21
-Los Angeles Valiant      |     19.0    |    -20.77   |    1.0 |  431.21
-New York Excelsior      |     20.0    |    -30.33   |   18.0 |  107.07
+| team                   | adjusted sos rank | adjusted sos | raw sos rank | raw sos |
+|------------------------|-------------------|--------------|--------------|---------|
+| Florida Mayhem         | 1.0               | 383.85       | 3.0          | 390.83  |
+| Atlanta Reign          | 2.0               | 371.32       | 6.0          | 283.21  |
+| London Spitfire        | 3.0               | 348.99       | 2.0          | 421.22  |
+| Dallas Fuel            | 4.0               | 340.76       | 9.0          | 263.76  |
+| Houston Outlaws        | 5.0               | 334.50       | 5.0          | 303.68  |
+| Los Angeles Gladiators | 6.0               | 325.50       | 7.0          | 269.67  |
+| San Francisco Shock    | 7.0               | 303.13       | 10.0         | 252.94  |
+| Vancouver Titans       | 8.0               | 225.71       | 4.0          | 333.25  |
+| Boston Uprising        | 9.0               | 219.65       | 11.0         | 227.79  |
+| Shanghai Dragons       | 10.0              | 215.79       | 19.0         | 75.37   |
+| Toronto Defiant        | 11.0              | 188.99       | 14.0         | 182.72  |
+| Philadelphia Fusion    | 12.0              | 172.84       | 15.0         | 166.79  |
+| Seoul Dynasty          | 13.0              | 158.61       | 16.0         | 150.54  |
+| Washington Justice     | 14.0              | 155.78       | 13.0         | 191.51  |
+| Guangzhou Charge       | 15.0              | 143.76       | 12.0         | 224.69  |
+| Paris Eternal          | 16.0              | 137.23       | 17.0         | 149.50  |
+| Hangzhou Spark         | 17.0              | 133.96       | 8.0          | 264.68  |
+| Chengdu Hunters        | 18.0              | 87.29        | 20.0         | 10.21   |
+| Los Angeles Valiant    | 19.0              | -20.77       | 1.0          | 431.21  |
+| New York Excelsior     | 20.0              | -30.33       | 18.0         | 107.07  |
 
 ### 0.2 Requirements
 The code in this tutorial was written in python 3.7 and uses the following libraries:
@@ -43,28 +43,28 @@ Using the method we developed in the [RMSA tutorial](../rmsa) we can calculate a
 This rating accounts for the strength of your opponent in each match you play, so it should be more accurate than just
 using map differential and win-loss record.
 
-| team |  rmsa |
-| ---- | ----- |
-Los Angeles Gladiators |  74.22
-Shanghai Dragons |  70.73
-Dallas Fuel |  67.32
-San Francisco Shock |  63.35
-Atlanta Reign  | 63.03
-Chengdu Hunters  | 50.41
-Seoul Dynasty |  47.54
-Houston Outlaws |  47.36
-Philadelphia Fusion |  32.21
-Washington Justice  |  8.81
-Paris Eternal  |  5.00
-New York Excelsior |   1.98
-Florida Mayhem |  -0.61
-Boston Uprising  | -0.68
-Guangzhou Charge  | -3.93
-Hangzhou Spark  | -9.53
-Toronto Defiant | -12.30
-London Spitfire | -46.43
-Vancouver Titans  |-64.69
-Los Angeles Valiant |-100.00
+| team                   |  rmsa |
+|------------------------| ----- |
+| Los Angeles Gladiators |  74.22|
+ Shanghai Dragons       |  70.73|
+ Dallas Fuel            |  67.32|
+ San Francisco Shock    |  63.35|
+ Atlanta Reign          | 63.03|
+ Chengdu Hunters        | 50.41|
+ Seoul Dynasty          |  47.54|
+ Houston Outlaws        |  47.36|
+ Philadelphia Fusion    |  32.21|
+ Washington Justice     |  8.81|
+ Paris Eternal          |  5.00|
+ New York Excelsior     |   1.98|
+ Florida Mayhem         |  -0.61|
+ Boston Uprising        | -0.68|
+ Guangzhou Charge       | -3.93|
+ Hangzhou Spark         | -9.53|
+ Toronto Defiant        | -12.30|
+ London Spitfire        | -46.43|
+ Vancouver Titans       |-64.69|
+ Los Angeles Valiant    |-100.00|
 
 We can then naively sum up the ratings of every team on each teams schedule to get that teams strength of schedule.
 From this you can see that arguably 4 of the 6 worst teams in the league played the hardest schedules, while some of the
