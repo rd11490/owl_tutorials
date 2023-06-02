@@ -1,0 +1,14 @@
+team,secondHalfOpponent1,secondHalfOpponent2,secondHalfOpponent3,secondHalfOpponent4,doubleOpponent1,doubleOpponent2,doubleOpponent3,doubleOpponent4,totalSOS,unbalanced,rmsa_sos,rmsa_unbalanced
+Atlanta Reign,Florida Mayhem,London Spitfire,Toronto Defiant,Washington Justice,Vancouver Titans,Toronto Defiant,San Francisco Shock,Florida Mayhem,0,0.0,185,-15.0
+Boston Uprising,Los Angeles Gladiators,Florida Mayhem,Los Angeles Valiant,Houston Outlaws,Houston Outlaws,Washington Justice,Vegas Eternal,London Spitfire,-4,-4.0,205,5.0
+Florida Mayhem,New York Excelsior,Boston Uprising,Atlanta Reign,Washington Justice,Los Angeles Valiant,Toronto Defiant,Atlanta Reign,Los Angeles Gladiators,0,0.0,174,-26.0
+Houston Outlaws,New York Excelsior,Boston Uprising,Vegas Eternal,Toronto Defiant,Los Angeles Gladiators,Boston Uprising,New York Excelsior,London Spitfire,0,0.0,208,8.0
+London Spitfire,San Francisco Shock,New York Excelsior,Los Angeles Valiant,Atlanta Reign,Toronto Defiant,Vegas Eternal,Houston Outlaws,Boston Uprising,0,0.0,200,0.0
+Los Angeles Gladiators,San Francisco Shock,New York Excelsior,Los Angeles Valiant,Boston Uprising,Houston Outlaws,San Francisco Shock,Vegas Eternal,Florida Mayhem,0,0.0,218,18.0
+Los Angeles Valiant,Los Angeles Gladiators,Boston Uprising,London Spitfire,Vegas Eternal,New York Excelsior,Toronto Defiant,Florida Mayhem,Vancouver Titans,0,0.0,202,2.0
+New York Excelsior,Los Angeles Gladiators,Florida Mayhem,London Spitfire,Houston Outlaws,Washington Justice,Los Angeles Valiant,Houston Outlaws,Vancouver Titans,0,0.0,199,-1.0
+San Francisco Shock,Los Angeles Gladiators,London Spitfire,Vegas Eternal,Vancouver Titans,Vegas Eternal,Washington Justice,Los Angeles Gladiators,Atlanta Reign,4,4.0,212,12.0
+Toronto Defiant,Atlanta Reign,Washington Justice,Houston Outlaws,Vancouver Titans,Los Angeles Valiant,London Spitfire,Atlanta Reign,Florida Mayhem,0,0.0,209,9.0
+Vancouver Titans,San Francisco Shock,Vegas Eternal,Toronto Defiant,Washington Justice,Atlanta Reign,Los Angeles Valiant,New York Excelsior,Washington Justice,0,0.0,207,7.0
+Vegas Eternal,San Francisco Shock,Los Angeles Valiant,Houston Outlaws,Vancouver Titans,San Francisco Shock,London Spitfire,Los Angeles Gladiators,Boston Uprising,0,0.0,191,-9.0
+Washington Justice,Florida Mayhem,Toronto Defiant,Atlanta Reign,Vancouver Titans,New York Excelsior,San Francisco Shock,Vancouver Titans,Boston Uprising,0,0.0,190,-10.0
